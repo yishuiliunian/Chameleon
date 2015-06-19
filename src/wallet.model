@@ -1,0 +1,16 @@
+model:
+  <default=''> string identifier
+  <default=0> int xx
+end
+
+
+model BaiduWalltPay:
+  string orderId
+  int userId
+end
+
+
+model BaiduWalletPayOrder:
+  string oriderId
+  int userId
+end
