@@ -31,6 +31,15 @@ class ChameleonListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by ChameleonParser#words.
+    def enterWords(self, ctx):
+        pass
+
+    # Exit a parse tree produced by ChameleonParser#words.
+    def exitWords(self, ctx):
+        pass
+
+
     # Enter a parse tree produced by ChameleonParser#property_line_words.
     def enterProperty_line_words(self, ctx):
         pass

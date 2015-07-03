@@ -9,10 +9,10 @@ from core.codegen.property import CustomObjectProperty
 @class ${o.type}
   % endif
 % endfor
+#import <Mantle.h>
+#import <Foundation/Foundation.h>
 
-
-@import Foundation;
-@interface ${model.name} : Mantle
+@interface ${model.name} : Mantle <MTLJSONSerializing>
 
 % for i in model.properties:
   % if isinstance(i, ObjectProperty):

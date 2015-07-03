@@ -9,6 +9,4 @@ class ModelType:
     String= "string"
     Number = "number"
     URL = "url"
-
-
     pass

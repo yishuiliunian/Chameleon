@@ -31,3 +31,4 @@ class OCGenerator:
         headerFile = self.model.name+ ".h"
         implatationFile = self.model.name + ".m"
         self.outputFileWithRender(headerFile, "model_header.clout")
+        self.outputFileWithRender(implatationFile, "model_implatation.clout")

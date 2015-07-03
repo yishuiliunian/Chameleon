@@ -1,3 +1,4 @@
+# coding: UTF-8
 import sys
 from antlr4 import *
 from core.engine.ChameleonLexer import ChameleonLexer
@@ -5,9 +6,8 @@ from core.engine.ChameleonParser import ChameleonParser
 from core.parser.listener import CLBuildListener
 
 def main(argv):
-    input = FileStream(argv[1])
+    input = FileStream(argv[1], encoding="utf-8")
     lexer = ChameleonLexer(input)
-    print input
     stream = CommonTokenStream(lexer)
     parser = ChameleonParser(stream)
     tree = parser.prog()

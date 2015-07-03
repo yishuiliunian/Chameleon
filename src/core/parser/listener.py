@@ -47,3 +47,10 @@ class CLBuildListener(ChameleonListener):
         generator.output()
 
         pass
+
+    def exitWords(self, ctx):
+        print "*******"
+        print "发现注释"
+        print ctx.getText()
+        print "******"
+        pass

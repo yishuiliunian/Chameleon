@@ -1,6 +1,8 @@
+/*支付协议*/
 model BWPayTelProtocol {
   int32       a
   string      identifier
   PMObject    data
   int         c
 }
+
