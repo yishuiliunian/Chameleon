@@ -1,0 +1,25 @@
+<%
+from core.codegen.property import ObjectProperty
+from core.codegen.property import FundamentalProperty
+from core.codegen.property import CustomObjectProperty
+%>
+
+% for o in model.properties:
+  % if isinstance(o, CustomObjectProperty):
+@class ${o.type}
+  % endif
+% endfor
+
+
+@import Foundation;
+@interface ${model.name} : Mantle
+
+% for i in model.properties:
+  % if isinstance(i, ObjectProperty):
+@property (strong, nonatomic) ${i.type}* ${i.name};
+  % elif isinstance(i, FundamentalProperty):
+@property (assign, nonatomic) ${i.type} ${i.name};
+  %endif
+% endfor
+
+@end
