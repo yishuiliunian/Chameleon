@@ -2,6 +2,7 @@
 from ..engine.ChameleonListener import *
 from ..codegen.model import OCModel
 from ..codegen.property import  PropertyFactory
+from ..codegen.property import ArrayProperty
 from ..codegen.oc.generate import OCGenerator
 
 class CLBuildListener(ChameleonListener):
@@ -30,9 +31,18 @@ class CLBuildListener(ChameleonListener):
         assert(p)
         model = self.topModel()
         model.addProperty(p)
-        print name
-        print type
-        print ctx;
+        pass
+
+    def exitArray_property(self, ctx):
+        print "识别到数组"
+        name = ctx.ID().getText()
+        type = ctx.p_type().getText()
+        p = ArrayProperty(name, type)
+        assert(p)
+        model = self.topModel()
+        model.addProperty(p)
+        pass
+
 
     def enterModel(self, ctx):
         print "发现模型"

@@ -9,4 +9,11 @@ class ModelType:
     String= "string"
     Number = "number"
     URL = "url"
+
+    Array = "array"
+    pass
+
+class OCOutType:
+    Mantle = "mantle"
+    Dic = "dic"
     pass

@@ -1,0 +1,112 @@
+# coding: UTF-8
+<%
+from core.codegen.property import ObjectProperty
+from core.codegen.property import FundamentalProperty
+from core.codegen.property import CustomObjectProperty
+from core.codegen.property import FloatProperty
+from core.codegen.property import DoubleProperty
+from core.codegen.property import IntProperty
+from core.codegen.property import Int32Property
+from core.codegen.property import Int64Property
+from core.codegen.property import ArrayProperty
+from core.codegen.property import NSStringProperty
+from core.codegen.property import NSNumberProperty
+from core.codegen.property import is_foundation_object_propery
+
+%>
+
+#import "${model.name}.h"
+% for o in model.properties:
+  % if isinstance(o, CustomObjectProperty):
+#import "${o.type}.h"
+  % endif
+% endfor
+
+@implementation ${model.name}
+
+- (void)  setValue:(id)value forKey:(NSString *)key
+{
+  if(NO){}
+% for p in model.properties:
+% if isinstance(p, FloatProperty):
+  else if ([key isEqualToString:${p.name}])
+  {
+      if(!value) continue;
+      _${p.name} = [value floatValue];
+  }
+% endif
+% if isinstance(p , IntProperty):
+  else if ([key isEqualToString:@"${p.name}"])
+  {
+    if(!value) continue;
+    _${p.name} = [value intValue];
+  }
+% endif
+% if isinstance(p, Int64Property):
+  else if([key isEqualToString:@"${p.name}"])
+  {
+    if(!value) continue;
+    _${p.name} = [value longLongValue];
+  }
+% endif
+% if isinstance(p, Int32Property):
+  else if([key isEqualToString:@"${p.name}"])
+  {
+    if(!value) continue;
+    _${p.name} = [value intValue];
+  }
+% endif
+% if isinstance(p, NSStringProperty):
+  else if([key isEqualToString:@"${p.name}"])
+  {
+    if(!value) continue;
+    _${p.name} = value;
+  }
+% endif
+% if isinstance(p, NSNumberProperty):
+  else if([key isEqualToString:@"${p.name}"])
+  {
+    if(!value) continue;
+    _${p.name} = value;
+  }
+% endif
+% if isinstance(p, CustomObjectProperty):
+  else if([key isEqualToString:@"${p.name}"])
+  {
+    if(!value) continue;
+    NSAssert([value isKindOfClass:[NSDictionary class]], @"数据不是dictionary类型，无法向自定义类型转化");
+    ${p.type}* transObj = [[${p.type} alloc] init];
+    [transObj setValuesForKeysWithDictionary:value];
+    _${p.name} = transObj;
+  }
+% endif
+% if isinstance(p, ArrayProperty):
+  else if([key isEqualToString:@"${p.name}"])
+  {
+    if(!value) continue;
+    NSAssert([value isKindOfClass:[NSArray class]], @"${p.name}从服务器传过来的数据不是NSArray类型，请检查");
+    % if isinstance(p , ObjectProperty) == False:
+    #error 在array内部的对象不是Object类型
+    % endif
+    % if is_foundation_object_propery(p.containerType) == False:
+    NSArray* array = (NSArray*)value;
+    NSMutableArray* objects = [NSMutableArray new];
+    for (id obj  in array) {
+        if ([obj isKindOfClass:[NSNull class]]) {
+            continue;
+        }
+        NSAssert([obj isKindOfClass:[NSDictionary class]], @"数据不是dictionary类型，无法向自定义类型转化");
+        ${p.containerType}* transObj = [[${p.containerType} alloc] init];
+        [transObj setValuesForKeysWithDictionary:obj];
+        [objects addObject:transObj];
+    }
+    _${p.name} = objects;
+    % else:
+    _${p.name} = value;
+    % endif
+  }
+% endif
+% endfor
+}
+
+@end

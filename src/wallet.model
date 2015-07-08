@@ -4,5 +4,10 @@ model BWPayTelProtocol {
   string      identifier
   PMObject    data
   int         c
+  string      xxxxx
+  array      PMObject dddxxxx
 }
 
+model BWPayX {
+  int x
+}

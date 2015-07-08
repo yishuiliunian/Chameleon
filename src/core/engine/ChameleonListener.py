@@ -49,6 +49,15 @@ class ChameleonListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by ChameleonParser#array_property.
+    def enterArray_property(self, ctx):
+        pass
+
+    # Exit a parse tree produced by ChameleonParser#array_property.
+    def exitArray_property(self, ctx):
+        pass
+
+
     # Enter a parse tree produced by ChameleonParser#c_property.
     def enterC_property(self, ctx):
         pass

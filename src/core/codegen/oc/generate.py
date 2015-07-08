@@ -3,12 +3,23 @@ from ..model import *
 from ..property import *
 from mako.template import Template
 from mako.lookup import TemplateLookup
+from ...utilities.constant import OCOutType
 import codecs
+import os
 class OCGenerator:
-    def __init__(self, model, outPath):
+    def __init__(self, model, outPath, type=OCOutType.Dic):
+
         self.model = model
         self.outPath = outPath
-        self.tlLookup = TemplateLookup(directories="core/resources/template/oc")
+        appPath = os.path.split(os.path.realpath(__file__))[0];
+        if type == OCOutType.Dic:
+            templatePath = appPath+"/../../resources/template/oc/dic"
+        elif type == OCOutType.Mantle:
+            templatePath = appPath+"/../../resources/template/oc/mantle"
+        else:
+            sys.exit("OC不支持该输出选项");
+
+        self.tlLookup = TemplateLookup(directories=templatePath)
 
     def renderFileContent(self, file):
         fileTl = self.tlLookup.get_template(file)

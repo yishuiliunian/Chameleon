@@ -16,7 +16,10 @@ words :'/*' NameStartChar+ '*/'
 ;
 
 
-property_line_words: c_property NEWLINE
+property_line_words: (c_property| array_property) NEWLINE
+;
+
+array_property:'array' p_type ID
 ;
 
 c_property: p_type ID

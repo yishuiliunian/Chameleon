@@ -28,6 +28,10 @@ class URLProperty(ObjectProperty):
         pass
     pass
 
+class ArrayProperty(ObjectProperty):
+    def __init__(self, name, containerType):
+        ObjectProperty.__init__(self, name, "NSArray")
+        self.containerType = containerType
 
 #基本类型
 class FundamentalProperty(Property):
@@ -84,6 +88,18 @@ def PropertyFactory(name, type):
         return URLProperty(name)
     elif type == ModelType.Number:
         return NSNumberProperty(name)
+    elif type == ModelType.Array:
+        return ArrayProperty(name, type)
     else:
         return CustomObjectProperty(name, type)
     return None
+
+def is_foundation_object_propery(type):
+    if type == ModelType.String:
+        return True
+    elif type == ModelType.Number:
+        return True
+    elif type == ModelType.URL:
+        return True
+    else:
+        return False
