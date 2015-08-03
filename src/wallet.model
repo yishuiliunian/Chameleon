@@ -1,13 +1,27 @@
 /*支付协议*/
 model BWPayTelProtocol {
-  int32       a
+  int32       count
   string      identifier
-  PMObject    data
-  int         c
-  string      xxxxx
-  array      PMObject dddxxxx
+  PMPayInput  payInput
+  int         listCount
+  string      url
+  array       PMPayInfo ddxxxx
 }
 
 model BWPayX {
   int x
+}
+
+/* zhifu */
+model BWPayXXXXXX {
+  int32 count
+  string identifier
+  string url
+}
+
+
+model BWCaipiaoRsp {
+  int32 identifier
+  string url
+  string name
 }

@@ -60,7 +60,11 @@ from core.codegen.property import is_foundation_object_propery
   else if([key isEqualToString:@"${p.name}"])
   {
     if(!value) continue;
-    _${p.name} = value;
+    NSString* transValue = value;
+    if ([value isKindOfClass:[NSNumber class]]) {
+        transValue = [(NSNumber*)value stringValue];
+    }
+    _${p.name} = transValue;
   }
 % endif
 % if isinstance(p, NSNumberProperty):

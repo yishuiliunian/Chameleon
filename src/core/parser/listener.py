@@ -4,7 +4,7 @@ from ..codegen.model import OCModel
 from ..codegen.property import  PropertyFactory
 from ..codegen.property import ArrayProperty
 from ..codegen.oc.generate import OCGenerator
-
+from ..config.config import *
 class CLBuildListener(ChameleonListener):
     pass
     def __init__(self):
@@ -13,11 +13,10 @@ class CLBuildListener(ChameleonListener):
         pass
 
     def enterProg(self, ctx):
-        print "已经识别Chameleon，开始解析"
         pass
 
     def exitProg(self, ctx):
-        print "结束解析"
+        pass
 
     def topModel(self):
         if len(self.models) < 1 :
@@ -34,7 +33,6 @@ class CLBuildListener(ChameleonListener):
         pass
 
     def exitArray_property(self, ctx):
-        print "识别到数组"
         name = ctx.ID().getText()
         type = ctx.p_type().getText()
         p = ArrayProperty(name, type)
@@ -45,7 +43,6 @@ class CLBuildListener(ChameleonListener):
 
 
     def enterModel(self, ctx):
-        print "发现模型"
         name =  ctx.ID().getText()
         model = OCModel(name)
         self.models.append(model)
@@ -53,7 +50,7 @@ class CLBuildListener(ChameleonListener):
 
     def exitModel(self, ctx):
         model = self.topModel()
-        generator = OCGenerator(model, "/Users/baidu/Works/Baidu/temp")
+        generator = OCGenerator(model, Config.OUTPUT_DIR, Config.OC_TYPE)
         generator.output()
 
         pass

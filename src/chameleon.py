@@ -7,6 +7,7 @@ from antlr4 import *
 from core.engine.ChameleonLexer import ChameleonLexer
 from core.engine.ChameleonParser import ChameleonParser
 from core.parser.listener import CLBuildListener
+from core.config.config import *
 
 def main(argv):
     argsParser = argparse.ArgumentParser()
@@ -17,8 +18,14 @@ def main(argv):
     argsParser.add_argument("-x","--xcode", action="store_true", help="output files to xcode project, if app can find it in path")
 #oc 输出的格式
     argsParser.add_argument("-ot", "--outType", type=str, choices=["mantle", "dic"], help="指定OC代码的输出格式，目前支持的有mantle和直接字典映射方式")
+#输出目录
+    argsParser.add_argument("-d",  "--outDir", type=str, help="制定输出目录")
 #参数解析
     args = argsParser.parse_args()
+#将解析出来的参数拷贝到全局的参数配置当中
+    Config.setupWithArgs(args)
+
+    print(Config.OUTPUT_DIR)
 
     print args.outType
     input = FileStream(args.inputFile, encoding="utf-8")
