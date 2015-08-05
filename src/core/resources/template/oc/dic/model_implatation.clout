@@ -3,16 +3,19 @@
 from core.codegen.property import ObjectProperty
 from core.codegen.property import FundamentalProperty
 from core.codegen.property import CustomObjectProperty
+from core.codegen.property import BoolProperty
 from core.codegen.property import FloatProperty
 from core.codegen.property import DoubleProperty
 from core.codegen.property import IntProperty
+from core.codegen.property import CharProperty
 from core.codegen.property import Int32Property
 from core.codegen.property import Int64Property
 from core.codegen.property import ArrayProperty
 from core.codegen.property import NSStringProperty
 from core.codegen.property import NSNumberProperty
+from core.codegen.property import URLProperty
 from core.codegen.property import is_foundation_object_propery
-
+from core.utilities.constant import ModelType
 %>
 
 #import "${model.name}.h"
@@ -24,90 +27,276 @@ from core.codegen.property import is_foundation_object_propery
 
 @implementation ${model.name}
 
-- (void)  setValue:(id)value forKey:(NSString *)key
+// BOOL
+- (BOOL)ensureBoolType:(id)value
 {
-  if(NO){}
+    if ((!value) || ([value isKindOfClass:[NSNull class]])) {
+        return NO;
+    }
+    if ([value isKindOfClass:[NSNumber class]]) {
+        if ([value intValue]) {
+            return YES;
+        }
+        return NO;
+    }
+    if ([value isKindOfClass:[NSString class]]) {
+        if ([value isEqualToString:@"true"]) {
+            return YES;
+        }
+        return NO;
+    }
+    NSAssert(([value isKindOfClass:[NSNumber class]]) || ([value isKindOfClass:[NSString class]]), @"数据不是NSNumber或者NSString类型，无法向自定义类型转换");
+    return NO;
+}
+
+// int
+- (int)ensureIntType:(id)value
+{
+    if ((!value) || ([value isKindOfClass:[NSNull class]])) {
+        return 0;
+    }
+    if ([value respondsToSelector:@selector(intValue)]) {
+        return [value intValue];
+    }
+    NSAssert(([value isKindOfClass:[NSNumber class]]) || ([value isKindOfClass:[NSString class]]), @"数据不是NSNumber或者NSString类型，无法向自定义类型转换");
+    return 0;
+}
+
+// int_32
+- (int32_t)ensureInt32Type:(id)value
+{
+    if ((!value) || ([value isKindOfClass:[NSNull class]])) {
+        return 0;
+    }
+    if ([value respondsToSelector:@selector(intValue)]) {
+        return [value intValue];
+    }
+    NSAssert(([value isKindOfClass:[NSNumber class]]) || ([value isKindOfClass:[NSString class]]), @"数据不是NSNumber或者NSString类型，无法向自定义类型转换");
+    return 0;
+}
+
+// int_64
+- (int64_t)ensureInt64Type:(id)value
+{
+    if ((!value) || ([value isKindOfClass:[NSNull class]])) {
+        return 0;
+    }
+    if ([value respondsToSelector:@selector(longLongValue)]) {
+        return [value longLongValue];
+    }
+    NSAssert(([value isKindOfClass:[NSNumber class]]) || ([value isKindOfClass:[NSString class]]), @"数据不是NSNumber或者NSString类型，无法向自定义类型转换");
+    return 0;
+}
+
+// float
+- (float)ensureFloatType:(id)value
+{
+    if ((!value) || ([value isKindOfClass:[NSNull class]])) {
+        return 0;
+    }
+    if ([value respondsToSelector:@selector(floatValue)]) {
+        return [value floatValue];
+    }
+    NSAssert(([value isKindOfClass:[NSNumber class]]) || ([value isKindOfClass:[NSString class]]), @"数据不是NSNumber或者NSString类型，无法向自定义类型转换");
+    return 0;
+}
+
+// double
+- (double)ensureDoubleType:(id)value
+{
+    if ((!value) || ([value isKindOfClass:[NSNull class]])) {
+        return 0;
+    }
+    if ([value respondsToSelector:@selector(doubleValue)]) {
+        return [value doubleValue];
+    }
+    NSAssert(([value isKindOfClass:[NSNumber class]]) || ([value isKindOfClass:[NSString class]]), @"数据不是NSNumber或者NSString类型，无法向自定义类型转换");
+    return 0;
+}
+
+// char
+- (char)ensureCharType:(id)value
+{
+    if ((!value) || ([value isKindOfClass:[NSNull class]])) {
+        return 0;
+    }
+    if ([value isKindOfClass:[NSNumber class]]) {
+        return [value charValue];
+    }
+    NSAssert(([value isKindOfClass:[NSNumber class]]) || ([value isKindOfClass:[NSString class]]), @"数据不是NSNumber类型，无法向自定义类型转换");
+    return 0;
+}
+
+// NSString
+- (NSString *)ensureStringType:(id)value
+{
+    if(!value) {
+        return nil;
+    }
+    if ([value isKindOfClass:[NSString class]]) {
+        return  value;
+    }
+    if ([value respondsToSelector:@selector(stringValue)])
+    {
+        return [value stringValue];
+    }
+    NSAssert(([value isKindOfClass:[NSNumber class]]) || ([value isKindOfClass:[NSString class]]), @"数据不是NSNumber或者NSString类型，无法向自定义类型转换");
+    return nil;
+}
+
+// NSNumber
+- (NSNumber *)ensureNumberType:(id)value
+{
+    if ((!value) || ([value isKindOfClass:[NSNull class]])) {
+        return nil;
+    }
+    if ([value isKindOfClass:[NSNumber class]])
+    {
+        return value;
+    }
+    if ([value isKindOfClass:[NSString class]])
+    {
+        NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
+        return [numberFormatter numberFromString:value];
+    }
+    NSAssert(([value isKindOfClass:[NSNumber class]]) || ([value isKindOfClass:[NSString class]]), @"数据不是NSNumber或者NSString类型，无法向自定义类型转换");
+    return nil;
+}
+
+// NSURL
+- (NSURL *)ensureURLType:(id)value
+{
+    if ((!value) || ([value isKindOfClass:[NSNull class]])) {
+        return nil;
+    }
+    if ([value isKindOfClass:[NSURL class]]) {
+        return value;
+    }
+    if ([value isKindOfClass:[NSString class]]) {
+        return [NSURL URLWithString:(NSString *)value];
+    }
+    NSAssert(([value isKindOfClass:[NSURL class]]) || ([value isKindOfClass:[NSString class]]), @"数据不是NSURL或者NSString类型，无法向自定义类型转换");
+    return nil;
+}
+
+- (void)setValue:(id)value forKey:(NSString *)key
+{
+    if (NO){}
 % for p in model.properties:
-% if isinstance(p, FloatProperty):
-  else if ([key isEqualToString:${p.name}])
-  {
-      if(!value) continue;
-      _${p.name} = [value floatValue];
-  }
+% if isinstance(p, BoolProperty):
+    // BOOL
+    else if ([key isEqualToString:@"${p.name}"])
+    {
+        _${p.name} = [self ensureBoolType:value];
+    }
 % endif
-% if isinstance(p , IntProperty):
-  else if ([key isEqualToString:@"${p.name}"])
-  {
-    if(!value) continue;
-    _${p.name} = [value intValue];
-  }
+% if isinstance(p, FloatProperty):
+    // float
+    else if ([key isEqualToString:@"${p.name}"])
+    {
+        _${p.name} = [self ensureFloatType:value];
+    }
+% endif
+% if isinstance(p, IntProperty):
+    // int
+    else if ([key isEqualToString:@"${p.name}"])
+    {
+        _${p.name} = [self ensureIntType:value];
+    }
 % endif
 % if isinstance(p, Int64Property):
-  else if([key isEqualToString:@"${p.name}"])
-  {
-    if(!value) continue;
-    _${p.name} = [value longLongValue];
-  }
+    // int64
+    else if ([key isEqualToString:@"${p.name}"])
+    {
+        _${p.name} = [self ensureInt64Type:value];
+    }
 % endif
 % if isinstance(p, Int32Property):
-  else if([key isEqualToString:@"${p.name}"])
-  {
-    if(!value) continue;
-    _${p.name} = [value intValue];
-  }
+    // int32
+    else if ([key isEqualToString:@"${p.name}"])
+    {
+        _${p.name} = [self ensureInt32Type:value];
+    }
+% endif
+% if isinstance(p, CharProperty):
+    // int32
+    else if ([key isEqualToString:@"${p.name}"])
+    {
+        _${p.name} = [self ensureCharType:value];
+    }
 % endif
 % if isinstance(p, NSStringProperty):
-  else if([key isEqualToString:@"${p.name}"])
-  {
-    if(!value) continue;
-    NSString* transValue = value;
-    if ([value isKindOfClass:[NSNumber class]]) {
-        transValue = [(NSNumber*)value stringValue];
-    }
-    _${p.name} = transValue;
-  }
+    // string
+    else if ([key isEqualToString:@"${p.name}"])
+    {
+        _${p.name} = [self ensureStringType:value];
+     }
 % endif
 % if isinstance(p, NSNumberProperty):
-  else if([key isEqualToString:@"${p.name}"])
-  {
-    if(!value) continue;
-    _${p.name} = value;
-  }
+    // number
+    else if ([key isEqualToString:@"${p.name}"])
+    {
+        _${p.name} = [self ensureNumberType:value];
+    }
 % endif
 % if isinstance(p, CustomObjectProperty):
-  else if([key isEqualToString:@"${p.name}"])
-  {
-    if(!value) continue;
-    NSAssert([value isKindOfClass:[NSDictionary class]], @"数据不是dictionary类型，无法向自定义类型转化");
-    ${p.type}* transObj = [[${p.type} alloc] init];
-    [transObj setValuesForKeysWithDictionary:value];
-    _${p.name} = transObj;
-  }
+    // 自定义类型
+    else if ([key isEqualToString:@"${p.name}"])
+    {
+        if ((!value) || ([value isKindOfClass:[NSNull class]])) {
+            return;
+        }
+        NSAssert([value isKindOfClass:[NSDictionary class]], @"数据不是dictionary类型，无法向自定义类型转化");
+        ${p.type}* transObj = [[${p.type} alloc] init];
+        [transObj setValuesForKeysWithDictionary:value];
+        _${p.name} = transObj;
+    }
 % endif
 % if isinstance(p, ArrayProperty):
-  else if([key isEqualToString:@"${p.name}"])
-  {
-    if(!value) continue;
+    // array
+    else if ([key isEqualToString:@"${p.name}"])
+    {
+        if ((!value) || ([value isKindOfClass:[NSNull class]])) {
+        return;
+    }
     NSAssert([value isKindOfClass:[NSArray class]], @"${p.name}从服务器传过来的数据不是NSArray类型，请检查");
-    % if isinstance(p , ObjectProperty) == False:
-    #error 在array内部的对象不是Object类型
-    % endif
-    % if is_foundation_object_propery(p.containerType) == False:
     NSArray* array = (NSArray*)value;
     NSMutableArray* objects = [NSMutableArray new];
-    for (id obj  in array) {
+    for (id obj in array) {
         if ([obj isKindOfClass:[NSNull class]]) {
-            continue;
+            return;
+        } 
+        %if is_foundation_object_propery(p.containerType):
+        %if p.containerType == ModelType.Number:
+        // NSNumber类型
+        if ([self ensureNumberType:obj])
+        {
+            [objects addObject:[self ensureNumberType:obj]];
         }
+        %endif
+        % if p.containerType == ModelType.String:
+        // NSString类型
+        if ([self ensureNumberType:obj])
+        {
+            [objects addObject:[self ensureNSStringType:obj]];
+        }
+        %endif
+        % if p.containerType == ModelType.URL:
+        // NSURL类型
+        if ([self ensureNumberType:obj])
+        {
+            [objects addObject:[self ensureURLType:obj]];
+        }
+        %endif
+        %else:
+        // 自定义类型
         NSAssert([obj isKindOfClass:[NSDictionary class]], @"数据不是dictionary类型，无法向自定义类型转化");
-        ${p.containerType}* transObj = [[${p.containerType} alloc] init];
+        ${p.containerType }* transObj = [[${p.containerType } alloc] init];
         [transObj setValuesForKeysWithDictionary:obj];
         [objects addObject:transObj];
+        %endif 
     }
     _${p.name} = objects;
-    % else:
-    _${p.name} = value;
-    % endif
   }
 % endif
 % endfor

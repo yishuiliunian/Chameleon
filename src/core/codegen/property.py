@@ -58,6 +58,10 @@ class BoolProperty(FundamentalProperty):
     def __init__(self, name):
         FundamentalProperty.__init__(self, name, "BOOL")
 
+class CharProperty(FundamentalProperty):
+    def __init__(self, name):
+        FundamentalProperty.__init__(self, name, "char")
+
 class DoubleProperty(FundamentalProperty):
     def __init__(self,name):
         FundamentalProperty.__init__(self, name, "double")
@@ -74,6 +78,10 @@ class FloatProperty(FundamentalProperty):
 def PropertyFactory(name, type):
     if type == ModelType.Int:
         return IntProperty(name)
+    if type == ModelType.Char:
+        return CharProperty(name)
+    elif type == ModelType.Bool:
+        return BoolProperty(name)
     elif type == ModelType.String:
         return NSStringProperty(name)
     elif type == ModelType.Int32:

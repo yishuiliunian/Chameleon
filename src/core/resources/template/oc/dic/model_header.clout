@@ -6,7 +6,7 @@ from core.codegen.property import CustomObjectProperty
 
 % for o in model.properties:
   % if isinstance(o, CustomObjectProperty):
-@class ${o.type}
+@class ${o.type};
   % endif
 % endfor
 

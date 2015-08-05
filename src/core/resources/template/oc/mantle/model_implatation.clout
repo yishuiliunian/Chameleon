@@ -7,7 +7,7 @@ from core.codegen.property import CustomObjectProperty
 #import "${model.name}.h"
 % for o in model.properties:
   % if isinstance(o, CustomObjectProperty):
-#import "${o.type}".h
+#import "${o.type}.h"
   % endif
 % endfor
 

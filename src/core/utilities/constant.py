@@ -5,6 +5,8 @@ class ModelType:
     Int64 ="int64"
     Double = "double"
     Float = "float"
+    Bool = "bool"
+    Char = "char"
 
     String= "string"
     Number = "number"
