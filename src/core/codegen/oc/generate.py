@@ -41,5 +41,7 @@ class OCGenerator:
             os.mkdir(self.outPath)
         headerFile = self.model.name+ ".h"
         implatationFile = self.model.name + ".m"
+        self.outputFileWithRender("EnsureTypeClass.h", "EnsureType.h")
+        self.outputFileWithRender("EnsureTypeClass.m", "EnsureType.m")
         self.outputFileWithRender(headerFile, "model_header.clout")
         self.outputFileWithRender(implatationFile, "model_implatation.clout")

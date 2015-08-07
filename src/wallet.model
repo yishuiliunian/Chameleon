@@ -1,16 +1,18 @@
 /*支付协议*/
 model BWPayTelProtocol {
-  char        sex
-  bool        isVip
-  int         age
-  string      name
-  number      numberCode
-  url         urlAddr
-  PMPayInput  payInputObj
-  array       PMPayInput customObj
-  array       number numberArr
-}
-model PMPayInput {
-  string      name
-  int         age
+  char                a
+  short               b
+  long                c
+  longlong            d
+  int                 e
+  float               f
+  double              g
+  url                 h
+  string              i
+  data                j
+  number              k
+  array      string   l
+  dictionary          m
+
+  uchar               n
 }

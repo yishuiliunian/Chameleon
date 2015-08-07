@@ -2,7 +2,7 @@
 from ..engine.ChameleonListener import *
 from ..codegen.model import OCModel
 from ..codegen.property import  PropertyFactory
-from ..codegen.property import ArrayProperty
+from ..codegen.property import NSArrayProperty
 from ..codegen.oc.generate import OCGenerator
 from ..config.config import *
 class CLBuildListener(ChameleonListener):
@@ -35,7 +35,7 @@ class CLBuildListener(ChameleonListener):
     def exitArray_property(self, ctx):
         name = ctx.ID().getText()
         type = ctx.p_type().getText()
-        p = ArrayProperty(name, type)
+        p = NSArrayProperty(name, type)
         assert(p)
         model = self.topModel()
         model.addProperty(p)
