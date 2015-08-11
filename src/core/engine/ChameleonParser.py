@@ -12,26 +12,27 @@ else:
 def serializedATN():
     with StringIO() as buf:
         buf.write(u"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3")
-        buf.write(u"\22?\4\2\t\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7")
+        buf.write(u"\30?\4\2\t\2\4\3\t\3\4\4\t\4\4\5\t\5\4\6\t\6\4\7\t\7")
         buf.write(u"\4\b\t\b\4\t\t\t\3\2\3\2\3\2\6\2\26\n\2\r\2\16\2\27\3")
         buf.write(u"\3\3\3\3\3\3\3\6\3\36\n\3\r\3\16\3\37\3\3\3\3\3\4\3\4")
         buf.write(u"\5\4&\n\4\3\5\3\5\6\5*\n\5\r\5\16\5+\3\5\3\5\3\6\3\6")
         buf.write(u"\5\6\62\n\6\3\6\3\6\3\7\3\7\3\7\3\7\3\b\3\b\3\b\3\t\3")
-        buf.write(u"\t\3\t\2\2\n\2\4\6\b\n\f\16\20\2\3\4\2\t\f\16\16=\2\25")
-        buf.write(u"\3\2\2\2\4\31\3\2\2\2\6%\3\2\2\2\b\'\3\2\2\2\n\61\3\2")
-        buf.write(u"\2\2\f\65\3\2\2\2\169\3\2\2\2\20<\3\2\2\2\22\26\5\4\3")
-        buf.write(u"\2\23\26\7\20\2\2\24\26\5\b\5\2\25\22\3\2\2\2\25\23\3")
-        buf.write(u"\2\2\2\25\24\3\2\2\2\26\27\3\2\2\2\27\25\3\2\2\2\27\30")
-        buf.write(u"\3\2\2\2\30\3\3\2\2\2\31\32\7\3\2\2\32\33\7\16\2\2\33")
-        buf.write(u"\35\7\4\2\2\34\36\5\6\4\2\35\34\3\2\2\2\36\37\3\2\2\2")
-        buf.write(u"\37\35\3\2\2\2\37 \3\2\2\2 !\3\2\2\2!\"\7\5\2\2\"\5\3")
-        buf.write(u"\2\2\2#&\5\n\6\2$&\7\20\2\2%#\3\2\2\2%$\3\2\2\2&\7\3")
-        buf.write(u"\2\2\2\')\7\6\2\2(*\7\22\2\2)(\3\2\2\2*+\3\2\2\2+)\3")
-        buf.write(u"\2\2\2+,\3\2\2\2,-\3\2\2\2-.\7\7\2\2.\t\3\2\2\2/\62\5")
-        buf.write(u"\16\b\2\60\62\5\f\7\2\61/\3\2\2\2\61\60\3\2\2\2\62\63")
-        buf.write(u"\3\2\2\2\63\64\7\20\2\2\64\13\3\2\2\2\65\66\7\b\2\2\66")
-        buf.write(u"\67\5\20\t\2\678\7\16\2\28\r\3\2\2\29:\5\20\t\2:;\7\16")
-        buf.write(u"\2\2;\17\3\2\2\2<=\t\2\2\2=\21\3\2\2\2\b\25\27\37%+\61")
+        buf.write(u"\t\3\t\2\2\n\2\4\6\b\n\f\16\20\2\3\4\2\t\22\24\24=\2")
+        buf.write(u"\25\3\2\2\2\4\31\3\2\2\2\6%\3\2\2\2\b\'\3\2\2\2\n\61")
+        buf.write(u"\3\2\2\2\f\65\3\2\2\2\169\3\2\2\2\20<\3\2\2\2\22\26\5")
+        buf.write(u"\4\3\2\23\26\7\26\2\2\24\26\5\b\5\2\25\22\3\2\2\2\25")
+        buf.write(u"\23\3\2\2\2\25\24\3\2\2\2\26\27\3\2\2\2\27\25\3\2\2\2")
+        buf.write(u"\27\30\3\2\2\2\30\3\3\2\2\2\31\32\7\3\2\2\32\33\7\24")
+        buf.write(u"\2\2\33\35\7\4\2\2\34\36\5\6\4\2\35\34\3\2\2\2\36\37")
+        buf.write(u"\3\2\2\2\37\35\3\2\2\2\37 \3\2\2\2 !\3\2\2\2!\"\7\5\2")
+        buf.write(u"\2\"\5\3\2\2\2#&\5\n\6\2$&\7\26\2\2%#\3\2\2\2%$\3\2\2")
+        buf.write(u"\2&\7\3\2\2\2\')\7\6\2\2(*\7\30\2\2)(\3\2\2\2*+\3\2\2")
+        buf.write(u"\2+)\3\2\2\2+,\3\2\2\2,-\3\2\2\2-.\7\7\2\2.\t\3\2\2\2")
+        buf.write(u"/\62\5\16\b\2\60\62\5\f\7\2\61/\3\2\2\2\61\60\3\2\2\2")
+        buf.write(u"\62\63\3\2\2\2\63\64\7\26\2\2\64\13\3\2\2\2\65\66\7\b")
+        buf.write(u"\2\2\66\67\5\20\t\2\678\7\24\2\28\r\3\2\2\29:\5\20\t")
+        buf.write(u"\2:;\7\24\2\2;\17\3\2\2\2<=\t\2\2\2=\21\3\2\2\2\b\25")
+        buf.write(u"\27\37%+\61")
         return buf.getvalue()
 
 
@@ -47,12 +48,14 @@ class ChameleonParser ( Parser ):
 
     literalNames = [ u"<INVALID>", u"'model'", u"'{'", u"'}'", u"'/*'", 
                      u"'*/'", u"'array'", u"'int'", u"'string'", u"'int64'", 
-                     u"'int32'" ]
+                     u"'int32'", u"'int8'", u"'int16'", u"'uint8'", u"'uint16'", 
+                     u"'uint32'", u"'uint64'" ]
 
     symbolicNames = [ u"<INVALID>", u"<INVALID>", u"<INVALID>", u"<INVALID>", 
                       u"<INVALID>", u"<INVALID>", u"<INVALID>", u"T_INT", 
-                      u"T_String", u"T_Int64", u"T_Int32", u"COMMENT", u"ID", 
-                      u"INT", u"NEWLINE", u"WS", u"NameStartChar" ]
+                      u"T_String", u"T_Int64", u"T_Int32", u"T_Int8", u"T_Int16", 
+                      u"T_UInt8", u"T_UInt16", u"T_UInt32", u"T_UInt64", 
+                      u"COMMENT", u"ID", u"INT", u"NEWLINE", u"WS", u"NameStartChar" ]
 
     RULE_prog = 0
     RULE_model = 1
@@ -77,12 +80,18 @@ class ChameleonParser ( Parser ):
     T_String=8
     T_Int64=9
     T_Int32=10
-    COMMENT=11
-    ID=12
-    INT=13
-    NEWLINE=14
-    WS=15
-    NameStartChar=16
+    T_Int8=11
+    T_Int16=12
+    T_UInt8=13
+    T_UInt16=14
+    T_UInt32=15
+    T_UInt64=16
+    COMMENT=17
+    ID=18
+    INT=19
+    NEWLINE=20
+    WS=21
+    NameStartChar=22
 
     def __init__(self, input):
         super(ChameleonParser, self).__init__(input)
@@ -226,7 +235,7 @@ class ChameleonParser ( Parser ):
                 self.state = 29 
                 self._errHandler.sync(self)
                 _la = self._input.LA(1)
-                if not ((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << ChameleonParser.T__5) | (1 << ChameleonParser.T_INT) | (1 << ChameleonParser.T_String) | (1 << ChameleonParser.T_Int64) | (1 << ChameleonParser.T_Int32) | (1 << ChameleonParser.ID) | (1 << ChameleonParser.NEWLINE))) != 0)):
+                if not ((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << ChameleonParser.T__5) | (1 << ChameleonParser.T_INT) | (1 << ChameleonParser.T_String) | (1 << ChameleonParser.T_Int64) | (1 << ChameleonParser.T_Int32) | (1 << ChameleonParser.T_Int8) | (1 << ChameleonParser.T_Int16) | (1 << ChameleonParser.T_UInt8) | (1 << ChameleonParser.T_UInt16) | (1 << ChameleonParser.T_UInt32) | (1 << ChameleonParser.T_UInt64) | (1 << ChameleonParser.ID) | (1 << ChameleonParser.NEWLINE))) != 0)):
                     break
 
             self.state = 31
@@ -273,7 +282,7 @@ class ChameleonParser ( Parser ):
         try:
             self.state = 35
             token = self._input.LA(1)
-            if token in [ChameleonParser.T__5, ChameleonParser.T_INT, ChameleonParser.T_String, ChameleonParser.T_Int64, ChameleonParser.T_Int32, ChameleonParser.ID]:
+            if token in [ChameleonParser.T__5, ChameleonParser.T_INT, ChameleonParser.T_String, ChameleonParser.T_Int64, ChameleonParser.T_Int32, ChameleonParser.T_Int8, ChameleonParser.T_Int16, ChameleonParser.T_UInt8, ChameleonParser.T_UInt16, ChameleonParser.T_UInt32, ChameleonParser.T_UInt64, ChameleonParser.ID]:
                 self.enterOuterAlt(localctx, 1)
                 self.state = 33
                 self.property_line_words()
@@ -390,7 +399,7 @@ class ChameleonParser ( Parser ):
             self.enterOuterAlt(localctx, 1)
             self.state = 47
             token = self._input.LA(1)
-            if token in [ChameleonParser.T_INT, ChameleonParser.T_String, ChameleonParser.T_Int64, ChameleonParser.T_Int32, ChameleonParser.ID]:
+            if token in [ChameleonParser.T_INT, ChameleonParser.T_String, ChameleonParser.T_Int64, ChameleonParser.T_Int32, ChameleonParser.T_Int8, ChameleonParser.T_Int16, ChameleonParser.T_UInt8, ChameleonParser.T_UInt16, ChameleonParser.T_UInt32, ChameleonParser.T_UInt64, ChameleonParser.ID]:
                 self.state = 45
                 self.c_property()
 
@@ -521,6 +530,24 @@ class ChameleonParser ( Parser ):
         def T_Int32(self):
             return self.getToken(ChameleonParser.T_Int32, 0)
 
+        def T_Int8(self):
+            return self.getToken(ChameleonParser.T_Int8, 0)
+
+        def T_Int16(self):
+            return self.getToken(ChameleonParser.T_Int16, 0)
+
+        def T_UInt8(self):
+            return self.getToken(ChameleonParser.T_UInt8, 0)
+
+        def T_UInt16(self):
+            return self.getToken(ChameleonParser.T_UInt16, 0)
+
+        def T_UInt32(self):
+            return self.getToken(ChameleonParser.T_UInt32, 0)
+
+        def T_UInt64(self):
+            return self.getToken(ChameleonParser.T_UInt64, 0)
+
         def ID(self):
             return self.getToken(ChameleonParser.ID, 0)
 
@@ -547,7 +574,7 @@ class ChameleonParser ( Parser ):
             self.enterOuterAlt(localctx, 1)
             self.state = 58
             _la = self._input.LA(1)
-            if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << ChameleonParser.T_INT) | (1 << ChameleonParser.T_String) | (1 << ChameleonParser.T_Int64) | (1 << ChameleonParser.T_Int32) | (1 << ChameleonParser.ID))) != 0)):
+            if not((((_la) & ~0x3f) == 0 and ((1 << _la) & ((1 << ChameleonParser.T_INT) | (1 << ChameleonParser.T_String) | (1 << ChameleonParser.T_Int64) | (1 << ChameleonParser.T_Int32) | (1 << ChameleonParser.T_Int8) | (1 << ChameleonParser.T_Int16) | (1 << ChameleonParser.T_UInt8) | (1 << ChameleonParser.T_UInt16) | (1 << ChameleonParser.T_UInt32) | (1 << ChameleonParser.T_UInt64) | (1 << ChameleonParser.ID))) != 0)):
                 self._errHandler.recoverInline(self)
             else:
                 self.consume()

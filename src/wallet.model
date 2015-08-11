@@ -13,6 +13,25 @@ model BWPayTelProtocol {
   number              k
   array      string   l
   dictionary          m
+  UserInfo            n
+  bool                isVip
 
-  uchar               n
+  uchar               o
+  uinteger            p
+  int8                q
+  int16               r
+  int32               s
+  int64               t
+  ushort              u
+  uint8               v
+  uint16              w
+  uint32              x
+  uint64              y
+  ulong               z
+  ulonglong           ha
+  uint                as
+}
+
+model UserInfo {
+  string              name
 }

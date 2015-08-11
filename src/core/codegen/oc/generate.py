@@ -19,6 +19,7 @@ class OCGenerator:
         else:
             sys.exit("OC不支持该输出选项");
 
+        self.type = type
         self.tlLookup = TemplateLookup(directories=templatePath)
 
     def renderFileContent(self, file):
@@ -41,7 +42,9 @@ class OCGenerator:
             os.mkdir(self.outPath)
         headerFile = self.model.name+ ".h"
         implatationFile = self.model.name + ".m"
-        self.outputFileWithRender("EnsureTypeClass.h", "EnsureType.h")
-        self.outputFileWithRender("EnsureTypeClass.m", "EnsureType.m")
         self.outputFileWithRender(headerFile, "model_header.clout")
         self.outputFileWithRender(implatationFile, "model_implatation.clout")
+        if self.type == OCOutType.Dic:
+            self.outputFileWithRender("EnsureType.h", "EnsureType.h")
+            self.outputFileWithRender("EnsureType.m", "EnsureType.m")
+        

@@ -145,17 +145,19 @@ def PropertyFactory(name, type):
     elif type == ModelType.Short:
         return ShortProperty(name)
     elif type == ModelType.UnsignedShort:
-        return UnsignedShort(name)
+        return UnsignedShortProperty(name)
     elif type == ModelType.Int:
         return IntProperty(name)
     elif type == ModelType.UnsignedInt:
-        return UnsignedInt(name)
+        return UnsignedIntProperty(name)
     elif type == ModelType.Long:
         return LongProperty(name)
     elif type == ModelType.UnsignedLong:
-        return UnsignedLong(name)
+        return UnsignedLongProperty(name)
     elif type == ModelType.LongLong:
         return LongLongProperty(name)
+    elif type == ModelType.UnsignedLongLong:
+        return UnsignedLongLongProperty(name)
     elif type == ModelType.Integer:
         return NSIntegerProperty(name)
     elif type == ModelType.UInteger:
@@ -170,6 +172,8 @@ def PropertyFactory(name, type):
         return Int16Property(name)
     elif type == ModelType.UInt16:
         return UInt16Property(name)
+    elif type ==ModelType.Int32:
+        return Int32Property(name)
     elif type == ModelType.UInt32:
         return UInt32Property(name)
     elif type == ModelType.Int64:

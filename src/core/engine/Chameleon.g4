@@ -25,7 +25,7 @@ array_property:'array' p_type ID
 c_property: p_type ID
 ;
 
-p_type: T_INT | T_String | T_Int64 | T_Int32 | ID
+p_type: T_INT | T_String | T_Int64 | T_Int32 | T_Int8 | T_Int16 | T_UInt8 |T_UInt16 | T_UInt32 | T_UInt64 |ID
 ;
 
 T_INT: 'int'
@@ -38,6 +38,24 @@ T_Int64: 'int64'
 ;
 
 T_Int32: 'int32'
+;
+
+T_Int8: 'int8'
+;
+
+T_Int16: 'int16'
+;
+
+T_UInt8: 'uint8'
+;
+
+T_UInt16: 'uint16'
+;
+
+T_UInt32: 'uint32'
+;
+
+T_UInt64: 'uint64'
 ;
 
 COMMENT: '/*' [WORDS|ID|WS]+ '*/'

@@ -1,15 +1,46 @@
 # coding: UTF-8
-
-#import "EnsureType.h"
+#import <Foundation/Foundation.h>
 #import <Foundation/NSKeyedArchiver.h>
 
-@implementation EnsureType
-
 // 基本数据类型
-// (char、unsigned char、short、unsigned short、long、unsigned long、unsigned long long、uinteger、int、float、double、longlong、integer)
+// (char、unsigned char、int、unsigned int、short、unsigned short、long、unsigned long、longlong、unsigned long long、integer、uinteger、float、double、BOOL)
+
+// char
+char ensureCharType(id value)
+{
+    if ((!value) || ([value isKindOfClass:[NSNull class]])) {
+        return 0;
+    }
+    if ([value isKindOfClass:[NSNumber class]]) {
+        return [value charValue];
+    }
+    // NSString ->NSNumber
+    if ([value isKindOfClass:[NSString class]]) {
+        // TODO
+    }
+    NSCAssert(([value isKindOfClass:[NSNumber class]]) || ([value isKindOfClass:[NSString class]]), @"数据不是NSNumber或者NSString类型，无法向自定义类型转换");
+    return 0;
+}
+
+// unsigned char
+unsigned char ensureUnsignedCharType(id value)
+{
+    if ((!value) || ([value isKindOfClass:[NSNull class]])) {
+        return 0;
+    }
+    if ([value isKindOfClass:[NSNumber class]]) {
+        return [value charValue];
+    }
+    // NSString ->NSNumber
+    if ([value isKindOfClass:[NSString class]]) {
+        // TODO
+    }
+    NSCAssert(([value isKindOfClass:[NSNumber class]]) || ([value isKindOfClass:[NSString class]]), @"数据不是NSNumber或者NSString类型，无法向自定义类型转换");
+    return 0;
+}
 
 // int
-- (int)ensureIntType:(id)value
+int ensureIntType(id value)
 {
     if ((!value) || ([value isKindOfClass:[NSNull class]])) {
         return 0;
@@ -25,12 +56,13 @@
             return val;
         }
     }
-     NSAssert(([value isKindOfClass:[NSNumber class]]) || ([value isKindOfClass:[NSString class]]), @"数据不是NSNumber或者NSString类型，无法向自定义类型转换");
+     NSCAssert(([value isKindOfClass:[NSNumber class]]) || ([value isKindOfClass:[NSString class]]), @"数据不是NSNumber或者NSString类型，无法向自定义类型转换");
     return 0;
 }
 
 //unsigned int
-- (unsigned int)ensureUnsignedIntType:(id)value{
+unsigned int ensureUnsignedIntType(id value)
+{
     if ((!value) || ([value isKindOfClass:[NSNull class]])) {
         return 0;
     }
@@ -45,12 +77,13 @@
             return (unsigned int)val;
         }
     }
-    NSAssert(([value isKindOfClass:[NSNumber class]]) || ([value isKindOfClass:[NSString class]]), @"数据不是NSNumber或者NSString类型，无法向自定义类型转换");
+    NSCAssert(([value isKindOfClass:[NSNumber class]]) || ([value isKindOfClass:[NSString class]]), @"数据不是NSNumber或者NSString类型，无法向自定义类型转换");
     return 0;
 }
 
 // short
-- (short)ensureShortType:(id)value{
+short ensureShortType(id value)
+{
     if ((!value) || ([value isKindOfClass:[NSNull class]])) {
         return 0;
     }
@@ -65,12 +98,13 @@
             return (short)val;
         }
     }
-    NSAssert(([value isKindOfClass:[NSNumber class]]) || ([value isKindOfClass:[NSString class]]), @"数据不是NSNumber或者NSString类型，无法向自定义类型转换");
+    NSCAssert(([value isKindOfClass:[NSNumber class]]) || ([value isKindOfClass:[NSString class]]), @"数据不是NSNumber或者NSString类型，无法向自定义类型转换");
     return 0;
 }
 
 // unsigned short
-- (unsigned short)ensureUnsignedShortType:(id)value{
+unsigned short ensureUnsignedShortType(id value)
+{
     if ((!value) || ([value isKindOfClass:[NSNull class]])) {
         return 0;
     }
@@ -85,12 +119,13 @@
             return (unsigned short)val;
         }
     }
-    NSAssert(([value isKindOfClass:[NSNumber class]]) || ([value isKindOfClass:[NSString class]]), @"数据不是NSNumber或者NSString类型，无法向自定义类型转换");
+    NSCAssert(([value isKindOfClass:[NSNumber class]]) || ([value isKindOfClass:[NSString class]]), @"数据不是NSNumber或者NSString类型，无法向自定义类型转换");
     return 0;
 }
 
 // long
-- (long)ensureLongType:(id)value{
+long ensureLongType(id value)
+{
     if ((!value) || ([value isKindOfClass:[NSNull class]])) {
         return 0;
     }
@@ -105,12 +140,13 @@
             return (long)val;
         }
     }
-    NSAssert(([value isKindOfClass:[NSNumber class]]) || ([value isKindOfClass:[NSString class]]), @"数据不是NSNumber或者NSString类型，无法向自定义类型转换");
+    NSCAssert(([value isKindOfClass:[NSNumber class]]) || ([value isKindOfClass:[NSString class]]), @"数据不是NSNumber或者NSString类型，无法向自定义类型转换");
     return 0;
 }
 
 // unsigned long
-- (unsigned long)ensureUnsignedLongType:(id)value{
+unsigned long ensureUnsignedLongType(id value)
+{
     if ((!value) || ([value isKindOfClass:[NSNull class]])) {
         return 0;
     }
@@ -125,12 +161,13 @@
             return (unsigned long)val;
         }
     }
-    NSAssert(([value isKindOfClass:[NSNumber class]]) || ([value isKindOfClass:[NSString class]]), @"数据不是NSNumber或者NSString类型，无法向自定义类型转换");
+    NSCAssert(([value isKindOfClass:[NSNumber class]]) || ([value isKindOfClass:[NSString class]]), @"数据不是NSNumber或者NSString类型，无法向自定义类型转换");
     return 0;
 }
 
 // long long
-- (long long)ensureLongLongType:(id)value{
+long long ensureLongLongType(id value)
+{
     if ((!value) || ([value isKindOfClass:[NSNull class]])) {
         return 0;
     }
@@ -145,12 +182,13 @@
             return val;
         }
     }
-    NSAssert(([value isKindOfClass:[NSNumber class]]) || ([value isKindOfClass:[NSString class]]), @"数据不是NSNumber或者NSString类型，无法向自定义类型转换");
+    NSCAssert(([value isKindOfClass:[NSNumber class]]) || ([value isKindOfClass:[NSString class]]), @"数据不是NSNumber或者NSString类型，无法向自定义类型转换");
     return 0;
 }
 
 // unsigned longlong
-- (unsigned long long)ensureUnsignedLongLongType:(id)value{
+unsigned long long ensureUnsignedLongLongType(id value)
+{
     if ((!value) || ([value isKindOfClass:[NSNull class]])) {
         return 0;
     }
@@ -165,12 +203,12 @@
             return (unsigned int)val;
         }
     }
-    NSAssert(([value isKindOfClass:[NSNumber class]]) || ([value isKindOfClass:[NSString class]]), @"数据不是NSNumber或者NSString类型，无法向自定义类型转换");
+    NSCAssert(([value isKindOfClass:[NSNumber class]]) || ([value isKindOfClass:[NSString class]]), @"数据不是NSNumber或者NSString类型，无法向自定义类型转换");
     return 0;
 }
 
 // NSInteger
-- (NSInteger)ensureIntegerType:(id)value
+NSInteger ensureIntegerType(id value)
 {
     if ((!value) || ([value isKindOfClass:[NSNull class]])) {
         return 0;
@@ -186,12 +224,13 @@
             return val;
         }
     }
-    NSAssert(([value isKindOfClass:[NSNumber class]]) || ([value isKindOfClass:[NSString class]]), @"数据不是NSNumber或者NSString类型，无法向自定义类型转换");
+    NSCAssert(([value isKindOfClass:[NSNumber class]]) || ([value isKindOfClass:[NSString class]]), @"数据不是NSNumber或者NSString类型，无法向自定义类型转换");
     return 0;
 }
 
 // NSUInteger
-- (NSUInteger)ensureUIntegerType:(id)value{
+NSUInteger ensureUIntegerType(id value)
+{
     if ((!value) || ([value isKindOfClass:[NSNull class]])) {
         return 0;
     }
@@ -206,12 +245,13 @@
             return (NSUInteger)val;
         }
     }
-    NSAssert(([value isKindOfClass:[NSNumber class]]) || ([value isKindOfClass:[NSString class]]), @"数据不是NSNumber或者NSString类型，无法向自定义类型转换");
+    NSCAssert(([value isKindOfClass:[NSNumber class]]) || ([value isKindOfClass:[NSString class]]), @"数据不是NSNumber或者NSString类型，无法向自定义类型转换");
     return 0;
 }
 
 // float
-- (float)ensureFloatType:(id)value{
+float ensureFloatType(id value)
+{
     if ((!value) || ([value isKindOfClass:[NSNull class]])) {
         return 0;
     }
@@ -226,11 +266,12 @@
             return (float)val;
         }
     }
-    NSAssert(([value isKindOfClass:[NSNumber class]]) || ([value isKindOfClass:[NSString class]]), @"数据不是NSNumber或者NSString类型，无法向自定义类型转换");
+    NSCAssert(([value isKindOfClass:[NSNumber class]]) || ([value isKindOfClass:[NSString class]]), @"数据不是NSNumber或者NSString类型，无法向自定义类型转换");
     return 0;
 }
 // double
-- (double)ensureDoubleType:(id)value{
+double ensureDoubleType(id value)
+{
     if ((!value) || ([value isKindOfClass:[NSNull class]])) {
         return 0;
     }
@@ -245,12 +286,12 @@
             return (double)val;
         }
     }
-    NSAssert(([value isKindOfClass:[NSNumber class]]) || ([value isKindOfClass:[NSString class]]), @"数据不是NSNumber或者NSString类型，无法向自定义类型转换");
+    NSCAssert(([value isKindOfClass:[NSNumber class]]) || ([value isKindOfClass:[NSString class]]), @"数据不是NSNumber或者NSString类型，无法向自定义类型转换");
     return 0;
 }
 
 // BOOL
-- (BOOL)ensureBoolType:(id)value
+BOOL ensureBoolType(id value)
 {
     if ((!value) || ([value isKindOfClass:[NSNull class]])) {
         return NO;
@@ -266,12 +307,15 @@
         }
         return NO;
     }
-    NSAssert(([value isKindOfClass:[NSNumber class]]) || ([value isKindOfClass:[NSString class]]), @"数据不是NSNumber或者NSString类型，无法向自定义类型转换");
+    NSCAssert(([value isKindOfClass:[NSNumber class]]) || ([value isKindOfClass:[NSString class]]), @"数据不是NSNumber或者NSString类型，无法向自定义类型转换");
     return NO;
 }
 
+// object
+// NSString NSNumber NSURL NSData NSDictionary
+
 // NSString
-- (NSString *)ensureStringType:(id)value
+NSString * ensureStringType(id value)
 {
     if(!value) {
         return nil;
@@ -284,12 +328,12 @@
     {
         return [value stringValue];
     }
-    NSAssert(([value isKindOfClass:[NSNumber class]]) || ([value isKindOfClass:[NSString class]]), @"数据不是NSNumber或者NSString类型，无法向自定义类型转换");
+    NSCAssert(([value isKindOfClass:[NSNumber class]]) || ([value isKindOfClass:[NSString class]]), @"数据不是NSNumber或者NSString类型，无法向自定义类型转换");
     return nil;
 }
 
 // NSNumber
-- (NSNumber *)ensureNumberType:(id)value
+NSNumber * ensureNumberType(id value)
 {
     if ((!value) || ([value isKindOfClass:[NSNull class]])) {
         return nil;
@@ -304,12 +348,12 @@
         NSNumberFormatter *numberFormatter = [[NSNumberFormatter alloc] init];
         return [numberFormatter numberFromString:value];
     }
-    NSAssert(([value isKindOfClass:[NSNumber class]]) || ([value isKindOfClass:[NSString class]]), @"数据不是NSNumber或者NSString类型，无法向自定义类型转换");
+    NSCAssert(([value isKindOfClass:[NSNumber class]]) || ([value isKindOfClass:[NSString class]]), @"数据不是NSNumber或者NSString类型，无法向自定义类型转换");
     return nil;
 }
 
 // NSURL
-- (NSURL *)ensureURLType:(id)value
+NSURL * ensureURLType(id value)
 {
     if ((!value) || ([value isKindOfClass:[NSNull class]])) {
         return nil;
@@ -321,12 +365,12 @@
     if ([value respondsToSelector:@selector(URLWithString:)]) {
         return [NSURL URLWithString:(NSString *)value];
     }
-    NSAssert([value isKindOfClass:[NSString class]], @"数据不是NSString类型，无法向自定义类型转换");
+    NSCAssert([value isKindOfClass:[NSString class]], @"数据不是NSString类型，无法向自定义类型转换");
     return nil;
 }
 
 // NSData
-- (NSData *)ensureDataType:(id)value
+NSData * ensureDataType(id value)
 {
     if ((!value) || ([value isKindOfClass:[NSNull class]])) {
         return nil;
@@ -339,11 +383,11 @@
     if ([value isKindOfClass:[NSNumber class]]) {
         return [NSKeyedArchiver archivedDataWithRootObject:value];
     }
-    NSAssert(([value isKindOfClass:[NSNumber class]]) || ([value isKindOfClass:[NSString class]]), @"数据不是NSNumber或者NSString类型，无法向自定义类型转换");
+    NSCAssert(([value isKindOfClass:[NSNumber class]]) || ([value isKindOfClass:[NSString class]]), @"数据不是NSNumber或者NSString类型，无法向自定义类型转换");
     return nil;
 }
 // NSDictionary
-- (NSDictionary *)ensureDictionaryType:(id)value
+NSDictionary * ensureDictionaryType(id value)
 {
     if ((!value) || ([value isKindOfClass:[NSNull class]])) {
         return nil;
@@ -351,7 +395,7 @@
     if ([value isKindOfClass:[NSDictionary class]]) {
         return value;
     }
-    NSAssert([value isKindOfClass:[NSDictionary class]], @"数据不是NSDictionary类型，无法向自定义类型转换");
+    NSCAssert([value isKindOfClass:[NSDictionary class]], @"数据不是NSDictionary类型，无法向自定义类型转换");
     return nil;
 }
-@end
+
