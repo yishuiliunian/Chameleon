@@ -1,4 +1,11 @@
 # coding: UTF-8
+//
+//  ${model.name}.m
+//  ${model.name}
+//
+//  Created by baidu
+//  Copyright (c) 2015年 Baidu. All rights reserved.
+//
 <%
 from core.codegen.property import ObjectProperty
 from core.codegen.property import FundamentalProperty
@@ -35,7 +42,6 @@ from core.codegen.property import CustomObjectProperty
 from core.codegen.property import is_foundation_object_propery
 from core.utilities.constant import ModelType
 %>
-
 #import "${model.name}.h"
 #import "EnsureType.h"
 % for o in model.properties:

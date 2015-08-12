@@ -1,4 +1,12 @@
 # coding: UTF-8
+//
+//  BWEnsureType.h
+//  BWEnsureType
+//
+//  Created by baidu
+//  Copyright (c) 2015年 Baidu. All rights reserved.
+//
+
 #ifndef chameleonDemo_EnsureType_h
 #define chameleonDemo_EnsureType_h
 FOUNDATION_EXTERN char ensureCharType(id value);

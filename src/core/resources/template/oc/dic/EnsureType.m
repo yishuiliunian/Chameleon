@@ -1,4 +1,12 @@
 # coding: UTF-8
+//
+//  BWEnsureType.m
+//  BWEnsureType
+//
+//  Created by baidu
+//  Copyright (c) 2015年 Baidu. All rights reserved.
+//
+
 #import <Foundation/Foundation.h>
 #import <Foundation/NSKeyedArchiver.h>
 
