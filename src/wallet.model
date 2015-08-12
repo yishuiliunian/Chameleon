@@ -1,5 +1,5 @@
 /*支付协议*/
-model BWPayTelProtocol {
+model BWPay {
   char                a
   short               b
   long                c

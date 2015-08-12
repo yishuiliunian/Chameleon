@@ -4,15 +4,15 @@ from core.codegen.property import FundamentalProperty
 from core.codegen.property import CustomObjectProperty
 %>
 
+#import <Foundation/Foundation.h>
+#import "Mantle.h"
 % for o in model.properties:
   % if isinstance(o, CustomObjectProperty):
 @class ${o.type};
   % endif
 % endfor
-#import <Mantle.h>
-#import <Foundation/Foundation.h>
 
-@interface ${model.name} : Mantle <MTLJSONSerializing>
+@interface ${model.name} : MTLModel <MTLJSONSerializing>
 
 % for i in model.properties:
   % if isinstance(i, ObjectProperty):

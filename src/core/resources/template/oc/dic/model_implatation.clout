@@ -159,7 +159,7 @@ from core.utilities.constant import ModelType
     // uint32_t
     else if ([key isEqualToString:@"${p.name}"])
     {
-        _${p.name} = ensureUIntType(value);
+        _${p.name} = ensureUnsignedIntType(value);
     }
 % endif
 % if isinstance(p, Int64Property):
@@ -225,6 +225,13 @@ from core.utilities.constant import ModelType
         _${p.name} = ensureNumberType(value);
     }
 % endif
+% if isinstance(p, NSURLProperty):
+    // NSURL
+    else if ([key isEqualToString:@"${p.name}"])
+    {
+        _${p.name} = ensureURLType(value);
+    }
+% endif
 % if isinstance(p, NSDictionaryProperty):
     // NSDictionary
     else if ([key isEqualToString:@"${p.name}"])
@@ -233,7 +240,7 @@ from core.utilities.constant import ModelType
     }
 %endif
 % if isinstance(p, NSDataProperty):
-    // NSDictionary
+    // NSData
     else if ([key isEqualToString:@"${p.name}"])
     {
         _${p.name} = ensureDataType(value);

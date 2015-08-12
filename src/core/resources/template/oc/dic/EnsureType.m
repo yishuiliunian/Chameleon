@@ -14,9 +14,13 @@ char ensureCharType(id value)
     if ([value isKindOfClass:[NSNumber class]]) {
         return [value charValue];
     }
-    // NSString ->NSNumber
+    // NSString ->char
     if ([value isKindOfClass:[NSString class]]) {
-        // TODO
+        NSScanner *scan = [NSScanner scannerWithString:value];
+        int val;
+        if ([scan scanInt:&val] && [scan isAtEnd]) {
+            return (char)val;
+        }
     }
     NSCAssert(([value isKindOfClass:[NSNumber class]]) || ([value isKindOfClass:[NSString class]]), @"数据不是NSNumber或者NSString类型，无法向自定义类型转换");
     return 0;
@@ -31,9 +35,13 @@ unsigned char ensureUnsignedCharType(id value)
     if ([value isKindOfClass:[NSNumber class]]) {
         return [value charValue];
     }
-    // NSString ->NSNumber
+    // NSString ->unsigned char
     if ([value isKindOfClass:[NSString class]]) {
-        // TODO
+         NSScanner *scan = [NSScanner scannerWithString:value];
+        unsigned long long val;
+        if ([scan scanUnsignedLongLong:&val] && [scan isAtEnd]) {
+            return (unsigned char)val;
+        }
     }
     NSCAssert(([value isKindOfClass:[NSNumber class]]) || ([value isKindOfClass:[NSString class]]), @"数据不是NSNumber或者NSString类型，无法向自定义类型转换");
     return 0;
@@ -48,7 +56,7 @@ int ensureIntType(id value)
     if ([value isKindOfClass:[NSNumber class]]) {
         return [value intValue];
     }
-    // NSString ->NSNumber
+    // NSString ->int
     if ([value isKindOfClass:[NSString class]]) {
         NSScanner *scan = [NSScanner scannerWithString:value];
         int val;
@@ -69,7 +77,7 @@ unsigned int ensureUnsignedIntType(id value)
     if ([value isKindOfClass:[NSNumber class]]) {
         return [value unsignedIntValue];
     }
-    // NSString ->NSNumber
+    // NSString ->unsigned int
     if ([value isKindOfClass:[NSString class]]) {
         NSScanner *scan = [NSScanner scannerWithString:value];
         unsigned long long val;
@@ -90,7 +98,7 @@ short ensureShortType(id value)
     if ([value isKindOfClass:[NSNumber class]]) {
         return [value shortValue];
     }
-    // NSString ->NSNumber
+    // NSString ->short
     if ([value isKindOfClass:[NSString class]]) {
         NSScanner *scan = [NSScanner scannerWithString:value];
         int val;
@@ -111,7 +119,7 @@ unsigned short ensureUnsignedShortType(id value)
     if ([value isKindOfClass:[NSNumber class]]) {
         return [value shortValue];
     }
-    // NSString ->NSNumber
+    // NSString ->unsigned short
     if ([value isKindOfClass:[NSString class]]) {
         NSScanner *scan = [NSScanner scannerWithString:value];
         unsigned long long val;
@@ -132,7 +140,7 @@ long ensureLongType(id value)
     if ([value isKindOfClass:[NSNumber class]]) {
         return [value longValue];
     }
-    // NSString ->NSNumber
+    // NSString ->long
     if ([value isKindOfClass:[NSString class]]) {
         NSScanner *scan = [NSScanner scannerWithString:value];
         long long val;
@@ -153,7 +161,7 @@ unsigned long ensureUnsignedLongType(id value)
     if ([value isKindOfClass:[NSNumber class]]) {
         return [value unsignedLongValue];
     }
-    // NSString ->NSNumber
+    // NSString ->unsigned long
     if ([value isKindOfClass:[NSString class]]) {
         NSScanner *scan = [NSScanner scannerWithString:value];
         unsigned long long val;
@@ -174,7 +182,7 @@ long long ensureLongLongType(id value)
     if ([value isKindOfClass:[NSNumber class]]) {
         return [value longLongValue];
     }
-    // NSString ->NSNumber
+    // NSString ->long long
     if ([value isKindOfClass:[NSString class]]) {
         NSScanner *scan = [NSScanner scannerWithString:value];
         long long val;
@@ -195,7 +203,7 @@ unsigned long long ensureUnsignedLongLongType(id value)
     if ([value isKindOfClass:[NSNumber class]]) {
         return [value unsignedLongLongValue];
     }
-    // NSString ->NSNumber
+    // NSString ->unsigned longlong
     if ([value isKindOfClass:[NSString class]]) {
         NSScanner *scan = [NSScanner scannerWithString:value];
         unsigned long long val;
@@ -237,7 +245,7 @@ NSUInteger ensureUIntegerType(id value)
     if ([value isKindOfClass:[NSNumber class]]) {
         return [value unsignedIntegerValue];
     }
-    // NSString ->NSNumber
+    // NSString ->NSUinteger
     if ([value isKindOfClass:[NSString class]]) {
         NSScanner *scan = [NSScanner scannerWithString:value];
         unsigned long long val;
@@ -258,7 +266,7 @@ float ensureFloatType(id value)
     if ([value isKindOfClass:[NSNumber class]]) {
         return [value floatValue];
     }
-    // NSString ->NSNumber
+    // NSString ->float
     if ([value isKindOfClass:[NSString class]]) {
         NSScanner *scan = [NSScanner scannerWithString:value];
         long long val;
@@ -278,7 +286,7 @@ double ensureDoubleType(id value)
     if ([value isKindOfClass:[NSNumber class]]) {
         return [value doubleValue];
     }
-    // NSString ->NSNumber
+    // NSString ->double
     if ([value isKindOfClass:[NSString class]]) {
         NSScanner *scan = [NSScanner scannerWithString:value];
         long long val;
