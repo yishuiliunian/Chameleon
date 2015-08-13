@@ -1,4 +1,3 @@
-# coding: UTF-8
 //
 //  BWEnsureType.m
 //  BWEnsureType
@@ -277,8 +276,8 @@ float ensureFloatType(id value)
     // NSString ->float
     if ([value isKindOfClass:[NSString class]]) {
         NSScanner *scan = [NSScanner scannerWithString:value];
-        long long val;
-        if ([scan scanLongLong:&val] && [scan isAtEnd]) {
+        float val;
+        if ([scan scanFloat:&val] && [scan isAtEnd]) {
             return (float)val;
         }
     }
@@ -297,8 +296,8 @@ double ensureDoubleType(id value)
     // NSString ->double
     if ([value isKindOfClass:[NSString class]]) {
         NSScanner *scan = [NSScanner scannerWithString:value];
-        long long val;
-        if ([scan scanLongLong:&val] && [scan isAtEnd]) {
+        double val;
+        if ([scan scanDouble:&val] && [scan isAtEnd]) {
             return (double)val;
         }
     }
@@ -333,7 +332,7 @@ BOOL ensureBoolType(id value)
 // NSString
 NSString * ensureStringType(id value)
 {
-    if(!value) {
+    if ((!value) || ([value isKindOfClass:[NSNull class]])) {
         return nil;
     }
     if ([value isKindOfClass:[NSString class]]) {
@@ -374,11 +373,8 @@ NSURL * ensureURLType(id value)
     if ((!value) || ([value isKindOfClass:[NSNull class]])) {
         return nil;
     }
-    if ([value isKindOfClass:[NSURL class]]) {
-        return value;
-    }
     // NSString->NSURL
-    if ([value respondsToSelector:@selector(URLWithString:)]) {
+    if ([value isKindOfClass:[NSString class]]) {
         return [NSURL URLWithString:(NSString *)value];
     }
     NSCAssert([value isKindOfClass:[NSString class]], @"数据不是NSString类型，无法向自定义类型转换");

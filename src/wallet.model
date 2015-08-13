@@ -1,35 +1,35 @@
 /*支付协议*/
 model BWPay {
-  char                a
-  short               b
-  long                c
-  longlong            d
-  int                 e
-  float               f
-  double              g
-  url                 h
-  string              i
-  data                j
-  number              k
-  array      string   l
-  dictionary          m
-  UserInfo            n
-  bool                isVip
+  char                bwchar
+  short               bwshort
+  long                bwlong
+  longlong            bwlonglong
+  int                 bwint
+  float               bwfloat
+  double              bwdouble
+  url                 bwurl
+  string              bwstring
+  data                bwdata
+  number              bwnumber
+  array      string   bwarray
+  dictionary          bwdic
+  UserInfo            bwCustomObj
+  bool                bwbool
 
-  uchar               o
-  uinteger            p
-  int8                q
-  int16               r
-  int32               s
-  int64               t
-  ushort              u
-  uint8               v
-  uint16              w
-  uint32              x
-  uint64              y
-  ulong               z
-  ulonglong           ha
-  uint                as
+  uchar               bwuchar
+  uinteger            beuinteger
+  int8                bwinta
+  int16               bwintb
+  int32               bwintc
+  int64               bwintd
+  ushort              bwushort
+  uint8               bwuinta
+  uint16              bwuintb
+  uint32              bwuintc
+  uint64              bwuintd
+  ulong               bwulong
+  ulonglong           bwulonglong
+  uint                bwuint
 }
 
 model UserInfo {

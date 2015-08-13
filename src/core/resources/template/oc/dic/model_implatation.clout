@@ -275,33 +275,33 @@ from core.utilities.constant import ModelType
         NSArray* array = (NSArray*)value;
         NSMutableArray* objects = [NSMutableArray new];
         for (id obj in array) {
-        if ([obj isKindOfClass:[NSNull class]]) {
-            return;
-        } 
-        %if is_foundation_object_propery(p.containerType):
-        %if p.containerType == ModelType.Number:
-        // NSNumber类型
-        if (ensureNumberType:obj])
-        {
-            [objects addObject:ensureNumberType:obj]];
+            if ([obj isKindOfClass:[NSNull class]]) {
+                return;
+            } 
+            %if is_foundation_object_propery(p.containerType):
+            %if p.containerType == ModelType.Number:
+            // NSNumber类型
+            if (ensureNumberType:obj])
+            {
+                [objects addObject:ensureNumberType:obj]];
+            }
+            i%endif
+            % if p.containerType == ModelType.String:
+            // NSString类型
+            if (ensureNumberType(obj))
+            {
+                [objects addObject:ensureStringType(obj)];
+            }
+            %endif
+            %else:
+            // 自定义类型
+            NSAssert([obj isKindOfClass:[NSDictionary class]], @"数据不是dictionary类型，无法向自定义类型转化");
+            ${p.containerType }* transObj = [[${p.containerType } alloc] init];
+            [transObj setValuesForKeysWithDictionary:value];
+            [objects addObject:transObj];
+            %endif 
         }
-        %endif
-        % if p.containerType == ModelType.String:
-        // NSString类型
-        if (ensureNumberType(obj))
-        {
-            [objects addObject:ensureStringType(obj)];
-        }
-        %endif
-        %else:
-        // 自定义类型
-        NSAssert([obj isKindOfClass:[NSDictionary class]], @"数据不是dictionary类型，无法向自定义类型转化");
-        ${p.containerType }* transObj = [[${p.containerType } alloc] init];
-        [transObj setValuesForKeysWithDictionary:value];
-        [objects addObject:transObj];
-        %endif 
-    }
-    _${p.name} = objects;
+        _${p.name} = objects;
     }
 % endif
 % endfor
