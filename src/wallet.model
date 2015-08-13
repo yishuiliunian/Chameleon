@@ -17,7 +17,8 @@ model BWPay {
   bool                bwbool
 
   uchar               bwuchar
-  uinteger            beuinteger
+  integer             bwinteger
+  uinteger            bwuinteger
   int8                bwinta
   int16               bwintb
   int32               bwintc

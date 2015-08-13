@@ -285,7 +285,7 @@ from core.utilities.constant import ModelType
             {
                 [objects addObject:ensureNumberType:obj]];
             }
-            i%endif
+            %endif
             % if p.containerType == ModelType.String:
             // NSString类型
             if (ensureNumberType(obj))
