@@ -1,0 +1,38 @@
+/*支付协议*/
+model BWPay {
+  char                bwchar
+  short               bwshort
+  long                bwlong
+  longlong            bwlonglong
+  int                 bwint
+  float               bwfloat
+  double              bwdouble
+  url                 bwurl
+  string              bwstring
+  data                bwdata
+  number              bwnumber
+  array      string   bwarray
+  dictionary          bwdic
+  UserInfo            bwCustomObj
+  bool                bwbool
+
+  uchar               bwuchar
+  integer             bwinteger
+  uinteger            bwuinteger
+  int8                bwinta
+  int16               bwintb
+  int32               bwintc
+  int64               bwintd
+  ushort              bwushort
+  uint8               bwuinta
+  uint16              bwuintb
+  uint32              bwuintc
+  uint64              bwuintd
+  ulong               bwulong
+  ulonglong           bwulonglong
+  uint                bwuint
+}
+
+model UserInfo {
+  string              name
+}

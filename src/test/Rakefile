@@ -1,0 +1,12 @@
+
+desc "构建model输出"
+task :buildmodel do
+  sh 'python ../chameleon.py test.model -d chameleonDemo/chameleonDemo'
+end
+
+task :test do
+  Rake::Task['buildmodel'].invoke
+  sh 'cd ./chameleonDemo && xctool -project chameleonDemo.xcodeproj -scheme chameleonDemoTests test'
+end
+
+task :default => :test
