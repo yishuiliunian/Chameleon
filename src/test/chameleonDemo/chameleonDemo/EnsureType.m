@@ -11,8 +11,9 @@
 
 // 基本数据类型
 // (char、unsigned char、int、unsigned int、short、unsigned short、long、unsigned long、longlong、unsigned long long、integer、uinteger、float、double、BOOL)
-
 // char
+
+
 char ensureCharType(id value)
 {
     if ((!value) || ([value isKindOfClass:[NSNull class]])) {
@@ -388,12 +389,8 @@ NSData * ensureDataType(id value)
         return nil;
     }
     // NSString->NSData
-    if ([value respondsToSelector:@selector(dataUsingEncoding:)]) {
-        return [value dataUsingEncoding:NSUTF8StringEncoding];
-    }
-    // NSNumber->NSData
-    if ([value isKindOfClass:[NSNumber class]]) {
-        return [NSKeyedArchiver archivedDataWithRootObject:value];
+    if ([value isKindOfClass:[NSString class]]) {
+        return [(NSString*)value dataUsingEncoding:NSUTF8StringEncoding];
     }
     NSCAssert(([value isKindOfClass:[NSNumber class]]) || ([value isKindOfClass:[NSString class]]), @"数据不是NSNumber或者NSString类型，无法向自定义类型转换");
     return nil;
@@ -411,3 +408,7 @@ NSDictionary * ensureDictionaryType(id value)
     return nil;
 }
 
+
+NSArray* ensureArray(id value) {
+    
+}

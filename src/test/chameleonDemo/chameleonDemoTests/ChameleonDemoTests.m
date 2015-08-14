@@ -9,11 +9,14 @@
 #import <XCTest/XCTest.h>
 #import "BWPay.h"
 
+static NSString* kPNBWString = @"bwstring";
 @interface ChameleonDemoTests : XCTestCase
+{
+    NSString* _stringValue;
+}
 @property (nonatomic, strong) NSDictionary *jsonDic;
 @property (nonatomic, strong) BWPay *manualObj;
 @property (nonatomic, strong) BWPay *chameleonObj;
-
 @end
 
 @implementation ChameleonDemoTests
@@ -63,7 +66,43 @@
                  @"bwdata":@1,
                  @"bwCustomObj":customDic,
                  };
+    
+    
+    //setup values
+    _stringValue = @"sdfsd";
+    
+    NSString* kbwChar = @"bwchar";
+    NSString* kbwString = @"bwstring";
+ 
+    
 }
+
+- (void) testStringOutPut
+{
+    
+    BWPay* pay = [BWPay new];
+    
+   
+    NSString* aStr = @"222";
+    [pay setValue:aStr forKey:kPNBWString];
+    XCTAssert([pay.bwstring isKindOfClass:[NSString class]]);
+    XCTAssert([pay.bwstring isEqualToString:aStr]);
+    
+    
+    NSNumber* number = @(2);
+    
+    [pay setValue:number forKey:kPNBWString];
+    XCTAssert([pay.bwstring isKindOfClass:[NSString class]]);
+    XCTAssert([pay.bwstring isEqualToString:@"2"]);
+    
+    
+    NSData* data = [@"xxx" dataUsingEncoding:NSUTF8StringEncoding];
+    [pay setValue:data forKey:kPNBWString];
+    XCTAssertNil(pay.bwstring);
+    
+}
+
+
 - (void)printBWPay:(BWPay *)payObj
 {
     NSLog(@"bwchar=%c",payObj.bwuchar);

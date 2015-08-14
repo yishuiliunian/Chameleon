@@ -10,7 +10,6 @@
 @class UserInfo;
 
 @interface BWPay : NSObject
-
 @property (assign, nonatomic) char bwchar;
 @property (assign, nonatomic) short bwshort;
 @property (assign, nonatomic) long bwlong;
@@ -41,5 +40,4 @@
 @property (assign, nonatomic) unsigned long bwulong;
 @property (assign, nonatomic) unsigned long long bwulonglong;
 @property (assign, nonatomic) unsigned int bwuint;
-
 @end
