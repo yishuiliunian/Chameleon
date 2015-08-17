@@ -10,6 +10,7 @@
 @class UserInfo;
 
 @interface BWPay : NSObject
+
 @property (assign, nonatomic) char bwchar;
 @property (assign, nonatomic) short bwshort;
 @property (assign, nonatomic) long bwlong;
@@ -21,9 +22,11 @@
 @property (strong, nonatomic) NSString* bwstring;
 @property (strong, nonatomic) NSData* bwdata;
 @property (strong, nonatomic) NSNumber* bwnumber;
-@property (strong, nonatomic) NSArray* bwarray;
 @property (strong, nonatomic) NSDictionary* bwdic;
 @property (strong, nonatomic) UserInfo* bwCustomObj;
+@property (strong, nonatomic) NSArray* bwstringarray;
+@property (strong, nonatomic) NSArray* bwnumberarray;
+@property (strong, nonatomic) NSArray* bwobjarray;
 @property (assign, nonatomic) BOOL bwbool;
 @property (assign, nonatomic) unsigned char bwuchar;
 @property (assign, nonatomic) NSInteger bwinteger;
@@ -40,4 +43,5 @@
 @property (assign, nonatomic) unsigned long bwulong;
 @property (assign, nonatomic) unsigned long long bwulonglong;
 @property (assign, nonatomic) unsigned int bwuint;
+
 @end

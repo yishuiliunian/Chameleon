@@ -70,27 +70,6 @@
     {
         _bwnumber = ensureNumberType(value);
     }
-    // NSArray
-    else if ([key isEqualToString:@"bwarray"])
-    {
-#warning 迁移
-        if ((!value) || ([value isKindOfClass:[NSNull class]]))
-        return;
-        NSAssert([value isKindOfClass:[NSArray class]], @"bwarray从服务器传过来的数据不是NSArray类型，请检查");
-        NSArray* array = (NSArray*)value;
-        NSMutableArray* objects = [NSMutableArray new];
-        for (id obj in array) {
-            if ([obj isKindOfClass:[NSNull class]]) {
-                return;
-            } 
-            // NSString类型
-            if (ensureNumberType(obj))
-            {
-                [objects addObject:ensureStringType(obj)];
-            }
-        }
-        _bwarray = objects;
-    }
     // NSDictionary
     else if ([key isEqualToString:@"bwdic"])
     {
@@ -99,15 +78,67 @@
     // 自定义类型
     else if ([key isEqualToString:@"bwCustomObj"])
     {
-#warning 置空
         if ((!value) || ([value isKindOfClass:[NSNull class]])) {
-            _bwCustomObj = nil;
             return;
         }
         NSAssert([value isKindOfClass:[NSDictionary class]], @"数据不是dictionary类型，无法向自定义类型转化");
         UserInfo* transObj = [[UserInfo alloc] init];
         [transObj setValuesForKeysWithDictionary:value];
         _bwCustomObj = transObj;
+    }
+    // NSArray
+    else if ([key isEqualToString:@"bwstringarray"])
+    {
+        if (nil == ensureArrayType(value))
+        {
+            return;
+        }
+        NSArray* array = (NSArray*)value;
+        NSMutableArray* objects = [NSMutableArray new];
+        for (id obj in array) { 
+            // NSString类型
+            if (ensureStringType(obj))
+            {
+                [objects addObject:ensureStringType(obj)];
+            }
+        }
+        _bwstringarray = objects;
+    }
+    // NSArray
+    else if ([key isEqualToString:@"bwnumberarray"])
+    {
+        if (nil == ensureArrayType(value))
+        {
+            return;
+        }
+        NSArray* array = (NSArray*)value;
+        NSMutableArray* objects = [NSMutableArray new];
+        for (id obj in array) { 
+            // NSNumber类型
+            if (ensureNumberType(obj))
+            {
+                [objects addObject:ensureNumberType(obj)];
+            }
+        }
+        _bwnumberarray = objects;
+    }
+    // NSArray
+    else if ([key isEqualToString:@"bwobjarray"])
+    {
+        if (nil == ensureArrayType(value))
+        {
+            return;
+        }
+        NSArray* array = (NSArray*)value;
+        NSMutableArray* objects = [NSMutableArray new];
+        for (id obj in array) { 
+            // 自定义类型
+            NSAssert([obj isKindOfClass:[NSDictionary class]], @"数据不是dictionary类型，无法向自定义类型转化");
+            UserInfo* transObj = [[UserInfo alloc] init];
+            [transObj setValuesForKeysWithDictionary:obj];
+            [objects addObject:transObj];
+        }
+        _bwobjarray = objects;
     }
     // BOOL
     else if ([key isEqualToString:@"bwbool"])
@@ -152,7 +183,7 @@
     // unsigned short
     else if ([key isEqualToString:@"bwushort"])
     {
-        _bwushort = ensureUnsignedCharType(value);
+        _bwushort = ensureUnsignedShortType(value);
     }
     // uint8_t
     else if ([key isEqualToString:@"bwuinta"])

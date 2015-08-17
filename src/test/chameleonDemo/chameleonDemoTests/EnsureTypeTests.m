@@ -170,7 +170,7 @@
 // BOOL
 - (void)testEnsureBoolType {
     NSArray *returnNoArr = @[@0,@"ha",@"0",@"",@" ",@"false",[NSNull null]];
-    NSArray *returnYesArr = @[@1,@"true"];
+    NSArray *returnYesArr = @[@1,@12,@"true"];
     for (int i = 0; i<returnNoArr.count; i++) {
         XCTAssertEqual(NO, ensureBoolType(returnNoArr[i]), @"BOOL类型赋值不正确");
     }
@@ -214,10 +214,8 @@
 - (void)testEnsureDataType {
     NSData *strData = ensureDataType(@"hello world");
     NSData *kongData = ensureDataType(@" ");
-    NSData *numData = ensureDataType(@123);
     NSLog(@"kongData--%@",kongData);
     NSLog(@"strData--%@",strData);
-    NSLog(@"numData--%@",numData);
     XCTAssertNil(ensureDataType(nil),@"NSData类型赋值不正确");
     XCTAssertNil(ensureDataType([NSNull null]),@"NSData类型赋值不正确");
 }
@@ -230,6 +228,15 @@
     XCTAssertNil(ensureDictionaryType(nil),@"NSDictionary类型赋值不正确");
     XCTAssertNil(ensureDictionaryType([NSNull null]),@"NSDictionary类型赋值不正确");
     XCTAssertEqualObjects(dic, ensureDictionaryType(dic),@"NSDictionary类型赋值不正确");
+}
+
+// NSArray
+- (void)testEnsureArrayType
+{
+    NSArray *inputArr = @[@123,@"123",@"",[NSNull null]];
+    XCTAssertNil(ensureArrayType(nil),@"NSArray类型赋值不正确");
+    XCTAssertNil(ensureArrayType([NSNull null]),@"NSArray类型赋值不正确");
+    XCTAssertEqual(inputArr, ensureArrayType(inputArr),@"NSArray类型赋值不正确");
 }
 
 - (void)testPerformanceExample {

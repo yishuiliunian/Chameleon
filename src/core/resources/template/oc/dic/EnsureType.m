@@ -125,7 +125,7 @@ unsigned short ensureUnsignedShortType(id value)
         return 0;
     }
     if ([value isKindOfClass:[NSNumber class]]) {
-        return [value shortValue];
+        return [value unsignedShortValue];
     }
     // NSString ->unsigned short
     if ([value isKindOfClass:[NSString class]]) {
@@ -328,7 +328,7 @@ BOOL ensureBoolType(id value)
 }
 
 // object
-// NSString NSNumber NSURL NSData NSDictionary
+// NSString NSNumber NSURL NSData NSDictionary NSArray
 
 // NSString
 NSString * ensureStringType(id value)
@@ -389,16 +389,13 @@ NSData * ensureDataType(id value)
         return nil;
     }
     // NSString->NSData
-    if ([value respondsToSelector:@selector(dataUsingEncoding:)]) {
-        return [value dataUsingEncoding:NSUTF8StringEncoding];
+    if ([value isKindOfClass:[NSString class]]) {
+        return [(NSString*)value dataUsingEncoding:NSUTF8StringEncoding];
     }
-    // NSNumber->NSData
-    if ([value isKindOfClass:[NSNumber class]]) {
-        return [NSKeyedArchiver archivedDataWithRootObject:value];
-    }
-    NSCAssert(([value isKindOfClass:[NSNumber class]]) || ([value isKindOfClass:[NSString class]]), @"数据不是NSNumber或者NSString类型，无法向自定义类型转换");
+    NSCAssert([value isKindOfClass:[NSString class]], @"数据不是NSString类型，无法向自定义类型转换");
     return nil;
 }
+
 // NSDictionary
 NSDictionary * ensureDictionaryType(id value)
 {
@@ -409,6 +406,19 @@ NSDictionary * ensureDictionaryType(id value)
         return value;
     }
     NSCAssert([value isKindOfClass:[NSDictionary class]], @"数据不是NSDictionary类型，无法向自定义类型转换");
+    return nil;
+}
+
+// NSArray
+NSArray *ensureArrayType(id value)
+{
+    if ((!value) || ([value isKindOfClass:[NSNull class]])) {
+        return nil;
+    }
+    if ([value isKindOfClass:[NSArray class]]) {
+        return value;
+    }
+    NSCAssert([value isKindOfClass:[NSDictionary class]], @"数据不是NSArray类型，无法向自定义类型转换");
     return nil;
 }
 

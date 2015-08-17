@@ -7,15 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		44965A2E1B81733100B8AD02 /* BWPay.m in Sources */ = {isa = PBXBuildFile; fileRef = 44965A291B81733100B8AD02 /* BWPay.m */; };
+		44965A2F1B81733100B8AD02 /* EnsureType.m in Sources */ = {isa = PBXBuildFile; fileRef = 44965A2B1B81733100B8AD02 /* EnsureType.m */; };
+		44965A351B81A5D700B8AD02 /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 44965A341B81A5D700B8AD02 /* UserInfo.m */; };
+		44965A361B81AA0500B8AD02 /* EnsureType.m in Sources */ = {isa = PBXBuildFile; fileRef = 44965A2B1B81733100B8AD02 /* EnsureType.m */; };
+		44965A371B81AA1600B8AD02 /* BWPay.m in Sources */ = {isa = PBXBuildFile; fileRef = 44965A291B81733100B8AD02 /* BWPay.m */; };
+		44965A381B81AA1A00B8AD02 /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 44965A341B81A5D700B8AD02 /* UserInfo.m */; };
 		44CB91FD1B6F42BA00A515DD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 44CB91FC1B6F42BA00A515DD /* main.m */; };
 		44CB93C81B7C41B500A515DD /* EnsureTypeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 44CB93C71B7C41B500A515DD /* EnsureTypeTests.m */; };
-		44CB93D31B7C41F200A515DD /* EnsureType.m in Sources */ = {isa = PBXBuildFile; fileRef = 44CB93CF1B7C41F200A515DD /* EnsureType.m */; };
-		44CB93D41B7C41F200A515DD /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 44CB93D11B7C41F200A515DD /* UserInfo.m */; };
-		44CB93D51B7C4AA800A515DD /* EnsureType.m in Sources */ = {isa = PBXBuildFile; fileRef = 44CB93CF1B7C41F200A515DD /* EnsureType.m */; };
 		44CB93EA1B7CA3FC00A515DD /* ChameleonDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 44CB93E91B7CA3FC00A515DD /* ChameleonDemoTests.m */; };
-		44CB93EC1B7CA67F00A515DD /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 44CB93D11B7C41F200A515DD /* UserInfo.m */; };
-		44CB93EF1B7CBB3F00A515DD /* BWPay.m in Sources */ = {isa = PBXBuildFile; fileRef = 44CB93EE1B7CBB3F00A515DD /* BWPay.m */; };
-		44CB93F01B7CBB6200A515DD /* BWPay.m in Sources */ = {isa = PBXBuildFile; fileRef = 44CB93EE1B7CBB3F00A515DD /* BWPay.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -31,18 +31,19 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		44965A281B81733100B8AD02 /* BWPay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BWPay.h; sourceTree = "<group>"; };
+		44965A291B81733100B8AD02 /* BWPay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BWPay.m; sourceTree = "<group>"; };
+		44965A2A1B81733100B8AD02 /* EnsureType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnsureType.h; sourceTree = "<group>"; };
+		44965A2B1B81733100B8AD02 /* EnsureType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnsureType.m; sourceTree = "<group>"; };
+		44965A311B81A4C600B8AD02 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		44965A331B81A5D700B8AD02 /* UserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfo.h; sourceTree = "<group>"; };
+		44965A341B81A5D700B8AD02 /* UserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfo.m; sourceTree = "<group>"; };
 		44CB91F91B6F42BA00A515DD /* chameleonDemo */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = chameleonDemo; sourceTree = BUILT_PRODUCTS_DIR; };
 		44CB91FC1B6F42BA00A515DD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		44CB93C31B7C41B500A515DD /* chameleonDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = chameleonDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		44CB93C61B7C41B500A515DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		44CB93C71B7C41B500A515DD /* EnsureTypeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EnsureTypeTests.m; sourceTree = "<group>"; };
-		44CB93CE1B7C41F200A515DD /* EnsureType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnsureType.h; sourceTree = "<group>"; };
-		44CB93CF1B7C41F200A515DD /* EnsureType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EnsureType.m; sourceTree = "<group>"; };
-		44CB93D01B7C41F200A515DD /* UserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfo.h; sourceTree = "<group>"; };
-		44CB93D11B7C41F200A515DD /* UserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfo.m; sourceTree = "<group>"; };
 		44CB93E91B7CA3FC00A515DD /* ChameleonDemoTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChameleonDemoTests.m; sourceTree = "<group>"; };
-		44CB93ED1B7CBB3F00A515DD /* BWPay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BWPay.h; sourceTree = "<group>"; };
-		44CB93EE1B7CBB3F00A515DD /* BWPay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BWPay.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +67,7 @@
 		44CB91F01B6F42BA00A515DD = {
 			isa = PBXGroup;
 			children = (
+				44965A311B81A4C600B8AD02 /* Foundation.framework */,
 				44CB91FB1B6F42BA00A515DD /* chameleonDemo */,
 				44CB93C41B7C41B500A515DD /* chameleonDemoTests */,
 				44CB91FA1B6F42BA00A515DD /* Products */,
@@ -84,13 +86,13 @@
 		44CB91FB1B6F42BA00A515DD /* chameleonDemo */ = {
 			isa = PBXGroup;
 			children = (
-				44CB93ED1B7CBB3F00A515DD /* BWPay.h */,
-				44CB93EE1B7CBB3F00A515DD /* BWPay.m */,
 				44CB91FC1B6F42BA00A515DD /* main.m */,
-				44CB93CE1B7C41F200A515DD /* EnsureType.h */,
-				44CB93CF1B7C41F200A515DD /* EnsureType.m */,
-				44CB93D01B7C41F200A515DD /* UserInfo.h */,
-				44CB93D11B7C41F200A515DD /* UserInfo.m */,
+				44965A281B81733100B8AD02 /* BWPay.h */,
+				44965A331B81A5D700B8AD02 /* UserInfo.h */,
+				44965A341B81A5D700B8AD02 /* UserInfo.m */,
+				44965A291B81733100B8AD02 /* BWPay.m */,
+				44965A2A1B81733100B8AD02 /* EnsureType.h */,
+				44965A2B1B81733100B8AD02 /* EnsureType.m */,
 			);
 			path = chameleonDemo;
 			sourceTree = "<group>";
@@ -200,10 +202,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				44CB93D41B7C41F200A515DD /* UserInfo.m in Sources */,
-				44CB93EF1B7CBB3F00A515DD /* BWPay.m in Sources */,
+				44965A351B81A5D700B8AD02 /* UserInfo.m in Sources */,
 				44CB91FD1B6F42BA00A515DD /* main.m in Sources */,
-				44CB93D31B7C41F200A515DD /* EnsureType.m in Sources */,
+				44965A2F1B81733100B8AD02 /* EnsureType.m in Sources */,
+				44965A2E1B81733100B8AD02 /* BWPay.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -211,9 +213,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				44CB93F01B7CBB6200A515DD /* BWPay.m in Sources */,
-				44CB93EC1B7CA67F00A515DD /* UserInfo.m in Sources */,
-				44CB93D51B7C4AA800A515DD /* EnsureType.m in Sources */,
+				44965A381B81AA1A00B8AD02 /* UserInfo.m in Sources */,
+				44965A371B81AA1600B8AD02 /* BWPay.m in Sources */,
+				44965A361B81AA0500B8AD02 /* EnsureType.m in Sources */,
 				44CB93C81B7C41B500A515DD /* EnsureTypeTests.m in Sources */,
 				44CB93EA1B7CA3FC00A515DD /* ChameleonDemoTests.m in Sources */,
 			);
@@ -260,7 +262,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = macosx;
+				SDKROOT = macosx10.10;
 				VALID_ARCHS = "armv7 armv7s arm64";
 			};
 			name = Debug;
@@ -296,7 +298,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				SDKROOT = macosx;
+				SDKROOT = macosx10.10;
 				VALID_ARCHS = "armv7 armv7s arm64";
 			};
 			name = Release;
@@ -305,6 +307,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+					NS_BLOCK_ASSERTIONS,
+				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VALID_ARCHS = "armv7 armv7s arm64 x86_64";
@@ -315,6 +322,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(ARCHS_STANDARD)";
+				GCC_PREPROCESSOR_DEFINITIONS = NS_BLOCK_ASSERTIONS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VALID_ARCHS = "armv7 armv7s arm64 x86_64";
 			};
@@ -324,19 +332,17 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
+					NS_BLOCK_ASSERTIONS,
 				);
 				INFOPLIST_FILE = chameleonDemoTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
+				SDKROOT = macosx10.10;
 				VALID_ARCHS = "armv7 armv7s arm64 x86_64";
 			};
 			name = Debug;
@@ -344,15 +350,13 @@
 		44CB93CA1B7C41B500A515DD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				GCC_PREPROCESSOR_DEFINITIONS = NS_BLOCK_ASSERTIONS;
 				INFOPLIST_FILE = chameleonDemoTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx;
+				SDKROOT = macosx10.10;
 				VALIDATE_PRODUCT = YES;
 				VALID_ARCHS = "armv7 armv7s arm64 x86_64";
 			};

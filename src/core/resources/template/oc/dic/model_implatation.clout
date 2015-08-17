@@ -81,7 +81,7 @@ from core.utilities.constant import ModelType
     // unsigned short
     else if ([key isEqualToString:@"${p.name}"])
     {
-        _${p.name} = ensureUnsignedCharType(value);
+        _${p.name} = ensureUnsignedShortType(value);
     }
 % endif
 % if isinstance(p, IntProperty):
@@ -269,26 +269,24 @@ from core.utilities.constant import ModelType
     // NSArray
     else if ([key isEqualToString:@"${p.name}"])
     {
-        if ((!value) || ([value isKindOfClass:[NSNull class]])) 
-        return;
-        NSAssert([value isKindOfClass:[NSArray class]], @"${p.name}从服务器传过来的数据不是NSArray类型，请检查");
+        if (nil == ensureArrayType(value))
+        {
+            return;
+        }
         NSArray* array = (NSArray*)value;
         NSMutableArray* objects = [NSMutableArray new];
-        for (id obj in array) {
-            if ([obj isKindOfClass:[NSNull class]]) {
-                return;
-            } 
+        for (id obj in array) { 
             %if is_foundation_object_propery(p.containerType):
             %if p.containerType == ModelType.Number:
             // NSNumber类型
-            if (ensureNumberType:obj])
+            if (ensureNumberType(obj))
             {
-                [objects addObject:ensureNumberType:obj]];
+                [objects addObject:ensureNumberType(obj)];
             }
             %endif
             % if p.containerType == ModelType.String:
             // NSString类型
-            if (ensureNumberType(obj))
+            if (ensureStringType(obj))
             {
                 [objects addObject:ensureStringType(obj)];
             }
@@ -297,7 +295,7 @@ from core.utilities.constant import ModelType
             // 自定义类型
             NSAssert([obj isKindOfClass:[NSDictionary class]], @"数据不是dictionary类型，无法向自定义类型转化");
             ${p.containerType }* transObj = [[${p.containerType } alloc] init];
-            [transObj setValuesForKeysWithDictionary:value];
+            [transObj setValuesForKeysWithDictionary:obj];
             [objects addObject:transObj];
             %endif 
         }

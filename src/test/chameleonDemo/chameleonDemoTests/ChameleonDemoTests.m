@@ -8,15 +8,16 @@
 
 #import <XCTest/XCTest.h>
 #import "BWPay.h"
+#import "UserInfo.h"
 
-static NSString* kPNBWString = @"bwstring";
 @interface ChameleonDemoTests : XCTestCase
 {
-    NSString* _stringValue;
+    NSArray *foundationInputArr;
+    NSArray *charinputArr;
 }
-@property (nonatomic, strong) NSDictionary *jsonDic;
-@property (nonatomic, strong) BWPay *manualObj;
+@property (nonatomic, strong) NSMutableDictionary *jsonDic;
 @property (nonatomic, strong) BWPay *chameleonObj;
+@property (nonatomic, strong) NSArray *typeArr;
 @end
 
 @implementation ChameleonDemoTests
@@ -24,124 +25,464 @@ static NSString* kPNBWString = @"bwstring";
 - (void)setUp {
     // Put setup code here. This method is called before the invocation of each test method in the class.
     [super setUp];
-    _manualObj = [[BWPay alloc]init];
-    _chameleonObj = [[BWPay alloc]init];
-    
-    NSDictionary *customDic = @{
-                                @"name":@"lj"
-                                };
-    NSDictionary *testDic = @{
-                              @"sex":@"f"
-                              };
-    NSArray *nameArr = @[@"lj",@"xx"];
-    _jsonDic = @{
-                 @"bwchar":@"0",
-                 @"bwuchar":@0,
-                 @"bwint":@"1",
-                 @"bwuint":@"dd",
-                 @"bwshort":@1,
-                 @"bwushort":@1,
-                 @"bwlong":@1,
-                 @"bwulong":@1,
-                 @"bwlonglong":@1,
-                 @"bwulonglong":@1,
-                 @"bwinteger":@1,
-                 @"bwuinteger":@1,
-                 @"bwinta":@1,
-                 @"bwintb":@1,
-                 @"bwintc":@1,
-                 @"bwintd":@1,
-                 @"bwuinta":@1,
-                 @"bwuintb":@1,
-                 @"bwuintc":@1,
-                 @"bwuintd":@1,
-                 @"bwfloat":@1,
-                 @"bwdouble":@1,
-                 @"bwbool":@1,
-                 @"bwstring":@1,
-                 @"bwurl":@"baidu",
-                 @"bwnumber":@1,
-                 @"bwarray":nameArr,
-                 @"bwdic":testDic,
-                 @"bwdata":@1,
-                 @"bwCustomObj":customDic,
-                 };
-    
-    
-    //setup values
-    _stringValue = @"sdfsd";
-    
-    NSString* kbwChar = @"bwchar";
-    NSString* kbwString = @"bwstring";
- 
-    
+    _jsonDic = [NSMutableDictionary dictionaryWithCapacity:50];
+    _typeArr = @[@"bwinteger",@"bwuinteger",@"bwlong",@"bwulong",@"bwlonglong",@"bwulonglong",@"bwint",@"bwuint",@"bwintc",@"bwintd",@"bwuintc",@"bwuintd"];
+    foundationInputArr = @[@1234,@123456,@"",@" ",@"1234",@"123.0"];
+    charinputArr = @[@97,@"98",@"",@" "];
 }
 
-- (void) testStringOutPut
+- (void)testSetValuesForKeys
 {
+    int intArr[] = {1234,123456,0,0,1234,0};
+    unsigned uintArr[] = {1234,123456,0,0,1234,0};
+    NSInteger integerArr[] = {1234,123456,0,0,1234,0};
+    NSUInteger uintegerArr[] = {1234,123456,0,0,1234,0};
+    long longArr[] = {1234,123456,0,0,1234,0};
+    unsigned long ulongArr[] = {1234,123456,0,0,1234,0};
+    long long longlongArr[] = {1234,123456,0,0,1234,0};
+    unsigned long long ulonglongArr[] = {1234,123456,0,0,1234,0};
+    int32_t int32Arr[] = {1234,123456,0,0,1234,0};
+    int64_t int64Arr[] = {1234,123456,0,0,1234,0};
+    uint32_t uint32Arr[] = {1234,123456,0,0,1234,0};
+    uint64_t uint64Arr[] = {1234,123456,0,0,1234,0};
     
     BWPay* pay = [BWPay new];
+    for (int i = 0; i < foundationInputArr.count; i++) {
+        for (int j = 0; j < _typeArr.count; j++) {
+            [_jsonDic setValue:foundationInputArr[i] forKey:_typeArr[j]];
+        }
+        [pay setValuesForKeysWithDictionary:_jsonDic];
+        // 比较大小
+        XCTAssert((pay.bwint ==  intArr[i]));
+        XCTAssert((pay.bwuint ==  uintArr[i]));
+        XCTAssert((pay.bwlong ==  longArr[i]));
+        XCTAssert((pay.bwulong ==  ulongArr[i]));
+        XCTAssert((pay.bwlonglong ==  longlongArr[i]));
+        XCTAssert((pay.bwulonglong ==  ulonglongArr[i]));
+        XCTAssert((pay.bwintc ==  int32Arr[i]));
+        XCTAssert((pay.bwintd ==  int64Arr[i]));
+        XCTAssert((pay.bwuintc ==  uint32Arr[i]));
+        XCTAssert((pay.bwuintd ==  uint64Arr[i]));
+        XCTAssert((pay.bwinteger ==  integerArr[i]));
+        XCTAssert((pay.bwuinteger ==  uintegerArr[i]));
+    }
     
-   
-    NSString* aStr = @"222";
-    [pay setValue:aStr forKey:kPNBWString];
-    XCTAssert([pay.bwstring isKindOfClass:[NSString class]]);
-    XCTAssert([pay.bwstring isEqualToString:aStr]);
-    
-    
-    NSNumber* number = @(2);
-    
-    [pay setValue:number forKey:kPNBWString];
-    XCTAssert([pay.bwstring isKindOfClass:[NSString class]]);
-    XCTAssert([pay.bwstring isEqualToString:@"2"]);
-    
-    
-    NSData* data = [@"xxx" dataUsingEncoding:NSUTF8StringEncoding];
-    [pay setValue:data forKey:kPNBWString];
-    XCTAssertNil(pay.bwstring);
     
 }
-
-
-- (void)printBWPay:(BWPay *)payObj
+// char
+- (void)testCharOutput
 {
-    NSLog(@"bwchar=%c",payObj.bwuchar);
-    NSLog(@"bwuchar=%c",payObj.bwuchar);
-    NSLog(@"bwuchar=%d",payObj.bwint);
-    NSLog(@"bwuint=%d",payObj.bwuint);
-    NSLog(@"bwshort=%d",payObj.bwshort);
-    NSLog(@"bwushort=%d",payObj.bwushort);
-    NSLog(@"bwlong=%ld",payObj.bwlong);
-    NSLog(@"bwulong=%lu",payObj.bwulong);
-    NSLog(@"bwlonglong=%lld",payObj.bwlonglong);
-    NSLog(@"bwulonglong=%llu",payObj.bwulonglong);
-    NSLog(@"bwuinteger=%lu",payObj.bwuinteger);
-    NSLog(@"bwinta=%d",payObj.bwinta);
-    NSLog(@"bwintb=%d",payObj.bwintb);
-    NSLog(@"bwintc=%d",payObj.bwintc);
-    NSLog(@"bwshort=%lld",payObj.bwintd);
-    NSLog(@"bwuinta=%i",payObj.bwuinta);
-    NSLog(@"bwuintb=%i",payObj.bwuintb);
-    NSLog(@"bwuintc=%i",payObj.bwuintc);
-    NSLog(@"bwuintd=%llu",payObj.bwuintd);
-    NSLog(@"bwfloat=%f",payObj.bwfloat);
-    NSLog(@"bwdouble=%f",payObj.bwdouble);
-    NSLog(@"bwbool=%d",payObj.bwbool);
-    NSLog(@"bwstring=%@",payObj.bwstring);
-    NSLog(@"bwnumber=%@",payObj.bwnumber);
-    NSLog(@"bwurl=%@",payObj.bwurl);
-    NSLog(@"bwdata=%@",payObj.bwdata);
-    
+    BWPay* pay = [BWPay new];
+    char charArr[] = {97,98,0,0};
+    for (int i = 0; i < charinputArr.count; i++) {
+        [pay setValue:charinputArr[i] forKey:@"bwchar"];
+        NSLog(@"char=%c",pay.bwchar);
+        XCTAssert((pay.bwchar ==  charArr[i]));
+    }
+    // test others
+    NSArray *testArr;
+    [pay setValue:testArr forKey:@"bwchar"];
+    XCTAssert(pay.bwchar == 0);
+    NSURL *testUrl = [NSURL URLWithString:@"www.baidu.com"];
+    [pay setValue:testUrl forKey:@"bwchar"];
+    XCTAssert(pay.bwchar == 0);
 }
+
+// unsigned char
+- (void)testUCharOutput
+{
+    BWPay* pay = [BWPay new];
+    unsigned char ucharArr[] = {97,98,0,0};
+    for (int i = 0; i < charinputArr.count; i++) {
+        [pay setValue:charinputArr[i] forKey:@"bwuchar"];
+        XCTAssert((pay.bwuchar ==  ucharArr[i]));
+    }
+    NSDictionary *testDic = @{@"name":@"liujin"};
+    [pay setValue:testDic forKey:@"bwuchar"];
+    XCTAssert(pay.bwuchar == 0);
+}
+
+// int
+- (void)testIntOutput
+{
+    BWPay* pay = [BWPay new];
+    int intArr[] = {1234,123456,0,0,1234,0};
+    for (int i = 0; i < foundationInputArr.count; i++) {
+        [pay setValue:foundationInputArr[i] forKey:@"bwint"];
+        XCTAssert((pay.bwint ==  intArr[i]));
+    }
+    NSData *testData = [@"hello" dataUsingEncoding:NSUTF8StringEncoding];
+    [pay setValue:testData forKey:@"bwint"];
+    XCTAssert(pay.bwint == 0);
+}
+
+// unsigned int
+- (void)testUIntOutput
+{
+    BWPay* pay = [BWPay new];
+    unsigned uintArr[] = {1234,123456,0,0,1234,0};
+    for (int i = 0; i < foundationInputArr.count; i++) {
+        [pay setValue:foundationInputArr[i] forKey:@"bwuint"];
+        XCTAssert((pay.bwuint ==  uintArr[i]));
+    }
+    NSArray *testArr = @[@1,@2];
+    [pay setValue:testArr forKey:@"bwuint"];
+    XCTAssert(pay.bwuint == 0);
+}
+
+// short
+- (void)testShortOutput
+{
+    BWPay* pay = [BWPay new];
+    short shortArr[] = {1234,-7616,0,0,1234,0};
+    for (int i = 0; i < foundationInputArr.count; i++) {
+        [pay setValue:foundationInputArr[i] forKey:@"bwshort"];
+        XCTAssert((pay.bwshort ==  shortArr[i]));
+    }
+    NSArray *testArr = @[@1,@2];
+    [pay setValue:testArr forKey:@"bwshort"];
+    XCTAssert(pay.bwshort == 0);
+}
+
+// unsigned short
+- (void)testUsignedShortOutput
+{
+    BWPay* pay = [BWPay new];
+    unsigned short ushortArr[] = {1234,57920,0,0,1234,0};
+    for (int i = 0; i < foundationInputArr.count; i++) {
+        [pay setValue:foundationInputArr[i] forKey:@"bwushort"];
+        NSLog(@"unsigned short=%u",pay.bwushort);
+        XCTAssert((pay.bwushort ==  ushortArr[i]));
+    }
+    NSData *testData = [@"hello" dataUsingEncoding:NSUTF8StringEncoding];
+    [pay setValue:testData forKey:@"bwushort"];
+    XCTAssert(pay.bwushort == 0);
+}
+
+// long
+- (void)testLongOutput
+{
+    BWPay* pay = [BWPay new];
+    long longArr[] = {1234,123456,0,0,1234,0};
+    for (int i = 0; i < foundationInputArr.count; i++) {
+        [pay setValue:foundationInputArr[i] forKey:@"bwlong"];
+        XCTAssert((pay.bwlong ==  longArr[i]));
+    }
+    NSDictionary *testDic = @{@"name":@"liujin"};
+    [pay setValue:testDic forKey:@"bwlong"];
+    XCTAssert(pay.bwlong == 0);
+}
+
+// unsigned long
+- (void)testUlongOutput
+{
+    BWPay* pay = [BWPay new];
+    unsigned long ulongArr[] = {1234,123456,0,0,1234,0};
+    for (int i = 0; i < foundationInputArr.count; i++) {
+        [pay setValue:foundationInputArr[i] forKey:@"bwulong"];
+        XCTAssert((pay.bwulong ==  ulongArr[i]));
+    }
+    NSData *testData = [@"RRRRR" dataUsingEncoding:NSUTF8StringEncoding];
+    [pay setValue:testData forKey:@"bwulong"];
+    XCTAssert(pay.bwulong == 0);
+}
+
+// long long
+- (void)testLonglongOutput
+{
+    BWPay* pay = [BWPay new];
+    long long longlongArr[] = {1234,123456,0,0,1234,0};
+    for (int i = 0; i < foundationInputArr.count; i++) {
+        [pay setValue:foundationInputArr[i] forKey:@"bwlonglong"];
+        XCTAssert((pay.bwlonglong ==  longlongArr[i]));
+    }
+    NSURL *testUrl = [NSURL URLWithString:@"www.baidu.com"];
+    [pay setValue:testUrl forKey:@"bwlonglong"];
+    XCTAssert(pay.bwlonglong == 0);
+}
+
+// unsigned long long
+- (void)testUlonglongOutput
+{
+    BWPay* pay = [BWPay new];
+    unsigned long long ulonglongArr[] = {1234,123456,0,0,1234,0};
+    for (int i = 0; i < foundationInputArr.count; i++) {
+        [pay setValue:foundationInputArr[i] forKey:@"bwulonglong"];
+        XCTAssert((pay.bwulonglong ==  ulonglongArr[i]));
+    }
+    NSDictionary *testDic = @{@"name":@"liujin"};
+    [pay setValue:testDic forKey:@"bwulonglong"];
+    XCTAssert(pay.bwulonglong == 0);
+}
+
+// integer
+- (void)testIntegerOutput
+{
+    BWPay* pay = [BWPay new];
+    NSInteger integerArr[] = {1234,123456,0,0,1234,0};
+    for (int i = 0; i < foundationInputArr.count; i++) {
+        [pay setValue:foundationInputArr[i] forKey:@"bwinteger"];
+        XCTAssert((pay.bwinteger ==  integerArr[i]));
+    }
+    NSData *testData = [@"RRRRR" dataUsingEncoding:NSUTF8StringEncoding];
+    [pay setValue:testData forKey:@"bwinteger"];
+    XCTAssert(pay.bwinteger == 0);
+}
+// unsigned integer
+- (void)testUIntegerOutput
+{
+    BWPay* pay = [BWPay new];
+    NSUInteger uintegerArr[] = {1234,123456,0,0,1234,0};
+    for (int i = 0; i < foundationInputArr.count; i++) {
+        [pay setValue:foundationInputArr[i] forKey:@"bwuinteger"];
+        XCTAssert((pay.bwuinteger ==  uintegerArr[i]));
+    }
+    NSDictionary *testDic = @{@"name":@"liujin"};
+    [pay setValue:testDic forKey:@"bwuinteger"];
+    XCTAssert(pay.bwuinteger == 0);
+}
+
+// int8
+- (void)testInt8Output
+{
+    BWPay* pay = [BWPay new];
+    int8_t int8Arr[] = {97,98,0,0};
+    for (int i = 0; i < charinputArr.count; i++) {
+        [pay setValue:charinputArr[i] forKey:@"bwinta"];
+        XCTAssert((pay.bwinta ==  int8Arr[i]));
+    }
+}
+// uint8
+- (void)testUInt8Output
+{
+    BWPay* pay = [BWPay new];
+    uint8_t uint8Arr[] = {97,98,0,0};
+    for (int i = 0; i < charinputArr.count; i++) {
+        [pay setValue:charinputArr[i] forKey:@"bwuinta"];
+        XCTAssert((pay.bwuinta ==  uint8Arr[i]));
+    }
+}
+// int16
+- (void)testInt16Output
+{
+    BWPay* pay = [BWPay new];
+    int16_t int16Arr[] = {1234,-7616,0,0,1234,0};
+    for (int i = 0; i < foundationInputArr.count; i++) {
+        [pay setValue:foundationInputArr[i] forKey:@"bwintb"];
+        XCTAssert((pay.bwintb ==  int16Arr[i]));
+    }
+}
+// uint16
+- (void)testUInt16Output
+{
+    BWPay* pay = [BWPay new];
+    uint16_t uint16Arr[] = {1234,57920,0,0,1234,0};
+    for (int i = 0; i < foundationInputArr.count; i++) {
+        [pay setValue:foundationInputArr[i] forKey:@"bwuintb"];
+        XCTAssert((pay.bwuintb ==  uint16Arr[i]));
+    }
+}
+// int32
+- (void)testInt32Output
+{
+    BWPay* pay = [BWPay new];
+    int32_t int32Arr[] = {1234,123456,0,0,1234,0};
+    for (int i = 0; i < foundationInputArr.count; i++) {
+        [pay setValue:foundationInputArr[i] forKey:@"bwintc"];
+        XCTAssert((pay.bwintc ==  int32Arr[i]));
+    }
+}
+// uint32
+- (void)testUInt32Output
+{
+    BWPay* pay = [BWPay new];
+    uint32_t uint32Arr[] = {1234,123456,0,0,1234,0};
+    for (int i = 0; i < foundationInputArr.count; i++) {
+        [pay setValue:foundationInputArr[i] forKey:@"bwuintc"];
+        XCTAssert((pay.bwuintc ==  uint32Arr[i]));
+    }
+}
+// int64
+- (void)testInt64Output
+{
+    BWPay* pay = [BWPay new];
+    int64_t int64Arr[] = {1234,123456,0,0,1234,0};
+    for (int i = 0; i < foundationInputArr.count; i++) {
+        [pay setValue:foundationInputArr[i] forKey:@"bwintd"];
+        XCTAssert((pay.bwintd ==  int64Arr[i]));
+    }
+}
+// uint64
+- (void)testUInt64Output
+{
+    BWPay* pay = [BWPay new];
+    uint64_t uint64Arr[] = {1234,123456,0,0,1234,0};
+    for (int i = 0; i < foundationInputArr.count; i++) {
+        [pay setValue:foundationInputArr[i] forKey:@"bwuintd"];
+        XCTAssert((pay.bwuintd ==  uint64Arr[i]));
+    }
+}
+
+// float
+- (void)testFloatOutput
+{
+    BWPay* pay = [BWPay new];
+    float floatArr[] = {1234,123456,0,0,1234,123.0};
+    for (int i = 0; i < foundationInputArr.count; i++) {
+        [pay setValue:foundationInputArr[i] forKey:@"bwfloat"];
+        XCTAssert(fabsf(floatArr[i] - pay.bwfloat) < (1e-9));
+    }
+    NSArray *testArr = @[@123,@"ss"];
+    [pay setValue:testArr forKey:@"bwfloat"];
+     XCTAssert(pay.bwfloat == 0);
+}
+// double
+- (void)testDoubleOutput
+{
+    BWPay* pay = [BWPay new];
+    double doubleArr[] = {1234,123456,0,0,1234,123.0};
+    for (int i = 0; i < foundationInputArr.count; i++) {
+        [pay setValue:foundationInputArr[i] forKey:@"bwdouble"];
+        XCTAssert(fabs(doubleArr[i] - pay.bwdouble) < (1e-9));
+    }
+    NSArray *testArr = @[@123,@"ss"];
+    [pay setValue:testArr forKey:@"bwdouble"];
+    XCTAssert(pay.bwdouble == 0);
+}
+
+// BOOL
+-(void)testBOOLOutput
+{
+    BWPay* pay = [BWPay new];
+    NSArray *returnNoArr = @[@0,@"ha",@"0",@"",@" ",@"false",[NSNull null]];
+    NSArray *returnYesArr = @[@1,@12,@"true"];
+    for (int i = 0; i<returnNoArr.count; i++) {
+        [pay setValue:returnNoArr[i] forKey:@"bwbool"];
+        XCTAssertEqual(NO, pay.bwbool, @"BOOL类型赋值不正确");
+    }
+    for (int i = 0; i<returnYesArr.count; i++) {
+        [pay setValue:returnYesArr[i] forKey:@"bwbool"];
+        XCTAssertEqual(YES, pay.bwbool, @"BOOL类型赋值不正确");
+    }
+}
+
+- (void)testStringOutput
+{
+    BWPay* pay = [BWPay new];
+    NSArray *stringInputArr = @[@1234,@"",@" ",@"1234"];
+    NSArray *stringOutputArr = @[@"1234",@"",@" ",@"1234"];
+    // test input NSString and NSNumber
+    for (int i = 0; i<stringInputArr.count; i++) {
+        [pay setValue:stringInputArr[i] forKey:@"bwstring"];
+        XCTAssert([pay.bwstring isKindOfClass:[NSString class]]);
+        XCTAssert([pay.bwstring isEqualToString:stringOutputArr[i]]);
+    }
+    // test others
+    // NSData
+    NSData* data = [@"xxx" dataUsingEncoding:NSUTF8StringEncoding];
+    [pay setValue:data forKey:@"bwstring"];
+    XCTAssertNil(pay.bwstring);
+}
+
+- (void)testNumberOutput
+{
+    BWPay *pay = [BWPay new];
+    NSArray *numberInputArr = @[@123,@"123"];
+    NSArray *numberOutputArr = @[@123,@123];
+    NSArray *numberNilArr = @[@"12q",@"",@" ",[NSNull null]];
+    for (int i = 0; i<numberInputArr.count; i++) {
+        [pay setValue:numberInputArr[i] forKey:@"bwnumber"];
+        XCTAssert([pay.bwnumber isKindOfClass:[NSNumber class]]);
+        XCTAssert([pay.bwnumber isEqualToNumber:numberOutputArr[i]]);
+    }
+    for (int i = 0; i<numberNilArr.count; i++) {
+        [pay setValue:numberNilArr[i] forKey:@"bwnumber"];
+        XCTAssertNil(pay.bwnumber);
+    }
+}
+- (void)testUrlOutput
+{
+    BWPay *pay = [BWPay new];
+    NSString *nilStr;
+    [pay setValue:nilStr forKey:@"bwurl"];
+    XCTAssertNil(pay.bwurl,@"NSURL赋值不正确");
+    NSString *urlStr = @"baidu";
+    [pay setValue:urlStr forKey:@"bwurl"];
+    XCTAssert([pay.bwurl isKindOfClass:[NSURL class]]);
+    XCTAssert([pay.bwurl isEqualTo:[NSURL URLWithString:urlStr]]);
+}
+
+// NSData
+- (void)testDataOutput
+{
+    BWPay *pay = [BWPay new];
+    NSString *string = @"hello,world";
+    NSData* data = [@"hello,world" dataUsingEncoding:NSUTF8StringEncoding];
+    [pay setValue:string forKey:@"bwdata"];
+    XCTAssert([pay.bwdata isKindOfClass:[NSData class]]);
+    XCTAssert([pay.bwdata isEqualTo:data]);
+}
+
+// NSDictionary
+- (void)testDictionaryOutput
+{
+    BWPay *pay = [BWPay new];
+    [pay setValue:nil forKey:@"bwdic"];
+    XCTAssertNil(pay.bwstringarray,@"NSDictionary类型赋值不正确");
+    [pay setValue:[NSNull null] forKey:@"bwdic"];
+    XCTAssertNil(pay.bwstringarray,@"NSDictionary类型赋值不正确");
+    NSDictionary *dic = @{
+                          @"name":@"lj",
+                          @"age":@22
+                          };
+    [pay setValue:dic forKey:@"bwdic"];
+    XCTAssert([pay.bwdic isEqualToDictionary:dic],@"NSDictionary类型赋值不正确");
+}
+// 自定义
+- (void)testCustomobjOutput
+{
+    BWPay *pay = [BWPay new];
+    [pay setValue:nil forKey:@"bwCustomObj"];
+    XCTAssertNil(pay.bwCustomObj,@"自定义类型赋值不正确");
+    NSDictionary *dic = @{
+                          @"name":@"lj"
+                          };
+    [pay setValue:dic forKey:@"bwCustomObj"];
+    XCTAssert([[dic objectForKey:@"name"] isEqualToString:pay.bwCustomObj.name],@"自定义类型赋值不正确");
+}
+// NSArray
+- (void)testEnsureArrayOutput
+{
+    BWPay *pay = [BWPay new];
+    NSArray *inputArr = @[@123,@"123",@"",[NSNull null]];
+    [pay setValue:nil forKey:@"bwarray"];
+    XCTAssertNil(pay.bwstringarray,@"NSArray类型赋值不正确");
+    // string array
+    NSArray *outputsArr = @[@"123",@"123",@""];
+    [pay setValue:inputArr forKey:@"bwstringarray"];
+    XCTAssert([outputsArr isEqualToArray:pay.bwstringarray],@"NSSArray NSString类型赋值不正确");
+    
+    // number array
+    NSArray *outputnArr = @[@123,@123];
+    [pay setValue:inputArr forKey:@"bwnumberarray"];
+    XCTAssert([outputnArr isEqualToArray:pay.bwnumberarray],@"NSSArray NSNumber类型赋值不正确");
+    
+    // obj array
+//    [pay setValue:nil forKey:@"bwCustomObj"];
+//    XCTAssertNil(pay.bwobjarray,@"NSSArray自定义类型赋值不正确");
+//    NSDictionary *dic1 = @{
+//                           @"name":@"lj"
+//                           };
+//    NSDictionary *dic2 = @{
+//                           @"name":@"ygz"
+//                           };
+//    NSArray *inputoArr = @[dic1,dic2];
+//    [pay setValue:inputoArr forKey:@"bwobjarray"];
+}
+
 - (void)tearDown {
     // Put teardown code here. This method is called after the invocation of each test method in the class.
     [super tearDown];
-}
-
-- (void)testSetValueForKey {
-    // This is an example of a functional test case.
-    [_chameleonObj setValuesForKeysWithDictionary:_jsonDic];
-    [self printBWPay:_chameleonObj];
 }
 
 - (void)testPerformanceExample {

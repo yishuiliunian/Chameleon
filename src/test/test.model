@@ -11,11 +11,12 @@ model BWPay {
   string              bwstring
   data                bwdata
   number              bwnumber
-  array      string   bwarray
   dictionary          bwdic
   UserInfo            bwCustomObj
+  array      string   bwstringarray
+  array      number   bwnumberarray
+  array      UserInfo bwobjarray
   bool                bwbool
-
   uchar               bwuchar
   integer             bwinteger
   uinteger            bwuinteger
@@ -36,3 +37,4 @@ model BWPay {
 model UserInfo {
   string              name
 }
+

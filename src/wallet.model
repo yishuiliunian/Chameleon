@@ -15,7 +15,6 @@ model BWPay {
   dictionary          bwdic
   UserInfo            bwCustomObj
   bool                bwbool
-
   uchar               bwuchar
   integer             bwinteger
   uinteger            bwuinteger

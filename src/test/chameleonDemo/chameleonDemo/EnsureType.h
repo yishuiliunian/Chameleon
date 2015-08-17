@@ -28,4 +28,5 @@ FOUNDATION_EXTERN NSNumber * ensureNumberType(id value);
 FOUNDATION_EXTERN NSURL * ensureURLType(id value);
 FOUNDATION_EXTERN NSData * ensureDataType(id value);
 FOUNDATION_EXTERN NSDictionary * ensureDictionaryType(id value);
+FOUNDATION_EXTERN NSArray *ensureArrayType(id value);
 #endif
