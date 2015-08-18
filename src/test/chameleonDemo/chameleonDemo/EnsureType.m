@@ -40,7 +40,7 @@ unsigned char ensureUnsignedCharType(id value)
         return 0;
     }
     if ([value isKindOfClass:[NSNumber class]]) {
-        return [value charValue];
+        return [value unsignedCharValue];
     }
     // NSString ->unsigned char
     if ([value isKindOfClass:[NSString class]]) {
@@ -215,7 +215,7 @@ unsigned long long ensureUnsignedLongLongType(id value)
         NSScanner *scan = [NSScanner scannerWithString:value];
         unsigned long long val;
         if ([scan scanUnsignedLongLong:&val] && [scan isAtEnd]) {
-            return (unsigned int)val;
+            return val;
         }
     }
     NSCAssert(([value isKindOfClass:[NSNumber class]]) || ([value isKindOfClass:[NSString class]]), @"数据不是NSNumber或者NSString类型，无法向自定义类型转换");
@@ -339,7 +339,7 @@ NSString * ensureStringType(id value)
         return  value;
     }
     // NSNumber->NSString
-    if ([value respondsToSelector:@selector(stringValue)])
+    if ([value isKindOfClass:[NSNumber class]])
     {
         return [value stringValue];
     }

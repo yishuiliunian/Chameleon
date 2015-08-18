@@ -257,6 +257,7 @@ from core.utilities.constant import ModelType
     else if ([key isEqualToString:@"${p.name}"])
     {
         if ((!value) || ([value isKindOfClass:[NSNull class]])) {
+            _${p.name} = nil;
             return;
         }
         NSAssert([value isKindOfClass:[NSDictionary class]], @"数据不是dictionary类型，无法向自定义类型转化");
@@ -271,6 +272,7 @@ from core.utilities.constant import ModelType
     {
         if (nil == ensureArrayType(value))
         {
+            _${p.name} = nil;
             return;
         }
         NSArray* array = (NSArray*)value;

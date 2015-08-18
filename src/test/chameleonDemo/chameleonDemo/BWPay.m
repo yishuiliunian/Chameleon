@@ -79,6 +79,7 @@
     else if ([key isEqualToString:@"bwCustomObj"])
     {
         if ((!value) || ([value isKindOfClass:[NSNull class]])) {
+            _bwCustomObj = nil;
             return;
         }
         NSAssert([value isKindOfClass:[NSDictionary class]], @"数据不是dictionary类型，无法向自定义类型转化");
@@ -91,6 +92,7 @@
     {
         if (nil == ensureArrayType(value))
         {
+            _bwstringarray = nil;
             return;
         }
         NSArray* array = (NSArray*)value;
@@ -109,6 +111,7 @@
     {
         if (nil == ensureArrayType(value))
         {
+            _bwnumberarray = nil;
             return;
         }
         NSArray* array = (NSArray*)value;
@@ -127,6 +130,7 @@
     {
         if (nil == ensureArrayType(value))
         {
+            _bwobjarray = nil;
             return;
         }
         NSArray* array = (NSArray*)value;
