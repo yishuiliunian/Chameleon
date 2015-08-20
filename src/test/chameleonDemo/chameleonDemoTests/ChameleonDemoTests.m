@@ -17,7 +17,7 @@
 }
 @property (nonatomic, strong) NSMutableDictionary *jsonDic;
 @property (nonatomic, strong) BWPay *chameleonObj;
-@property (nonatomic, strong) NSArray *typeArr;
+@property (nonatomic, strong) NSArray *integerTypeArr;
 @end
 
 @implementation ChameleonDemoTests
@@ -26,13 +26,19 @@
     // Put setup code here. This method is called before the invocation of each test method in the class.
     [super setUp];
     _jsonDic = [NSMutableDictionary dictionaryWithCapacity:50];
-    _typeArr = @[@"bwinteger",@"bwuinteger",@"bwlong",@"bwulong",@"bwlonglong",@"bwulonglong",@"bwint",@"bwuint",@"bwintc",@"bwintd",@"bwuintc",@"bwuintd"];
+    _integerTypeArr = @[@"bwinteger",@"bwuinteger",@"bwlong",@"bwulong",@"bwlonglong",@"bwulonglong",@"bwint",@"bwuint",@"bwintc",@"bwintd",@"bwuintc",@"bwuintd",@"bwshort",@"bwushort",@"bwintb",@"bwuintb"];
     foundationInputArr = @[@1234,@123456,@"",@" ",@"1234",@"123.0"];
     charinputArr = @[@97,@"98",@"",@" "];
 }
 
 - (void)testSetValuesForKeys
 {
+    //----------------基本数据类型----------------
+    // input
+    // foundationInputArr = @[@1234,@123456,@"",@" ",@"1234",@"123.0"];
+    // output
+    short shortArr[] = {1234,-7616,0,0,1234,0};
+    unsigned short ushortArr[] = {1234,57920,0,0,1234,0};
     int intArr[] = {1234,123456,0,0,1234,0};
     unsigned uintArr[] = {1234,123456,0,0,1234,0};
     NSInteger integerArr[] = {1234,123456,0,0,1234,0};
@@ -41,6 +47,8 @@
     unsigned long ulongArr[] = {1234,123456,0,0,1234,0};
     long long longlongArr[] = {1234,123456,0,0,1234,0};
     unsigned long long ulonglongArr[] = {1234,123456,0,0,1234,0};
+    int16_t int16Arr[] = {1234,-7616,0,0,1234,0};
+    uint16_t uint16Arr[] = {1234,57920,0,0,1234,0};
     int32_t int32Arr[] = {1234,123456,0,0,1234,0};
     int64_t int64Arr[] = {1234,123456,0,0,1234,0};
     uint32_t uint32Arr[] = {1234,123456,0,0,1234,0};
@@ -48,8 +56,8 @@
     
     BWPay* pay = [BWPay new];
     for (int i = 0; i < foundationInputArr.count; i++) {
-        for (int j = 0; j < _typeArr.count; j++) {
-            [_jsonDic setValue:foundationInputArr[i] forKey:_typeArr[j]];
+        for (int j = 0; j < _integerTypeArr.count; j++) {
+            [_jsonDic setValue:foundationInputArr[i] forKey:_integerTypeArr[j]];
         }
         [pay setValuesForKeysWithDictionary:_jsonDic];
         // 比较大小
@@ -65,8 +73,50 @@
         XCTAssert((pay.bwuintd ==  uint64Arr[i]));
         XCTAssert((pay.bwinteger ==  integerArr[i]));
         XCTAssert((pay.bwuinteger ==  uintegerArr[i]));
+        XCTAssert((pay.bwshort ==  shortArr[i]));
+        XCTAssert((pay.bwushort ==  ushortArr[i]));
+        XCTAssert((pay.bwintb ==  int16Arr[i]));
+        XCTAssert((pay.bwuintb ==  uint16Arr[i]));
     }
     
+    // input NSArray、NSDictionary、NSURL、NSData...
+    // output 0
+    
+    NSDictionary *testDic = @{@"name":@"lj"};
+    NSURL *testUrl = [NSURL URLWithString:@"www.baidu.com"];
+    NSData *testData = [@"hello" dataUsingEncoding:NSUTF8StringEncoding];
+    NSArray *testArray = @[testDic,testUrl,testData,foundationInputArr];
+    for (int i = 0; i < testArray.count; i++) {
+        for (int j = 0; j < _integerTypeArr.count; j++) {
+            [_jsonDic setValue:testArray[i] forKey:_integerTypeArr[j]];
+        }
+    }
+    [pay setValuesForKeysWithDictionary:_jsonDic];
+    // 比较大小
+    XCTAssert(pay.bwint ==  0);
+    XCTAssert(pay.bwuint ==  0);
+    XCTAssert(pay.bwlong ==  0);
+    XCTAssert(pay.bwulong ==  0);
+    XCTAssert(pay.bwlonglong ==  0);
+    XCTAssert(pay.bwulonglong ==  0);
+    XCTAssert(pay.bwintc ==  0);
+    XCTAssert(pay.bwintd ==  0);
+    XCTAssert(pay.bwuintc ==  0);
+    XCTAssert(pay.bwuintd ==  0);
+    XCTAssert(pay.bwinteger ==  0);
+    XCTAssert(pay.bwuinteger ==  0);
+    XCTAssert(pay.bwshort ==  0);
+    XCTAssert(pay.bwushort ==  0);
+    XCTAssert(pay.bwintb ==  0);
+    XCTAssert(pay.bwuintb ==  0);
+    
+    //----------------基本对象类型----------------
+    // NSNumber NSString
+    NSArray *numberInputArr = @[@1234,@"1234",];
+    for (int i = 0; i < foundationInputArr.count; i++) {
+        [_jsonDic setValue:foundationInputArr[i] forKey:@"bwnumber"];
+        [_jsonDic setValue:foundationInputArr[i] forKey:@"bwnumber"];
+    }
     
 }
 // char

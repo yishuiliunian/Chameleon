@@ -23,8 +23,8 @@ class CLBuildListener(ChameleonListener):
            return  None
         return self.models[-1]
 
-    def exitC_property(self,ctx):
-        name = ctx.ID().getText()
+    def exitC_property_name(self, ctx):
+        name = ctx.ID().getText();
         type = ctx.p_type().getText()
         p = PropertyFactory(name, type)
         assert(p)
@@ -32,7 +32,17 @@ class CLBuildListener(ChameleonListener):
         model.addProperty(p)
         pass
 
-    def exitArray_property(self, ctx):
+    def exitC_property_second_name(self, ctx):
+        name = ctx.ID(0).getText()
+        secondName = ctx.ID(1).getText()
+        type = ctx.p_type().getText()
+        p = PropertyFactory(name, type, secondName)
+        assert(p)
+        model = self.topModel()
+        model.addProperty(p)
+        pass
+
+    def exitArray_property_name(self, ctx):
         name = ctx.ID().getText()
         type = ctx.p_type().getText()
         p = NSArrayProperty(name, type)
@@ -41,9 +51,20 @@ class CLBuildListener(ChameleonListener):
         model.addProperty(p)
         pass
 
+    def exitArray_property_second_name(self, ctx):
+        name = ctx.ID().getText()
+        secondName = ctx.ID(1).getText()
+        type = ctx.p_type().getText()
+        p = NSArrayProperty(name, type, secondName)
+        assert(p)
+        model = self.topModel()
+        model.addProperty(p)
+        pass
+
 
     def enterModel(self, ctx):
         name =  ctx.ID().getText()
+        print name
         model = OCModel(name)
         self.models.append(model)
         pass

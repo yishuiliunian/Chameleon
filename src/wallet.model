@@ -32,6 +32,3 @@ model BWPay {
   uint                bwuint
 }
 
-model UserInfo {
-  string              name
-}

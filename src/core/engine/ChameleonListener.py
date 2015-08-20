@@ -49,6 +49,33 @@ class ChameleonListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by ChameleonParser#c_property.
+    def enterC_property(self, ctx):
+        pass
+
+    # Exit a parse tree produced by ChameleonParser#c_property.
+    def exitC_property(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by ChameleonParser#c_property_name.
+    def enterC_property_name(self, ctx):
+        pass
+
+    # Exit a parse tree produced by ChameleonParser#c_property_name.
+    def exitC_property_name(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by ChameleonParser#c_property_second_name.
+    def enterC_property_second_name(self, ctx):
+        pass
+
+    # Exit a parse tree produced by ChameleonParser#c_property_second_name.
+    def exitC_property_second_name(self, ctx):
+        pass
+
+
     # Enter a parse tree produced by ChameleonParser#array_property.
     def enterArray_property(self, ctx):
         pass
@@ -58,12 +85,21 @@ class ChameleonListener(ParseTreeListener):
         pass
 
 
-    # Enter a parse tree produced by ChameleonParser#c_property.
-    def enterC_property(self, ctx):
+    # Enter a parse tree produced by ChameleonParser#array_property_name.
+    def enterArray_property_name(self, ctx):
         pass
 
-    # Exit a parse tree produced by ChameleonParser#c_property.
-    def exitC_property(self, ctx):
+    # Exit a parse tree produced by ChameleonParser#array_property_name.
+    def exitArray_property_name(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by ChameleonParser#array_property_second_name.
+    def enterArray_property_second_name(self, ctx):
+        pass
+
+    # Exit a parse tree produced by ChameleonParser#array_property_second_name.
+    def exitArray_property_second_name(self, ctx):
         pass
 
 

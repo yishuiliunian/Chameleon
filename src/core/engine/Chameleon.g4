@@ -16,14 +16,27 @@ words :'/*' NameStartChar+ '*/'
 ;
 
 
-property_line_words: (c_property| array_property) NEWLINE
+property_line_words: (c_property | array_property) NEWLINE
 ;
 
-array_property:'array' p_type ID
+c_property: c_property_name | c_property_second_name
 ;
 
-c_property: p_type ID
+c_property_name: p_type ID 
 ;
+
+c_property_second_name: p_type ID '['ID']'
+;
+
+array_property: array_property_name | array_property_second_name
+;
+
+array_property_name:'array' p_type ID
+;
+
+array_property_second_name: 'array' p_type ID '['ID']'
+;
+
 
 p_type: T_INT | T_String | T_Int64 | T_Int32 | T_Int8 | T_Int16 | T_UInt8 |T_UInt16 | T_UInt32 | T_UInt64 |ID
 ;
@@ -61,16 +74,16 @@ T_UInt64: 'uint64'
 COMMENT: '/*' [WORDS|ID|WS]+ '*/'
 ;
 
-ID : ('a'..'z' |'A'..'Z')+ ;
+ID : ('a'..'z' |'A'..'Z' |'_' | '0'..'9')+ ;
 INT : '0'..'9' + ;
 NEWLINE:'\r' ? '\n' ;
 WS : (' ' |'\t' |'\n' |'\r' ) ->skip;
 
 
-
-
 NameStartChar  :   'A'..'Z'
     |   'a'..'z'
+    |   '0'..'9'
+    |   '_'
     |   '\u00C0'..'\u00D6'
     |   '\u00D8'..'\u00F6'
     |   '\u00F8'..'\u02FF'

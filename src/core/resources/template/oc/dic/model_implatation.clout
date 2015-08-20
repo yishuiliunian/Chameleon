@@ -58,7 +58,11 @@ from core.utilities.constant import ModelType
 % for p in model.properties:
 % if isinstance(p, CharProperty):
     // char
+    %if p.secondName is None:
     else if ([key isEqualToString:@"${p.name}"])
+    %else: 
+    else if ([key isEqualToString:@"${p.secondName}"])
+    %endif
     {
         _${p.name} = ensureCharType(value);
     }

@@ -1,6 +1,6 @@
 /*支付协议*/
 model BWPay {
-  char                bwchar
+  char                bwchar             [mychar]
   short               bwshort
   long                bwlong
   longlong            bwlonglong
@@ -32,6 +32,7 @@ model BWPay {
   ulong               bwulong
   ulonglong           bwulonglong
   uint                bwuint
+  string              bw_string
 }
 
 model UserInfo {
