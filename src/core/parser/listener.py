@@ -52,7 +52,7 @@ class CLBuildListener(ChameleonListener):
         pass
 
     def exitArray_property_second_name(self, ctx):
-        name = ctx.ID().getText()
+        name = ctx.ID(0).getText()
         secondName = ctx.ID(1).getText()
         type = ctx.p_type().getText()
         p = NSArrayProperty(name, type, secondName)

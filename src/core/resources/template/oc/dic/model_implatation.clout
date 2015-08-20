@@ -61,7 +61,7 @@ from core.utilities.constant import ModelType
     %if p.secondName is None:
     else if ([key isEqualToString:@"${p.name}"])
     %else: 
-    else if ([key isEqualToString:@"${p.secondName}"])
+    else if ([key isEqualToString:@"${p.name}"] || [key isEqualToString:@"${p.secondName}"])
     %endif
     {
         _${p.name} = ensureCharType(value);
@@ -69,196 +69,308 @@ from core.utilities.constant import ModelType
 % endif
 % if isinstance(p, UnsignedCharProperty):
     // unsigned char
+    %if p.secondName is None:
     else if ([key isEqualToString:@"${p.name}"])
+    %else:
+    else if ([key isEqualToString:@"${p.name}"] || [key isEqualToString:@"${p.secondName}"])
+    %endif
     {
         _${p.name} = ensureUnsignedCharType(value);
     }
 % endif
 % if isinstance(p, ShortProperty):
     // short
+    %if p.secondName is None:
     else if ([key isEqualToString:@"${p.name}"])
+    %else:
+    else if ([key isEqualToString:@"${p.name}"] || [key isEqualToString:@"${p.secondName}"])
+    %endif
     {
         _${p.name} = ensureShortType(value);
     }
 % endif
 % if isinstance(p, UnsignedShortProperty):
     // unsigned short
+    %if p.secondName is None:
     else if ([key isEqualToString:@"${p.name}"])
+    %else:
+    else if ([key isEqualToString:@"${p.name}"] || [key isEqualToString:@"${p.secondName}"])
+    %endif
     {
         _${p.name} = ensureUnsignedShortType(value);
     }
 % endif
 % if isinstance(p, IntProperty):
     // int
+    %if p.secondName is None:
     else if ([key isEqualToString:@"${p.name}"])
+    %else:
+    else if ([key isEqualToString:@"${p.name}"] || [key isEqualToString:@"${p.secondName}"])
+    %endif
     {
         _${p.name} = ensureIntType(value);
     }
 % endif
 % if isinstance(p, UnsignedIntProperty):
     // unsigned int
+    %if p.secondName is None:
     else if ([key isEqualToString:@"${p.name}"])
+    %else:
+    else if ([key isEqualToString:@"${p.name}"] || [key isEqualToString:@"${p.secondName}"])
+    %endif
     {
         _${p.name} = ensureUnsignedIntType(value);
     }
 % endif
 % if isinstance(p, LongProperty):
     // long
+    %if p.secondName is None:
     else if ([key isEqualToString:@"${p.name}"])
+    %else:
+    else if ([key isEqualToString:@"${p.name}"] || [key isEqualToString:@"${p.secondName}"])
+    %endif
     {
         _${p.name} = ensureLongType(value);
     }
 % endif
 % if isinstance(p, UnsignedLongProperty):
     // unsigned long
+    %if p.secondName is None:
     else if ([key isEqualToString:@"${p.name}"])
+    %else:
+    else if ([key isEqualToString:@"${p.name}"] || [key isEqualToString:@"${p.secondName}"])
+    %endif
     {
         _${p.name} = ensureUnsignedLongType(value);
     }
 % endif
 % if isinstance(p, LongLongProperty):
     // longlong
+    %if p.secondName is None:
     else if ([key isEqualToString:@"${p.name}"])
+    %else:
+    else if ([key isEqualToString:@"${p.name}"] || [key isEqualToString:@"${p.secondName}"])
+    %endif
     {
         _${p.name} = ensureLongLongType(value);
     }
 % endif
 % if isinstance(p, UnsignedLongLongProperty):
     // unsigned long long
+    %if p.secondName is None:
     else if ([key isEqualToString:@"${p.name}"])
+    %else:
+    else if ([key isEqualToString:@"${p.name}"] || [key isEqualToString:@"${p.secondName}"])
+    %endif
     {
         _${p.name} = ensureUnsignedLongLongType(value);
     }
 % endif
 % if isinstance(p, Int8Property):
     // int8_t
+    %if p.secondName is None:
     else if ([key isEqualToString:@"${p.name}"])
+    %else:
+    else if ([key isEqualToString:@"${p.name}"] || [key isEqualToString:@"${p.secondName}"])
+    %endif
     {
         _${p.name} = ensureCharType(value);
     }
 % endif
 % if isinstance(p, UInt8Property):
     // uint8_t
+    %if p.secondName is None:
     else if ([key isEqualToString:@"${p.name}"])
+    %else:
+    else if ([key isEqualToString:@"${p.name}"] || [key isEqualToString:@"${p.secondName}"])
+    %endif
     {
         _${p.name} = ensureUnsignedCharType(value);
     }
 % endif
 % if isinstance(p, Int16Property):
     // int16_t
+    %if p.secondName is None:
     else if ([key isEqualToString:@"${p.name}"])
+    %else:
+    else if ([key isEqualToString:@"${p.name}"] || [key isEqualToString:@"${p.secondName}"])
+    %endif
     {
         _${p.name} = ensureShortType(value);
     }
 % endif
 % if isinstance(p, UInt16Property):
     // uint16_t
+    %if p.secondName is None:
     else if ([key isEqualToString:@"${p.name}"])
+    %else:
+    else if ([key isEqualToString:@"${p.name}"] || [key isEqualToString:@"${p.secondName}"])
+    %endif
     {
         _${p.name} = ensureUnsignedShortType(value);
     }
 % endif
 % if isinstance(p, Int32Property):
     // int32_t
+    %if p.secondName is None:
     else if ([key isEqualToString:@"${p.name}"])
+    %else:
+    else if ([key isEqualToString:@"${p.name}"] || [key isEqualToString:@"${p.secondName}"])
+    %endif
     {
         _${p.name} = ensureIntType(value);
     }
 % endif
 % if isinstance(p, UInt32Property):
     // uint32_t
+    %if p.secondName is None:
     else if ([key isEqualToString:@"${p.name}"])
+    %else:
+    else if ([key isEqualToString:@"${p.name}"] || [key isEqualToString:@"${p.secondName}"])
+    %endif
     {
         _${p.name} = ensureUnsignedIntType(value);
     }
 % endif
 % if isinstance(p, Int64Property):
     // int64
+    %if p.secondName is None:
     else if ([key isEqualToString:@"${p.name}"])
+    %else:
+    else if ([key isEqualToString:@"${p.name}"] || [key isEqualToString:@"${p.secondName}"])
+    %endif
     {
         _${p.name} = ensureLongLongType(value);
     }
 % endif
 % if isinstance(p, UInt64Property):
     // uint64_t
+    %if p.secondName is None:
     else if ([key isEqualToString:@"${p.name}"])
+    %else:
+    else if ([key isEqualToString:@"${p.name}"] || [key isEqualToString:@"${p.secondName}"])
+    %endif
     {
         _${p.name} = ensureUnsignedLongLongType(value);
     }
 % endif
 % if isinstance(p, FloatProperty):
     // float
+    %if p.secondName is None:
     else if ([key isEqualToString:@"${p.name}"])
+    %else:
+    else if ([key isEqualToString:@"${p.name}"] || [key isEqualToString:@"${p.secondName}"])
+    %endif
     {
         _${p.name} = ensureFloatType(value);
     }
 % endif
 % if isinstance(p, DoubleProperty):
     // double
+    %if p.secondName is None:
     else if ([key isEqualToString:@"${p.name}"])
+    %else:
+    else if ([key isEqualToString:@"${p.name}"] || [key isEqualToString:@"${p.secondName}"])
+    %endif
     {
         _${p.name} = ensureDoubleType(value);
     }
 % endif
 % if isinstance(p, BoolProperty):
     // BOOL
+    %if p.secondName is None:
     else if ([key isEqualToString:@"${p.name}"])
+    %else:
+    else if ([key isEqualToString:@"${p.name}"] || [key isEqualToString:@"${p.secondName}"])
+    %endif
     {
         _${p.name} = ensureBoolType(value);
     }
 % endif
 % if isinstance(p, NSIntegerProperty):
     // NSInteger
+    %if p.secondName is None:
     else if ([key isEqualToString:@"${p.name}"])
+    %else:
+    else if ([key isEqualToString:@"${p.name}"] || [key isEqualToString:@"${p.secondName}"])
+    %endif
     {
         _${p.name} = ensureIntegerType(value);
     }
 % endif
 % if isinstance(p, NSUIntegerProperty):
     // NSUInteger
+    %if p.secondName is None:
     else if ([key isEqualToString:@"${p.name}"])
+    %else:
+    else if ([key isEqualToString:@"${p.name}"] || [key isEqualToString:@"${p.secondName}"])
+    %endif
     {
         _${p.name} = ensureUIntegerType(value);
     }
 % endif
 % if isinstance(p, NSStringProperty):
     // NSString
+    %if p.secondName is None:
     else if ([key isEqualToString:@"${p.name}"])
+    %else:
+    else if ([key isEqualToString:@"${p.name}"] || [key isEqualToString:@"${p.secondName}"])
+    %endif
     {
         _${p.name} = ensureStringType(value);
      }
 % endif
 % if isinstance(p, NSNumberProperty):
     // NSNumber
+    %if p.secondName is None:
     else if ([key isEqualToString:@"${p.name}"])
+    %else:
+    else if ([key isEqualToString:@"${p.name}"] || [key isEqualToString:@"${p.secondName}"])
+    %endif
     {
         _${p.name} = ensureNumberType(value);
     }
 % endif
 % if isinstance(p, NSURLProperty):
     // NSURL
+    %if p.secondName is None:
     else if ([key isEqualToString:@"${p.name}"])
+    %else:
+    else if ([key isEqualToString:@"${p.name}"] || [key isEqualToString:@"${p.secondName}"])
+    %endif
     {
         _${p.name} = ensureURLType(value);
     }
 % endif
 % if isinstance(p, NSDictionaryProperty):
     // NSDictionary
+    %if p.secondName is None:
     else if ([key isEqualToString:@"${p.name}"])
+    %else:
+    else if ([key isEqualToString:@"${p.name}"] || [key isEqualToString:@"${p.secondName}"])
+    %endif
     {
         _${p.name} = ensureDictionaryType(value);
     }
 %endif
 % if isinstance(p, NSDataProperty):
     // NSData
+    %if p.secondName is None:
     else if ([key isEqualToString:@"${p.name}"])
+    %else:
+    else if ([key isEqualToString:@"${p.name}"] || [key isEqualToString:@"${p.secondName}"])
+    %endif
     {
         _${p.name} = ensureDataType(value);
     }
 %endif
 % if isinstance(p, CustomObjectProperty):
     // 自定义类型
+    %if p.secondName is None:
     else if ([key isEqualToString:@"${p.name}"])
+    %else:
+    else if ([key isEqualToString:@"${p.name}"] || [key isEqualToString:@"${p.secondName}"])
+    %endif
     {
         if ((!value) || ([value isKindOfClass:[NSNull class]])) {
             _${p.name} = nil;
@@ -272,7 +384,11 @@ from core.utilities.constant import ModelType
 % endif
 % if isinstance(p, NSArrayProperty):
     // NSArray
+    %if p.secondName is None:
     else if ([key isEqualToString:@"${p.name}"])
+    %else:
+    else if ([key isEqualToString:@"${p.name}"] || [key isEqualToString:@"${p.secondName}"])
+    %endif
     {
         if (nil == ensureArrayType(value))
         {

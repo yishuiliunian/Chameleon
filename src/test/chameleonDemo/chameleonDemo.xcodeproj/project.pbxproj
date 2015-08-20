@@ -13,6 +13,9 @@
 		44965A361B81AA0500B8AD02 /* EnsureType.m in Sources */ = {isa = PBXBuildFile; fileRef = 44965A2B1B81733100B8AD02 /* EnsureType.m */; };
 		44965A371B81AA1600B8AD02 /* BWPay.m in Sources */ = {isa = PBXBuildFile; fileRef = 44965A291B81733100B8AD02 /* BWPay.m */; };
 		44965A381B81AA1A00B8AD02 /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 44965A341B81A5D700B8AD02 /* UserInfo.m */; };
+		44965A521B85AD1300B8AD02 /* BWPay_Sname.m in Sources */ = {isa = PBXBuildFile; fileRef = 44965A511B85AD1300B8AD02 /* BWPay_Sname.m */; };
+		44965A531B85AE4B00B8AD02 /* BWPay_Sname.m in Sources */ = {isa = PBXBuildFile; fileRef = 44965A511B85AD1300B8AD02 /* BWPay_Sname.m */; };
+		44965A551B85AE9E00B8AD02 /* ChameleonSnameDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 44965A541B85AE9E00B8AD02 /* ChameleonSnameDemoTests.m */; };
 		44CB91FD1B6F42BA00A515DD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 44CB91FC1B6F42BA00A515DD /* main.m */; };
 		44CB93C81B7C41B500A515DD /* EnsureTypeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 44CB93C71B7C41B500A515DD /* EnsureTypeTests.m */; };
 		44CB93EA1B7CA3FC00A515DD /* ChameleonDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 44CB93E91B7CA3FC00A515DD /* ChameleonDemoTests.m */; };
@@ -38,6 +41,9 @@
 		44965A311B81A4C600B8AD02 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		44965A331B81A5D700B8AD02 /* UserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserInfo.h; sourceTree = "<group>"; };
 		44965A341B81A5D700B8AD02 /* UserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserInfo.m; sourceTree = "<group>"; };
+		44965A501B85AD1300B8AD02 /* BWPay_Sname.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BWPay_Sname.h; sourceTree = "<group>"; };
+		44965A511B85AD1300B8AD02 /* BWPay_Sname.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BWPay_Sname.m; sourceTree = "<group>"; };
+		44965A541B85AE9E00B8AD02 /* ChameleonSnameDemoTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChameleonSnameDemoTests.m; sourceTree = "<group>"; };
 		44CB91F91B6F42BA00A515DD /* chameleonDemo */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = chameleonDemo; sourceTree = BUILT_PRODUCTS_DIR; };
 		44CB91FC1B6F42BA00A515DD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		44CB93C31B7C41B500A515DD /* chameleonDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = chameleonDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -93,6 +99,8 @@
 				44965A291B81733100B8AD02 /* BWPay.m */,
 				44965A2A1B81733100B8AD02 /* EnsureType.h */,
 				44965A2B1B81733100B8AD02 /* EnsureType.m */,
+				44965A501B85AD1300B8AD02 /* BWPay_Sname.h */,
+				44965A511B85AD1300B8AD02 /* BWPay_Sname.m */,
 			);
 			path = chameleonDemo;
 			sourceTree = "<group>";
@@ -102,6 +110,7 @@
 			children = (
 				44CB93C71B7C41B500A515DD /* EnsureTypeTests.m */,
 				44CB93E91B7CA3FC00A515DD /* ChameleonDemoTests.m */,
+				44965A541B85AE9E00B8AD02 /* ChameleonSnameDemoTests.m */,
 				44CB93C51B7C41B500A515DD /* Supporting Files */,
 			);
 			path = chameleonDemoTests;
@@ -205,6 +214,7 @@
 				44965A351B81A5D700B8AD02 /* UserInfo.m in Sources */,
 				44CB91FD1B6F42BA00A515DD /* main.m in Sources */,
 				44965A2F1B81733100B8AD02 /* EnsureType.m in Sources */,
+				44965A521B85AD1300B8AD02 /* BWPay_Sname.m in Sources */,
 				44965A2E1B81733100B8AD02 /* BWPay.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -213,6 +223,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44965A551B85AE9E00B8AD02 /* ChameleonSnameDemoTests.m in Sources */,
+				44965A531B85AE4B00B8AD02 /* BWPay_Sname.m in Sources */,
 				44965A381B81AA1A00B8AD02 /* UserInfo.m in Sources */,
 				44965A371B81AA1600B8AD02 /* BWPay.m in Sources */,
 				44965A361B81AA0500B8AD02 /* EnsureType.m in Sources */,
