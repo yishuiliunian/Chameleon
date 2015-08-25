@@ -18,11 +18,11 @@ from core.codegen.property import CustomObjectProperty
   % endif
 % endfor
 
-@interface ${model.name} : NSObject
+@interface ${model.name} : NSObject<NSCopying>
 
 % for i in model.properties:
   % if isinstance(i, ObjectProperty):
-@property (strong, nonatomic) ${i.type}* ${i.name};
+@property (strong, nonatomic) ${i.type} *${i.name};
   % elif isinstance(i, FundamentalProperty):
 @property (assign, nonatomic) ${i.type} ${i.name};
   %endif

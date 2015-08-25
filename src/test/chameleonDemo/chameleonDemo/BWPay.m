@@ -12,6 +12,44 @@
 
 @implementation BWPay
 
+- (id)copyWithZone:(NSZone *)zone
+{
+    BWPay *copyedModel = [[self.class allocWithZone:zone] init];
+    copyedModel.bwchar = self.bwchar;
+    copyedModel.bwshort = self.bwshort;
+    copyedModel.bwlong = self.bwlong;
+    copyedModel.bwlonglong = self.bwlonglong;
+    copyedModel.bwint = self.bwint;
+    copyedModel.bwfloat = self.bwfloat;
+    copyedModel.bwdouble = self.bwdouble;
+    copyedModel.bwurl = self.bwurl.copy;
+    copyedModel.bwstring = self.bwstring.copy;
+    copyedModel.bwdata = self.bwdata.copy;
+    copyedModel.bwnumber = self.bwnumber.copy;
+    copyedModel.bwdic = [[NSDictionary alloc]initWithDictionary:self.bwdic copyItems:YES];
+    copyedModel.bwCustomObj = self.bwCustomObj.copy;
+    copyedModel.bwstringarray = [[NSArray alloc]initWithArray:self.bwstringarray copyItems:YES];
+    copyedModel.bwnumberarray = [[NSArray alloc]initWithArray:self.bwnumberarray copyItems:YES];
+    copyedModel.bwobjarray = [[NSArray alloc]initWithArray:self.bwobjarray copyItems:YES];
+    copyedModel.bwbool = self.bwbool;
+    copyedModel.bwuchar = self.bwuchar;
+    copyedModel.bwinteger = self.bwinteger;
+    copyedModel.bwuinteger = self.bwuinteger;
+    copyedModel.bwinta = self.bwinta;
+    copyedModel.bwintb = self.bwintb;
+    copyedModel.bwintc = self.bwintc;
+    copyedModel.bwintd = self.bwintd;
+    copyedModel.bwushort = self.bwushort;
+    copyedModel.bwuinta = self.bwuinta;
+    copyedModel.bwuintb = self.bwuintb;
+    copyedModel.bwuintc = self.bwuintc;
+    copyedModel.bwuintd = self.bwuintd;
+    copyedModel.bwulong = self.bwulong;
+    copyedModel.bwulonglong = self.bwulonglong;
+    copyedModel.bwuint = self.bwuint;
+    return copyedModel;
+}
+
 - (void)setValue:(id)value forKey:(NSString *)key
 {
     if (NO){}

@@ -52,6 +52,25 @@ from core.utilities.constant import ModelType
 
 @implementation ${model.name}
 
+- (id)copyWithZone:(NSZone *)zone
+{
+    ${model.name} *copyedModel = [[self.class allocWithZone:zone] init];
+    % for p in model.properties:
+    % if isinstance(p, ObjectProperty):
+    % if isinstance(p, NSArrayProperty):
+    copyedModel.${p.name} = [[NSArray alloc]initWithArray:self.${p.name} copyItems:YES];
+    % elif isinstance(p, NSDictionaryProperty):
+    copyedModel.${p.name} = [[NSDictionary alloc]initWithDictionary:self.${p.name} copyItems:YES];
+    % else:
+    copyedModel.${p.name} = self.${p.name}.copy;
+    % endif
+    % elif isinstance(p, FundamentalProperty):
+    copyedModel.${p.name} = self.${p.name};
+    % endif
+    % endfor
+    return copyedModel;
+}
+
 - (void)setValue:(id)value forKey:(NSString *)key
 {
     if (NO){}

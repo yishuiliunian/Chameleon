@@ -11,6 +11,13 @@
 
 @implementation UserInfo
 
+- (id)copyWithZone:(NSZone *)zone
+{
+    UserInfo *copyedModel = [[self.class allocWithZone:zone] init];
+    copyedModel.name = self.name.copy;
+    return copyedModel;
+}
+
 - (void)setValue:(id)value forKey:(NSString *)key
 {
     if (NO){}
