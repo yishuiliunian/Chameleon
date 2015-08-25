@@ -208,3 +208,15 @@ def is_foundation_object_propery(type):
         return True
     else:
         return False
+
+def is_oc_object_propery(type):
+    if type == ModelType.String:
+        return True
+    elif type == ModelType.Number:
+        return True
+    elif type == ModelType.Data:
+        return True
+    elif type == ModelType.URL:
+        return True
+    else:
+        return False

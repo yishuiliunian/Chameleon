@@ -47,4 +47,11 @@ class OCGenerator:
         if self.type == OCOutType.Dic:
             self.outputFileWithRender("EnsureType.h", "EnsureType.h")
             self.outputFileWithRender("EnsureType.m", "EnsureType.m")
+            self.outputFileWithRender("BWTODictionaryProtocol.h", "BWTODictionaryProtocol.h")
+            self.outputFileWithRender("NSObject+TODictionary.h", "NSObject+TODictionary.h")
+            self.outputFileWithRender("NSObject+TODictionary.m", "NSObject+TODictionary.m")
+            self.outputFileWithRender("NSArray+TODictionary.h", "NSArray+TODictionary.h")
+            self.outputFileWithRender("NSArray+TODictionary.m", "NSArray+TODictionary.m")
+            self.outputFileWithRender("NSDictionary+TODictionary.h", "NSDictionary+TODictionary.h")
+            self.outputFileWithRender("NSDictionary+TODictionary.m", "NSDictionary+TODictionary.m")
         

@@ -7,10 +7,55 @@
 //
 
 #import "BWPay.h"
+#import "NSObject+TODictionary.h"
 #import "EnsureType.h"
 #import "UserInfo.h"
 
 @implementation BWPay
+
+- (id)toDictionaryValue
+{
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    [dic setObject:[NSNumber numberWithChar:self.bwchar] forKey:@"bwchar"];
+    [dic setObject:[NSNumber numberWithShort:self.bwshort] forKey:@"bwshort"];
+    [dic setObject:[NSNumber numberWithLong:self.bwlong] forKey:@"bwlong"];
+    [dic setObject:[NSNumber numberWithLongLong:self.bwlonglong] forKey:@"bwlonglong"];
+    [dic setObject:[NSNumber numberWithInt:self.bwint] forKey:@"bwint"];
+    [dic setObject:[NSNumber numberWithFloat:self.bwfloat] forKey:@"bwfloat"];
+    [dic setObject:[NSNumber numberWithDouble:self.bwdouble] forKey:@"bwdouble"];
+    [dic setObject:self.bwurl forKey:@"bwurl"];
+    [dic setObject:self.bwstring forKey:@"bwstring"];
+    [dic setObject:self.bwdata forKey:@"bwdata"];
+    [dic setObject:self.bwnumber forKey:@"bwnumber"];
+    [dic setObject:[self.bwdic toDictionaryValue] forKey:@"bwdic"];
+    [dic setObject:[self.bwCustomObj toDictionaryValue] forKey:@"bwCustomObj"];
+    [dic setObject:[self.bwstringarray toDictionaryValue] forKey:@"bwstringarray"];
+    [dic setObject:[self.bwnumberarray toDictionaryValue] forKey:@"bwnumberarray"];
+    [dic setObject:[self.bwobjarray toDictionaryValue] forKey:@"bwobjarray"];
+    [dic setObject:[NSNumber numberWithBool:self.bwbool] forKey:@"bwbool"];
+    [dic setObject:[NSNumber numberWithUnsignedChar:self.bwuchar] forKey:@"bwuchar"];
+    [dic setObject:[NSNumber numberWithInteger:self.bwinteger] forKey:@"bwinteger"];
+    [dic setObject:[NSNumber numberWithInteger:self.bwuinteger] forKey:@"bwuinteger"];
+    [dic setObject:[NSNumber numberWithChar:self.bwinta] forKey:@"bwinta"];
+    [dic setObject:[NSNumber numberWithUnsignedShort:self.bwushort] forKey:@"bwushort"];
+    [dic setObject:[NSNumber numberWithUnsignedChar:self.bwuinta] forKey:@"bwuinta"];
+    [dic setObject:[NSNumber numberWithShort:self.bwuintb] forKey:@"bwuintb"];
+    [dic setObject:[NSNumber numberWithUnsignedShort:self.bwuintb] forKey:@"bwuintb"];
+    [dic setObject:[NSNumber numberWithInt:self.bwuintc] forKey:@"bwuintc"];
+    [dic setObject:[NSNumber numberWithUnsignedInt:self.bwuintc] forKey:@"bwuintc"];
+    [dic setObject:[NSNumber numberWithLongLong:self.bwuintd] forKey:@"bwuintd"];
+    [dic setObject:[NSNumber numberWithUnsignedLongLong:self.bwuintd] forKey:@"bwuintd"];
+    [dic setObject:[NSNumber numberWithUnsignedLong:self.bwulong] forKey:@"bwulong"];
+    [dic setObject:[NSNumber numberWithUnsignedLongLong:self.bwulonglong] forKey:@"bwulonglong"];
+    [dic setObject:[NSNumber numberWithUnsignedInt:self.bwuint] forKey:@"bwuint"];
+    return dic;
+}
+
+- (id)toServerDictionaryValue
+{
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    return dic;
+}
 
 - (id)copyWithZone:(NSZone *)zone
 {

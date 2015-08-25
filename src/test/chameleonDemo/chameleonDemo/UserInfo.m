@@ -7,9 +7,23 @@
 //
 
 #import "UserInfo.h"
+#import "NSObject+TODictionary.h"
 #import "EnsureType.h"
 
 @implementation UserInfo
+
+- (id)toDictionaryValue
+{
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    [dic setObject:self.name forKey:@"name"];
+    return dic;
+}
+
+- (id)toServerDictionaryValue
+{
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    return dic;
+}
 
 - (id)copyWithZone:(NSZone *)zone
 {

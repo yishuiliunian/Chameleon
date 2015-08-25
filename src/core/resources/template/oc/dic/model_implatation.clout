@@ -40,9 +40,11 @@ from core.codegen.property import NSURLProperty
 from core.codegen.property import NSDataProperty
 from core.codegen.property import CustomObjectProperty
 from core.codegen.property import is_foundation_object_propery
+from core.codegen.property import is_oc_object_propery
 from core.utilities.constant import ModelType
 %>
 #import "${model.name}.h"
+#import "NSObject+TODictionary.h"
 #import "EnsureType.h"
 % for o in model.properties:
   % if isinstance(o, CustomObjectProperty):
@@ -51,6 +53,102 @@ from core.utilities.constant import ModelType
 % endfor
 
 @implementation ${model.name}
+
+- (id)toDictionaryValue
+{
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    % for p in model.properties:
+    % if isinstance(p, CharProperty):
+    [dic setObject:[NSNumber numberWithChar:self.${p.name}] forKey:@"${p.name}"];
+    %endif
+    % if isinstance(p, UnsignedCharProperty):
+    [dic setObject:[NSNumber numberWithUnsignedChar:self.${p.name}] forKey:@"${p.name}"];
+    %endif
+    % if isinstance(p, ShortProperty):
+    [dic setObject:[NSNumber numberWithShort:self.${p.name}] forKey:@"${p.name}"];
+    %endif
+    % if isinstance(p, UnsignedShortProperty):
+    [dic setObject:[NSNumber numberWithUnsignedShort:self.${p.name}] forKey:@"${p.name}"];
+    %endif
+    % if isinstance(p, IntProperty):
+    [dic setObject:[NSNumber numberWithInt:self.${p.name}] forKey:@"${p.name}"];
+    %endif
+    % if isinstance(p, UnsignedIntProperty):
+    [dic setObject:[NSNumber numberWithUnsignedInt:self.${p.name}] forKey:@"${p.name}"];
+    %endif
+    % if isinstance(p, LongProperty):
+    [dic setObject:[NSNumber numberWithLong:self.${p.name}] forKey:@"${p.name}"];
+    %endif
+    % if isinstance(p, UnsignedLongProperty):
+    [dic setObject:[NSNumber numberWithUnsignedLong:self.${p.name}] forKey:@"${p.name}"];
+    %endif
+    % if isinstance(p, LongLongProperty):
+    [dic setObject:[NSNumber numberWithLongLong:self.${p.name}] forKey:@"${p.name}"];
+    %endif
+    % if isinstance(p, UnsignedLongLongProperty):
+    [dic setObject:[NSNumber numberWithUnsignedLongLong:self.${p.name}] forKey:@"${p.name}"];
+    %endif
+    % if isinstance(p, FloatProperty):
+    [dic setObject:[NSNumber numberWithFloat:self.${p.name}] forKey:@"${p.name}"];
+    %endif
+    % if isinstance(p, DoubleProperty):
+    [dic setObject:[NSNumber numberWithDouble:self.${p.name}] forKey:@"${p.name}"];
+    %endif
+    % if isinstance(p, NSIntegerProperty):
+    [dic setObject:[NSNumber numberWithInteger:self.${p.name}] forKey:@"${p.name}"];
+    %endif
+    % if isinstance(p, NSUIntegerProperty):
+    [dic setObject:[NSNumber numberWithInteger:self.${p.name}] forKey:@"${p.name}"];
+    %endif
+    % if isinstance(p, Int8Property):
+    [dic setObject:[NSNumber numberWithChar:self.${p.name}] forKey:@"${p.name}"];
+    %endif
+    % if isinstance(p, UInt8Property):
+    [dic setObject:[NSNumber numberWithUnsignedChar:self.${p.name}] forKey:@"${p.name}"];
+    %endif
+    % if isinstance(p, UInt16Property):
+    [dic setObject:[NSNumber numberWithShort:self.${p.name}] forKey:@"${p.name}"];
+    %endif
+    % if isinstance(p, UInt16Property):
+    [dic setObject:[NSNumber numberWithUnsignedShort:self.${p.name}] forKey:@"${p.name}"];
+    %endif
+    % if isinstance(p, UInt32Property):
+    [dic setObject:[NSNumber numberWithInt:self.${p.name}] forKey:@"${p.name}"];
+    %endif
+    % if isinstance(p, UInt32Property):
+    [dic setObject:[NSNumber numberWithUnsignedInt:self.${p.name}] forKey:@"${p.name}"];
+    %endif
+     % if isinstance(p, UInt64Property):
+    [dic setObject:[NSNumber numberWithLongLong:self.${p.name}] forKey:@"${p.name}"];
+    %endif
+    % if isinstance(p, UInt64Property):
+    [dic setObject:[NSNumber numberWithUnsignedLongLong:self.${p.name}] forKey:@"${p.name}"];
+    %endif
+    % if isinstance(p, BoolProperty):
+    [dic setObject:[NSNumber numberWithBool:self.${p.name}] forKey:@"${p.name}"];
+    %endif
+    % if isinstance(p, ObjectProperty):
+    % if isinstance(p, NSStringProperty):
+    [dic setObject:self.${p.name} forKey:@"${p.name}"];
+    % elif isinstance(p, NSNumberProperty):
+    [dic setObject:self.${p.name} forKey:@"${p.name}"];
+    % elif isinstance(p, NSDataProperty):
+    [dic setObject:self.${p.name} forKey:@"${p.name}"];
+    % elif isinstance(p, NSURLProperty):
+    [dic setObject:self.${p.name} forKey:@"${p.name}"];
+    % else:
+    [dic setObject:[self.${p.name} toDictionaryValue] forKey:@"${p.name}"];
+    %endif
+    %endif
+    %endfor
+    return dic;
+}
+
+- (id)toServerDictionaryValue
+{
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    return dic;
+}
 
 - (id)copyWithZone:(NSZone *)zone
 {

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		449622F81B8C7510000DCE4F /* NSDictionary+TODictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 449622F71B8C7510000DCE4F /* NSDictionary+TODictionary.m */; };
+		449622FD1B8C75C4000DCE4F /* NSObject+TODictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 449622FC1B8C75C4000DCE4F /* NSObject+TODictionary.m */; };
+		449623001B8C767A000DCE4F /* NSArray+TODictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 449622FF1B8C767A000DCE4F /* NSArray+TODictionary.m */; };
 		44965A2E1B81733100B8AD02 /* BWPay.m in Sources */ = {isa = PBXBuildFile; fileRef = 44965A291B81733100B8AD02 /* BWPay.m */; };
 		44965A2F1B81733100B8AD02 /* EnsureType.m in Sources */ = {isa = PBXBuildFile; fileRef = 44965A2B1B81733100B8AD02 /* EnsureType.m */; };
 		44965A351B81A5D700B8AD02 /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 44965A341B81A5D700B8AD02 /* UserInfo.m */; };
@@ -34,6 +37,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		449622F61B8C7510000DCE4F /* NSDictionary+TODictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+TODictionary.h"; sourceTree = "<group>"; };
+		449622F71B8C7510000DCE4F /* NSDictionary+TODictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+TODictionary.m"; sourceTree = "<group>"; };
+		449622FA1B8C7551000DCE4F /* BWTODictionaryProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BWTODictionaryProtocol.h; sourceTree = "<group>"; };
+		449622FB1B8C75C4000DCE4F /* NSObject+TODictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+TODictionary.h"; sourceTree = "<group>"; };
+		449622FC1B8C75C4000DCE4F /* NSObject+TODictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+TODictionary.m"; sourceTree = "<group>"; };
+		449622FE1B8C767A000DCE4F /* NSArray+TODictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+TODictionary.h"; sourceTree = "<group>"; };
+		449622FF1B8C767A000DCE4F /* NSArray+TODictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+TODictionary.m"; sourceTree = "<group>"; };
 		44965A281B81733100B8AD02 /* BWPay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BWPay.h; sourceTree = "<group>"; };
 		44965A291B81733100B8AD02 /* BWPay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BWPay.m; sourceTree = "<group>"; };
 		44965A2A1B81733100B8AD02 /* EnsureType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnsureType.h; sourceTree = "<group>"; };
@@ -70,6 +80,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		449622F51B8C7449000DCE4F /* category */ = {
+			isa = PBXGroup;
+			children = (
+				449622FB1B8C75C4000DCE4F /* NSObject+TODictionary.h */,
+				449622FC1B8C75C4000DCE4F /* NSObject+TODictionary.m */,
+				449622F61B8C7510000DCE4F /* NSDictionary+TODictionary.h */,
+				449622F71B8C7510000DCE4F /* NSDictionary+TODictionary.m */,
+				449622FE1B8C767A000DCE4F /* NSArray+TODictionary.h */,
+				449622FF1B8C767A000DCE4F /* NSArray+TODictionary.m */,
+			);
+			name = category;
+			sourceTree = "<group>";
+		};
+		449622F91B8C7517000DCE4F /* procotol */ = {
+			isa = PBXGroup;
+			children = (
+				449622FA1B8C7551000DCE4F /* BWTODictionaryProtocol.h */,
+			);
+			name = procotol;
+			sourceTree = "<group>";
+		};
 		44CB91F01B6F42BA00A515DD = {
 			isa = PBXGroup;
 			children = (
@@ -92,6 +123,8 @@
 		44CB91FB1B6F42BA00A515DD /* chameleonDemo */ = {
 			isa = PBXGroup;
 			children = (
+				449622F91B8C7517000DCE4F /* procotol */,
+				449622F51B8C7449000DCE4F /* category */,
 				44CB91FC1B6F42BA00A515DD /* main.m */,
 				44965A281B81733100B8AD02 /* BWPay.h */,
 				44965A291B81733100B8AD02 /* BWPay.m */,
@@ -215,7 +248,10 @@
 				44CB91FD1B6F42BA00A515DD /* main.m in Sources */,
 				44965A2F1B81733100B8AD02 /* EnsureType.m in Sources */,
 				44965A521B85AD1300B8AD02 /* BWPay_Sname.m in Sources */,
+				449622FD1B8C75C4000DCE4F /* NSObject+TODictionary.m in Sources */,
+				449623001B8C767A000DCE4F /* NSArray+TODictionary.m in Sources */,
 				44965A2E1B81733100B8AD02 /* BWPay.m in Sources */,
+				449622F81B8C7510000DCE4F /* NSDictionary+TODictionary.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
