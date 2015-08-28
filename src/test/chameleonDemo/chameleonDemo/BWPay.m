@@ -16,44 +16,78 @@
 - (id)toDictionaryValue
 {
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
-    [dic setObject:[NSNumber numberWithChar:self.bwchar] forKey:@"bwchar"];
-    [dic setObject:[NSNumber numberWithShort:self.bwshort] forKey:@"bwshort"];
-    [dic setObject:[NSNumber numberWithLong:self.bwlong] forKey:@"bwlong"];
-    [dic setObject:[NSNumber numberWithLongLong:self.bwlonglong] forKey:@"bwlonglong"];
-    [dic setObject:[NSNumber numberWithInt:self.bwint] forKey:@"bwint"];
-    [dic setObject:[NSNumber numberWithFloat:self.bwfloat] forKey:@"bwfloat"];
-    [dic setObject:[NSNumber numberWithDouble:self.bwdouble] forKey:@"bwdouble"];
-    [dic setObject:self.bwurl forKey:@"bwurl"];
-    [dic setObject:self.bwstring forKey:@"bwstring"];
-    [dic setObject:self.bwdata forKey:@"bwdata"];
-    [dic setObject:self.bwnumber forKey:@"bwnumber"];
-    [dic setObject:[self.bwdic toDictionaryValue] forKey:@"bwdic"];
-    [dic setObject:[self.bwCustomObj toDictionaryValue] forKey:@"bwCustomObj"];
-    [dic setObject:[self.bwstringarray toDictionaryValue] forKey:@"bwstringarray"];
-    [dic setObject:[self.bwnumberarray toDictionaryValue] forKey:@"bwnumberarray"];
-    [dic setObject:[self.bwobjarray toDictionaryValue] forKey:@"bwobjarray"];
-    [dic setObject:[NSNumber numberWithBool:self.bwbool] forKey:@"bwbool"];
-    [dic setObject:[NSNumber numberWithUnsignedChar:self.bwuchar] forKey:@"bwuchar"];
-    [dic setObject:[NSNumber numberWithInteger:self.bwinteger] forKey:@"bwinteger"];
-    [dic setObject:[NSNumber numberWithInteger:self.bwuinteger] forKey:@"bwuinteger"];
-    [dic setObject:[NSNumber numberWithChar:self.bwinta] forKey:@"bwinta"];
-    [dic setObject:[NSNumber numberWithUnsignedShort:self.bwushort] forKey:@"bwushort"];
-    [dic setObject:[NSNumber numberWithUnsignedChar:self.bwuinta] forKey:@"bwuinta"];
-    [dic setObject:[NSNumber numberWithShort:self.bwuintb] forKey:@"bwuintb"];
-    [dic setObject:[NSNumber numberWithUnsignedShort:self.bwuintb] forKey:@"bwuintb"];
-    [dic setObject:[NSNumber numberWithInt:self.bwuintc] forKey:@"bwuintc"];
-    [dic setObject:[NSNumber numberWithUnsignedInt:self.bwuintc] forKey:@"bwuintc"];
-    [dic setObject:[NSNumber numberWithLongLong:self.bwuintd] forKey:@"bwuintd"];
-    [dic setObject:[NSNumber numberWithUnsignedLongLong:self.bwuintd] forKey:@"bwuintd"];
-    [dic setObject:[NSNumber numberWithUnsignedLong:self.bwulong] forKey:@"bwulong"];
-    [dic setObject:[NSNumber numberWithUnsignedLongLong:self.bwulonglong] forKey:@"bwulonglong"];
-    [dic setObject:[NSNumber numberWithUnsignedInt:self.bwuint] forKey:@"bwuint"];
+    #define SET_NIL_OBJECT(obj, key)     if (obj) {         [dic setObject:obj  forKey:key];    }
+    SET_NIL_OBJECT([NSNumber numberWithChar:self.bwchar],@"bwchar");
+    SET_NIL_OBJECT([NSNumber numberWithShort:self.bwshort],@"bwshort");
+    SET_NIL_OBJECT([NSNumber numberWithLong:self.bwlong],@"bwlong");
+    SET_NIL_OBJECT([NSNumber numberWithLongLong:self.bwlonglong],@"bwlonglong");
+    SET_NIL_OBJECT([NSNumber numberWithInt:self.bwint],@"bwint");
+    SET_NIL_OBJECT([NSNumber numberWithFloat:self.bwfloat],@"bwfloat");
+    SET_NIL_OBJECT([NSNumber numberWithDouble:self.bwdouble],@"bwdouble");
+    SET_NIL_OBJECT([self.bwurl toDictionaryValue],@"bwurl");
+    SET_NIL_OBJECT([self.bwstring toDictionaryValue],@"bwstring");
+    SET_NIL_OBJECT([self.bwdata toDictionaryValue],@"bwdata");
+    SET_NIL_OBJECT([self.bwnumber toDictionaryValue],@"bwnumber");
+    SET_NIL_OBJECT([self.bwdic toDictionaryValue],@"bwdic");
+    SET_NIL_OBJECT([self.bwCustomObj toDictionaryValue],@"bwCustomObj");
+    SET_NIL_OBJECT([self.bwstringarray toDictionaryValue],@"bwstringarray");
+    SET_NIL_OBJECT([self.bwnumberarray toDictionaryValue],@"bwnumberarray");
+    SET_NIL_OBJECT([self.bwobjarray toDictionaryValue],@"bwobjarray");
+    SET_NIL_OBJECT([NSNumber numberWithBool:self.bwbool] ,@"bwbool");
+    SET_NIL_OBJECT([NSNumber numberWithUnsignedChar:self.bwuchar],@"bwuchar");
+    SET_NIL_OBJECT([NSNumber numberWithUnsignedShort:self.bwushort],@"bwushort");
+    SET_NIL_OBJECT([NSNumber numberWithUnsignedInt:self.bwuint],@"bwuint");
+    SET_NIL_OBJECT([NSNumber numberWithInteger:self.bwinteger],@"bwinteger");
+    SET_NIL_OBJECT([NSNumber numberWithInteger:self.bwuinteger],@"bwuinteger");
+    SET_NIL_OBJECT([NSNumber numberWithChar:self.bwinta],@"bwinta");
+    SET_NIL_OBJECT([NSNumber numberWithShort:self.bwintb],@"bwintb");
+    SET_NIL_OBJECT([NSNumber numberWithInt:self.bwintc],@"bwintc");
+    SET_NIL_OBJECT([NSNumber numberWithLongLong:self.bwintd],@"bwintd");
+    SET_NIL_OBJECT([NSNumber numberWithUnsignedChar:self.bwuinta],@"bwuinta");
+    SET_NIL_OBJECT([NSNumber numberWithUnsignedShort:self.bwuintb],@"bwuintb");
+    SET_NIL_OBJECT([NSNumber numberWithUnsignedInt:self.bwuintc],@"bwuintc");
+    SET_NIL_OBJECT([NSNumber numberWithUnsignedLongLong:self.bwuintd],@"bwuintd");
+    SET_NIL_OBJECT([NSNumber numberWithUnsignedLong:self.bwulong],@"bwulong");
+    SET_NIL_OBJECT([NSNumber numberWithUnsignedLongLong:self.bwulonglong],@"bwulonglong");
     return dic;
 }
 
 - (id)toServerDictionaryValue
 {
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    #define SET_NIL_OBJECT(obj, key)     if (obj) {         [dic setObject:obj  forKey:key];    }
+    SET_NIL_OBJECT([NSNumber numberWithChar:self.bwchar],@"bwchar");
+    SET_NIL_OBJECT([NSNumber numberWithShort:self.bwshort],@"bwshort");
+    SET_NIL_OBJECT([NSNumber numberWithLong:self.bwlong],@"bwlong");
+    SET_NIL_OBJECT([NSNumber numberWithLongLong:self.bwlonglong],@"bwlonglong");
+    SET_NIL_OBJECT([NSNumber numberWithInt:self.bwint],@"bwint");
+    SET_NIL_OBJECT([NSNumber numberWithFloat:self.bwfloat],@"bwfloat");
+    SET_NIL_OBJECT([NSNumber numberWithDouble:self.bwdouble],@"bwdouble");
+    SET_NIL_OBJECT([self.bwurl toDictionaryValue],@"bwurl");
+    SET_NIL_OBJECT([self.bwstring toDictionaryValue],@"bwstring");
+    SET_NIL_OBJECT([self.bwdata toDictionaryValue],@"bwdata");
+    SET_NIL_OBJECT([self.bwnumber toDictionaryValue],@"bwnumber");
+    SET_NIL_OBJECT([self.bwdic toDictionaryValue],@"bwdic");
+    SET_NIL_OBJECT([self.bwCustomObj toDictionaryValue],@"bwCustomObj");
+    SET_NIL_OBJECT([self.bwstringarray toDictionaryValue],@"bwstringarray");
+    SET_NIL_OBJECT([self.bwnumberarray toDictionaryValue],@"bwnumberarray");
+    SET_NIL_OBJECT([self.bwobjarray toDictionaryValue],@"bwobjarray");
+    SET_NIL_OBJECT([NSNumber numberWithBool:self.bwbool],@"bwbool");
+    SET_NIL_OBJECT([NSNumber numberWithUnsignedChar:self.bwuchar],@"bwuchar");
+    SET_NIL_OBJECT([NSNumber numberWithUnsignedShort:self.bwushort],@"bwushort");
+    SET_NIL_OBJECT([NSNumber numberWithUnsignedInt:self.bwuint],@"bwuint");
+    SET_NIL_OBJECT([NSNumber numberWithInteger:self.bwinteger],@"bwinteger");
+    SET_NIL_OBJECT([NSNumber numberWithInteger:self.bwuinteger],@"bwuinteger");
+    SET_NIL_OBJECT([NSNumber numberWithChar:self.bwinta],@"bwinta");
+    SET_NIL_OBJECT([NSNumber numberWithShort:self.bwintb],@"bwintb");
+    SET_NIL_OBJECT([NSNumber numberWithInt:self.bwintc],@"bwintc");
+    SET_NIL_OBJECT([NSNumber numberWithLongLong:self.bwintd],@"bwintd");
+    SET_NIL_OBJECT([NSNumber numberWithUnsignedChar:self.bwuinta],@"bwuinta");
+    SET_NIL_OBJECT([NSNumber numberWithUnsignedShort:self.bwuintb],@"bwuintb");
+    SET_NIL_OBJECT([NSNumber numberWithUnsignedInt:self.bwuintc],@"bwuintc");
+    SET_NIL_OBJECT([NSNumber numberWithUnsignedLongLong:self.bwuintd],@"bwuintd");
+    SET_NIL_OBJECT([NSNumber numberWithUnsignedLong:self.bwulong],@"bwulong");
+    SET_NIL_OBJECT([NSNumber numberWithUnsignedLongLong:self.bwulonglong],@"bwulonglong");
     return dic;
 }
 
@@ -78,20 +112,20 @@
     copyedModel.bwobjarray = [[NSArray alloc]initWithArray:self.bwobjarray copyItems:YES];
     copyedModel.bwbool = self.bwbool;
     copyedModel.bwuchar = self.bwuchar;
+    copyedModel.bwushort = self.bwushort;
+    copyedModel.bwuint = self.bwuint;
     copyedModel.bwinteger = self.bwinteger;
     copyedModel.bwuinteger = self.bwuinteger;
     copyedModel.bwinta = self.bwinta;
     copyedModel.bwintb = self.bwintb;
     copyedModel.bwintc = self.bwintc;
     copyedModel.bwintd = self.bwintd;
-    copyedModel.bwushort = self.bwushort;
     copyedModel.bwuinta = self.bwuinta;
     copyedModel.bwuintb = self.bwuintb;
     copyedModel.bwuintc = self.bwuintc;
     copyedModel.bwuintd = self.bwuintd;
     copyedModel.bwulong = self.bwulong;
     copyedModel.bwulonglong = self.bwulonglong;
-    copyedModel.bwuint = self.bwuint;
     return copyedModel;
 }
 
@@ -237,6 +271,16 @@
     {
         _bwuchar = ensureUnsignedCharType(value);
     }
+    // unsigned short
+    else if ([key isEqualToString:@"bwushort"])
+    {
+        _bwushort = ensureUnsignedShortType(value);
+    }
+    // unsigned int
+    else if ([key isEqualToString:@"bwuint"])
+    {
+        _bwuint = ensureUnsignedIntType(value);
+    }
     // NSInteger
     else if ([key isEqualToString:@"bwinteger"])
     {
@@ -267,11 +311,6 @@
     {
         _bwintd = ensureLongLongType(value);
     }
-    // unsigned short
-    else if ([key isEqualToString:@"bwushort"])
-    {
-        _bwushort = ensureUnsignedShortType(value);
-    }
     // uint8_t
     else if ([key isEqualToString:@"bwuinta"])
     {
@@ -301,11 +340,6 @@
     else if ([key isEqualToString:@"bwulonglong"])
     {
         _bwulonglong = ensureUnsignedLongLongType(value);
-    }
-    // unsigned int
-    else if ([key isEqualToString:@"bwuint"])
-    {
-        _bwuint = ensureUnsignedIntType(value);
     }
 }
 

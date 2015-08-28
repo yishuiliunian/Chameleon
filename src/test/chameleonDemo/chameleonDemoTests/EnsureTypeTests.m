@@ -1,6 +1,6 @@
 //
-//  chameleonDemoTests.m
-//  chameleonDemoTests
+//  EnsureTypeTests.m
+//  EnsureTypeTests
 //
 //  Created by liujin on 15/8/13.
 //  Copyright (c) 2015年 LiuJin. All rights reserved.
@@ -21,6 +21,9 @@
 @implementation EnsureTypeTests
 
 - (void)setUp {
+    
+    
+    
     [super setUp];
     _foundationUnsupportArr = @[@"",@" ",@"1a",@"hello world",[NSNull null]];
     _foundationInputArr = @[@1,@"1",@"1.2",@"1.2a",@"123"];

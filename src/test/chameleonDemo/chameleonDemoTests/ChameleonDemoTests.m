@@ -67,6 +67,49 @@
     XCTAssert([pay.bwnumber isEqualToNumber:payCopy.bwnumber]);
     XCTAssert([pay.bwurl isEqualTo:payCopy.bwurl]);
 }
+- (void)testTODictionary
+{
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    // Foundation
+    for (int i = 0; i < _integerTypeArr.count; i++) {
+        [dic setObject:@1 forKey:_integerTypeArr[i]];
+    }
+    // charType
+    NSArray *charType = @[@"bwchar",@"bwuchar",@"bwinta",@"bwuinta"];
+    for (int j = 0; j < charType.count; j++) {
+        [dic setObject:@1 forKey:charType[j]];
+    }
+    // bool
+    [dic setObject:@1 forKey:@"bwbool"];
+    [dic setObject:@1 forKey:@"bwfloat"];
+    [dic setObject:@1 forKey:@"bwdouble"];
+    // NSString NSNumber NSURL NSData
+    [dic setObject:@"baidu" forKey:@"bwstring"];
+    [dic setObject:@12 forKey:@"bwnumber"];
+    [dic setObject:@"www.baidu.com" forKey:@"bwurl"];
+    [dic setObject:@"hello" forKey:@"bwdata"];
+    // NSArray
+    NSArray *testStringArray= @[@"liujin",@"hello"];
+    [dic setObject:testStringArray forKey:@"bwstringarray"];
+    // NSDictinary
+    NSDictionary *testDic = @{
+                              @"name":@"liujin",
+                              @"age":@22
+                              };
+    [dic setObject:testDic forKey:@"bwdic"];
+    // customObj
+    UserInfo *user = [[UserInfo alloc]init];
+    NSDictionary *userDic = @{@"name":@"zhangsan"};
+    [user setValuesForKeysWithDictionary:userDic];
+    [dic setObject:userDic forKey:@"bwCustomObj"];
+    
+    BWPay *pay = [[BWPay alloc]init];
+    [pay setValuesForKeysWithDictionary:dic];
+    
+    NSDictionary *toDic = [pay toDictionaryValue];
+    NSLog(@"ok");
+    XCTAssert([dic isEqualToDictionary:toDic]);
+}
 - (void)testSetValuesForKeys
 {
     //----------------基本数据类型----------------

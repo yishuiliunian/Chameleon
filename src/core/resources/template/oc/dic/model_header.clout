@@ -12,13 +12,14 @@ from core.codegen.property import FundamentalProperty
 from core.codegen.property import CustomObjectProperty
 %>
 #import <Foundation/Foundation.h>
+#import "BWTODictionaryProtocol.h"
 % for o in model.properties:
   % if isinstance(o, CustomObjectProperty):
 @class ${o.type};
   % endif
 % endfor
 
-@interface ${model.name} : NSObject<NSCopying>
+@interface ${model.name} : NSObject<NSCopying,BWTODictionaryProtocol>
 
 % for i in model.properties:
   % if isinstance(i, ObjectProperty):

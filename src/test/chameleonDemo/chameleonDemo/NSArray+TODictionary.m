@@ -12,7 +12,7 @@
 - (id)toDictionaryValue
 {
     NSMutableArray *array = [NSMutableArray array];
-    for (id value in array) {
+    for (id value in self) {
         if (value) {
             [array addObject:[value toDictionaryValue]];
         }

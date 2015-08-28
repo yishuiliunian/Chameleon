@@ -18,20 +18,20 @@ model BWPay {
   array      UserInfo bwobjarray
   bool                bwbool
   uchar               bwuchar
+  ushort              bwushort
+  uint                bwuint
   integer             bwinteger
   uinteger            bwuinteger
   int8                bwinta
   int16               bwintb
   int32               bwintc
   int64               bwintd
-  ushort              bwushort
   uint8               bwuinta
   uint16              bwuintb
   uint32              bwuintc
   uint64              bwuintd
   ulong               bwulong
   ulonglong           bwulonglong
-  uint                bwuint
 }
 
 model UserInfo {

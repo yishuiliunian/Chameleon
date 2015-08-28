@@ -7,9 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "BWTODictionaryProtocol.h"
 @class UserInfo;
 
-@interface BWPay_Sname : NSObject<NSCopying>
+@interface BWPay_Sname : NSObject<NSCopying,BWTODictionaryProtocol>
 
 @property (assign, nonatomic) char bwchar;
 @property (assign, nonatomic) short bwshort;

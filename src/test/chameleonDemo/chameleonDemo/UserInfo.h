@@ -7,8 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "BWTODictionaryProtocol.h"
 
-@interface UserInfo : NSObject<NSCopying>
+@interface UserInfo : NSObject<NSCopying,BWTODictionaryProtocol>
 
 @property (strong, nonatomic) NSString *name;
 

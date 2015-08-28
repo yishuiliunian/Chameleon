@@ -1,14 +1,9 @@
-# Generated from java-escape by ANTLR 4.5
+# Generated from Chameleon.g4 by ANTLR 4.5.1
 # encoding: utf-8
 from __future__ import print_function
 from antlr4 import *
 from io import StringIO
-package = globals().get("__package__", None)
-ischild = len(package)>0 if package is not None else False
-if ischild:
-    from .ChameleonListener import ChameleonListener
-else:
-    from ChameleonListener import ChameleonListener
+
 def serializedATN():
     with StringIO() as buf:
         buf.write(u"\3\u0430\ud6d1\u8206\uad2d\u4417\uaef1\u8d80\uaadd\3")
@@ -45,7 +40,7 @@ def serializedATN():
 
 class ChameleonParser ( Parser ):
 
-    grammarFileName = "java-escape"
+    grammarFileName = "Chameleon.g4"
 
     atn = ATNDeserializer().deserialize(serializedATN())
 
@@ -111,7 +106,7 @@ class ChameleonParser ( Parser ):
 
     def __init__(self, input):
         super(ChameleonParser, self).__init__(input)
-        self.checkVersion("4.5")
+        self.checkVersion("4.5.1")
         self._interp = ParserATNSimulator(self, self.atn, self.decisionsToDFA, self.sharedContextCache)
         self._predicates = None
 
@@ -147,11 +142,11 @@ class ChameleonParser ( Parser ):
             return ChameleonParser.RULE_prog
 
         def enterRule(self, listener):
-            if isinstance( listener, ChameleonListener ):
+            if hasattr(listener, "enterProg"):
                 listener.enterProg(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, ChameleonListener ):
+            if hasattr(listener, "exitProg"):
                 listener.exitProg(self)
 
 
@@ -219,11 +214,11 @@ class ChameleonParser ( Parser ):
             return ChameleonParser.RULE_model
 
         def enterRule(self, listener):
-            if isinstance( listener, ChameleonListener ):
+            if hasattr(listener, "enterModel"):
                 listener.enterModel(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, ChameleonListener ):
+            if hasattr(listener, "exitModel"):
                 listener.exitModel(self)
 
 
@@ -281,11 +276,11 @@ class ChameleonParser ( Parser ):
             return ChameleonParser.RULE_property_line
 
         def enterRule(self, listener):
-            if isinstance( listener, ChameleonListener ):
+            if hasattr(listener, "enterProperty_line"):
                 listener.enterProperty_line(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, ChameleonListener ):
+            if hasattr(listener, "exitProperty_line"):
                 listener.exitProperty_line(self)
 
 
@@ -335,11 +330,11 @@ class ChameleonParser ( Parser ):
             return ChameleonParser.RULE_words
 
         def enterRule(self, listener):
-            if isinstance( listener, ChameleonListener ):
+            if hasattr(listener, "enterWords"):
                 listener.enterWords(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, ChameleonListener ):
+            if hasattr(listener, "exitWords"):
                 listener.exitWords(self)
 
 
@@ -397,11 +392,11 @@ class ChameleonParser ( Parser ):
             return ChameleonParser.RULE_property_line_words
 
         def enterRule(self, listener):
-            if isinstance( listener, ChameleonListener ):
+            if hasattr(listener, "enterProperty_line_words"):
                 listener.enterProperty_line_words(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, ChameleonListener ):
+            if hasattr(listener, "exitProperty_line_words"):
                 listener.exitProperty_line_words(self)
 
 
@@ -454,11 +449,11 @@ class ChameleonParser ( Parser ):
             return ChameleonParser.RULE_c_property
 
         def enterRule(self, listener):
-            if isinstance( listener, ChameleonListener ):
+            if hasattr(listener, "enterC_property"):
                 listener.enterC_property(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, ChameleonListener ):
+            if hasattr(listener, "exitC_property"):
                 listener.exitC_property(self)
 
 
@@ -509,11 +504,11 @@ class ChameleonParser ( Parser ):
             return ChameleonParser.RULE_c_property_name
 
         def enterRule(self, listener):
-            if isinstance( listener, ChameleonListener ):
+            if hasattr(listener, "enterC_property_name"):
                 listener.enterC_property_name(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, ChameleonListener ):
+            if hasattr(listener, "exitC_property_name"):
                 listener.exitC_property_name(self)
 
 
@@ -557,11 +552,11 @@ class ChameleonParser ( Parser ):
             return ChameleonParser.RULE_c_property_second_name
 
         def enterRule(self, listener):
-            if isinstance( listener, ChameleonListener ):
+            if hasattr(listener, "enterC_property_second_name"):
                 listener.enterC_property_second_name(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, ChameleonListener ):
+            if hasattr(listener, "exitC_property_second_name"):
                 listener.exitC_property_second_name(self)
 
 
@@ -609,11 +604,11 @@ class ChameleonParser ( Parser ):
             return ChameleonParser.RULE_array_property
 
         def enterRule(self, listener):
-            if isinstance( listener, ChameleonListener ):
+            if hasattr(listener, "enterArray_property"):
                 listener.enterArray_property(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, ChameleonListener ):
+            if hasattr(listener, "exitArray_property"):
                 listener.exitArray_property(self)
 
 
@@ -664,11 +659,11 @@ class ChameleonParser ( Parser ):
             return ChameleonParser.RULE_array_property_name
 
         def enterRule(self, listener):
-            if isinstance( listener, ChameleonListener ):
+            if hasattr(listener, "enterArray_property_name"):
                 listener.enterArray_property_name(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, ChameleonListener ):
+            if hasattr(listener, "exitArray_property_name"):
                 listener.exitArray_property_name(self)
 
 
@@ -714,11 +709,11 @@ class ChameleonParser ( Parser ):
             return ChameleonParser.RULE_array_property_second_name
 
         def enterRule(self, listener):
-            if isinstance( listener, ChameleonListener ):
+            if hasattr(listener, "enterArray_property_second_name"):
                 listener.enterArray_property_second_name(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, ChameleonListener ):
+            if hasattr(listener, "exitArray_property_second_name"):
                 listener.exitArray_property_second_name(self)
 
 
@@ -793,11 +788,11 @@ class ChameleonParser ( Parser ):
             return ChameleonParser.RULE_p_type
 
         def enterRule(self, listener):
-            if isinstance( listener, ChameleonListener ):
+            if hasattr(listener, "enterP_type"):
                 listener.enterP_type(self)
 
         def exitRule(self, listener):
-            if isinstance( listener, ChameleonListener ):
+            if hasattr(listener, "exitP_type"):
                 listener.exitP_type(self)
 
 
@@ -823,6 +818,7 @@ class ChameleonParser ( Parser ):
         finally:
             self.exitRule()
         return localctx
+
 
 
 

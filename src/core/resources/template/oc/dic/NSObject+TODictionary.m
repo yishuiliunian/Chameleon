@@ -12,11 +12,63 @@
 @implementation NSObject (TODictionary)
 - (id)toDictionaryValue
 {
-    return [self toDictionaryValue];
+    if ([self isKindOfClass:[NSDictionary class]]) {
+        NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+        NSArray *allKeys = ((NSDictionary *)self).allKeys;
+        for (NSString *key in allKeys) {
+            id value = [self valueForKey:key];
+            if (value) {
+                [dic setObject:[value toDictionaryValue] forKey:key];
+            }
+        }
+        return dic;
+    }
+    if ([self isKindOfClass:[NSArray class]]) {
+        NSMutableArray *array = [NSMutableArray array];
+        for (id value in (NSArray *)self) {
+            if (value) {
+                [array addObject:[value toDictionaryValue]];
+            }
+        }
+        return array;
+    }
+    if ([self isKindOfClass:[NSURL class]]) {
+        return [(NSURL *)self absoluteString];
+    }
+    if ([self isKindOfClass:[NSData class]]) {
+        return  [[NSString alloc] initWithData:(NSData *)self encoding:NSUTF8StringEncoding];
+    }
+    return self;
 }
 
 - (id)toServerDictionaryValue
 {
-    return [self toServerDictionaryValue];
+    if ([self isKindOfClass:[NSDictionary class]]) {
+        NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+        NSArray *allKeys = ((NSDictionary *)self).allKeys;
+        for (NSString *key in allKeys) {
+            id value = [self valueForKey:key];
+            if (value) {
+                [dic setObject:[value toDictionaryValue] forKey:key];
+            }
+        }
+        return dic;
+    }
+    if ([self isKindOfClass:[NSArray class]]) {
+        NSMutableArray *array = [NSMutableArray array];
+        for (id value in (NSArray *)self) {
+            if (value) {
+                [array addObject:[value toDictionaryValue]];
+            }
+        }
+        return array;
+    }
+    if ([self isKindOfClass:[NSURL class]]) {
+        return [(NSURL *)self absoluteString];
+    }
+    if ([self isKindOfClass:[NSData class]]) {
+        return  [[NSString alloc] initWithData:(NSData *)self encoding:NSUTF8StringEncoding];
+    }
+    return self;
 }
 @end

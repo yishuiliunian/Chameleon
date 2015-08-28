@@ -57,88 +57,82 @@ from core.utilities.constant import ModelType
 - (id)toDictionaryValue
 {
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    #define SET_NIL_OBJECT(obj, key) \
+    if (obj) { \
+        [dic setObject:obj  forKey:key];\
+    }
     % for p in model.properties:
     % if isinstance(p, CharProperty):
-    [dic setObject:[NSNumber numberWithChar:self.${p.name}] forKey:@"${p.name}"];
+    SET_NIL_OBJECT([NSNumber numberWithChar:self.${p.name}],@"${p.name}");
     %endif
     % if isinstance(p, UnsignedCharProperty):
-    [dic setObject:[NSNumber numberWithUnsignedChar:self.${p.name}] forKey:@"${p.name}"];
+    SET_NIL_OBJECT([NSNumber numberWithUnsignedChar:self.${p.name}],@"${p.name}");
     %endif
     % if isinstance(p, ShortProperty):
-    [dic setObject:[NSNumber numberWithShort:self.${p.name}] forKey:@"${p.name}"];
+    SET_NIL_OBJECT([NSNumber numberWithShort:self.${p.name}],@"${p.name}");
     %endif
     % if isinstance(p, UnsignedShortProperty):
-    [dic setObject:[NSNumber numberWithUnsignedShort:self.${p.name}] forKey:@"${p.name}"];
+    SET_NIL_OBJECT([NSNumber numberWithUnsignedShort:self.${p.name}],@"${p.name}");
     %endif
     % if isinstance(p, IntProperty):
-    [dic setObject:[NSNumber numberWithInt:self.${p.name}] forKey:@"${p.name}"];
+    SET_NIL_OBJECT([NSNumber numberWithInt:self.${p.name}],@"${p.name}");
     %endif
     % if isinstance(p, UnsignedIntProperty):
-    [dic setObject:[NSNumber numberWithUnsignedInt:self.${p.name}] forKey:@"${p.name}"];
+    SET_NIL_OBJECT([NSNumber numberWithUnsignedInt:self.${p.name}],@"${p.name}");
     %endif
     % if isinstance(p, LongProperty):
-    [dic setObject:[NSNumber numberWithLong:self.${p.name}] forKey:@"${p.name}"];
+    SET_NIL_OBJECT([NSNumber numberWithLong:self.${p.name}],@"${p.name}");
     %endif
     % if isinstance(p, UnsignedLongProperty):
-    [dic setObject:[NSNumber numberWithUnsignedLong:self.${p.name}] forKey:@"${p.name}"];
+    SET_NIL_OBJECT([NSNumber numberWithUnsignedLong:self.${p.name}],@"${p.name}");
     %endif
     % if isinstance(p, LongLongProperty):
-    [dic setObject:[NSNumber numberWithLongLong:self.${p.name}] forKey:@"${p.name}"];
+    SET_NIL_OBJECT([NSNumber numberWithLongLong:self.${p.name}],@"${p.name}");
     %endif
     % if isinstance(p, UnsignedLongLongProperty):
-    [dic setObject:[NSNumber numberWithUnsignedLongLong:self.${p.name}] forKey:@"${p.name}"];
+    SET_NIL_OBJECT([NSNumber numberWithUnsignedLongLong:self.${p.name}],@"${p.name}");
     %endif
     % if isinstance(p, FloatProperty):
-    [dic setObject:[NSNumber numberWithFloat:self.${p.name}] forKey:@"${p.name}"];
+    SET_NIL_OBJECT([NSNumber numberWithFloat:self.${p.name}],@"${p.name}");
     %endif
     % if isinstance(p, DoubleProperty):
-    [dic setObject:[NSNumber numberWithDouble:self.${p.name}] forKey:@"${p.name}"];
+    SET_NIL_OBJECT([NSNumber numberWithDouble:self.${p.name}],@"${p.name}");
     %endif
     % if isinstance(p, NSIntegerProperty):
-    [dic setObject:[NSNumber numberWithInteger:self.${p.name}] forKey:@"${p.name}"];
+    SET_NIL_OBJECT([NSNumber numberWithInteger:self.${p.name}],@"${p.name}");
     %endif
     % if isinstance(p, NSUIntegerProperty):
-    [dic setObject:[NSNumber numberWithInteger:self.${p.name}] forKey:@"${p.name}"];
+    SET_NIL_OBJECT([NSNumber numberWithInteger:self.${p.name}],@"${p.name}");
     %endif
     % if isinstance(p, Int8Property):
-    [dic setObject:[NSNumber numberWithChar:self.${p.name}] forKey:@"${p.name}"];
+    SET_NIL_OBJECT([NSNumber numberWithChar:self.${p.name}],@"${p.name}");
     %endif
     % if isinstance(p, UInt8Property):
-    [dic setObject:[NSNumber numberWithUnsignedChar:self.${p.name}] forKey:@"${p.name}"];
+    SET_NIL_OBJECT([NSNumber numberWithUnsignedChar:self.${p.name}],@"${p.name}");
+    %endif
+    % if isinstance(p, Int16Property):
+    SET_NIL_OBJECT([NSNumber numberWithShort:self.${p.name}],@"${p.name}");
     %endif
     % if isinstance(p, UInt16Property):
-    [dic setObject:[NSNumber numberWithShort:self.${p.name}] forKey:@"${p.name}"];
+    SET_NIL_OBJECT([NSNumber numberWithUnsignedShort:self.${p.name}],@"${p.name}");
     %endif
-    % if isinstance(p, UInt16Property):
-    [dic setObject:[NSNumber numberWithUnsignedShort:self.${p.name}] forKey:@"${p.name}"];
-    %endif
-    % if isinstance(p, UInt32Property):
-    [dic setObject:[NSNumber numberWithInt:self.${p.name}] forKey:@"${p.name}"];
+    % if isinstance(p, Int32Property):
+    SET_NIL_OBJECT([NSNumber numberWithInt:self.${p.name}],@"${p.name}");
     %endif
     % if isinstance(p, UInt32Property):
-    [dic setObject:[NSNumber numberWithUnsignedInt:self.${p.name}] forKey:@"${p.name}"];
+    SET_NIL_OBJECT([NSNumber numberWithUnsignedInt:self.${p.name}],@"${p.name}");
     %endif
-     % if isinstance(p, UInt64Property):
-    [dic setObject:[NSNumber numberWithLongLong:self.${p.name}] forKey:@"${p.name}"];
+    % if isinstance(p, Int64Property):
+    SET_NIL_OBJECT([NSNumber numberWithLongLong:self.${p.name}],@"${p.name}");
     %endif
     % if isinstance(p, UInt64Property):
-    [dic setObject:[NSNumber numberWithUnsignedLongLong:self.${p.name}] forKey:@"${p.name}"];
+    SET_NIL_OBJECT([NSNumber numberWithUnsignedLongLong:self.${p.name}],@"${p.name}");
     %endif
     % if isinstance(p, BoolProperty):
-    [dic setObject:[NSNumber numberWithBool:self.${p.name}] forKey:@"${p.name}"];
+    SET_NIL_OBJECT([NSNumber numberWithBool:self.${p.name}] ,@"${p.name}");
     %endif
     % if isinstance(p, ObjectProperty):
-    % if isinstance(p, NSStringProperty):
-    [dic setObject:self.${p.name} forKey:@"${p.name}"];
-    % elif isinstance(p, NSNumberProperty):
-    [dic setObject:self.${p.name} forKey:@"${p.name}"];
-    % elif isinstance(p, NSDataProperty):
-    [dic setObject:self.${p.name} forKey:@"${p.name}"];
-    % elif isinstance(p, NSURLProperty):
-    [dic setObject:self.${p.name} forKey:@"${p.name}"];
-    % else:
-    [dic setObject:[self.${p.name} toDictionaryValue] forKey:@"${p.name}"];
-    %endif
+    SET_NIL_OBJECT([self.${p.name} toDictionaryValue],@"${p.name}");
     %endif
     %endfor
     return dic;
@@ -147,6 +141,180 @@ from core.utilities.constant import ModelType
 - (id)toServerDictionaryValue
 {
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    #define SET_NIL_OBJECT(obj, key) \
+    if (obj) { \
+        [dic setObject:obj  forKey:key];\
+    }
+    % for p in model.properties:
+    % if isinstance(p, CharProperty):
+    % if p.secondName is None:
+    SET_NIL_OBJECT([NSNumber numberWithChar:self.${p.name}],@"${p.name}");
+    % else:
+    SET_NIL_OBJECT([NSNumber numberWithChar:self.${p.name}],@"${p.secondName}");
+    %endif
+    %endif  
+    % if isinstance(p, UnsignedCharProperty):
+    % if p.secondName is None:
+    SET_NIL_OBJECT([NSNumber numberWithUnsignedChar:self.${p.name}],@"${p.name}");
+    % else:
+    SET_NIL_OBJECT([NSNumber numberWithUnsignedChar:self.${p.name}],@"${p.secondName}");
+    %endif
+    %endif
+    % if isinstance(p, ShortProperty):
+    % if p.secondName is None:
+    SET_NIL_OBJECT([NSNumber numberWithShort:self.${p.name}],@"${p.name}");
+    % else:
+    SET_NIL_OBJECT([NSNumber numberWithShort:self.${p.name}],@"${p.secondName}");
+    %endif
+    %endif
+    % if isinstance(p, UnsignedShortProperty):
+    % if p.secondName is None:
+    SET_NIL_OBJECT([NSNumber numberWithUnsignedShort:self.${p.name}],@"${p.name}");
+    % else:
+    SET_NIL_OBJECT([NSNumber numberWithUnsignedShort:self.${p.name}],@"${p.secondName}");
+    %endif
+    %endif
+    % if isinstance(p, IntProperty):
+    % if p.secondName is None:
+    SET_NIL_OBJECT([NSNumber numberWithInt:self.${p.name}],@"${p.name}");
+    % else:
+    SET_NIL_OBJECT([NSNumber numberWithInt:self.${p.name}],@"${p.secondName}");
+    %endif
+    %endif
+    % if isinstance(p, UnsignedIntProperty):
+    % if p.secondName is None:
+    SET_NIL_OBJECT([NSNumber numberWithUnsignedInt:self.${p.name}],@"${p.name}");
+    % else:
+    SET_NIL_OBJECT([NSNumber numberWithUnsignedInt:self.${p.name}],@"${p.secondName}");
+    %endif
+    %endif
+    % if isinstance(p, LongProperty):
+    % if p.secondName is None:
+    SET_NIL_OBJECT([NSNumber numberWithLong:self.${p.name}],@"${p.name}");
+    % else:
+    SET_NIL_OBJECT([NSNumber numberWithLong:self.${p.name}],@"${p.secondName}");
+    %endif
+    %endif
+    % if isinstance(p, UnsignedLongProperty):
+    % if p.secondName is None:
+    SET_NIL_OBJECT([NSNumber numberWithUnsignedLong:self.${p.name}],@"${p.name}");
+    % else:
+    SET_NIL_OBJECT([NSNumber numberWithUnsignedLong:self.${p.name}],@"${p.secondName}");
+    %endif
+    %endif
+    % if isinstance(p, LongLongProperty):
+    % if p.secondName is None:
+    SET_NIL_OBJECT([NSNumber numberWithLongLong:self.${p.name}],@"${p.name}");
+    % else:
+    SET_NIL_OBJECT([NSNumber numberWithLongLong:self.${p.name}],@"${p.secondName}");
+    %endif
+    %endif
+    % if isinstance(p, UnsignedLongLongProperty):
+    % if p.secondName is None:
+    SET_NIL_OBJECT([NSNumber numberWithUnsignedLongLong:self.${p.name}],@"${p.name}");
+    % else:
+    SET_NIL_OBJECT([NSNumber numberWithUnsignedLongLong:self.${p.name}],@"${p.secondName}");
+    %endif
+    %endif
+    % if isinstance(p, FloatProperty):
+    % if p.secondName is None:
+    SET_NIL_OBJECT([NSNumber numberWithFloat:self.${p.name}],@"${p.name}");
+    % else:
+    SET_NIL_OBJECT([NSNumber numberWithFloat:self.${p.name}],@"${p.secondName}");
+    %endif
+    %endif
+    % if isinstance(p, DoubleProperty):
+    % if p.secondName is None:
+    SET_NIL_OBJECT([NSNumber numberWithDouble:self.${p.name}],@"${p.name}");
+    % else:
+    SET_NIL_OBJECT([NSNumber numberWithDouble:self.${p.name}],@"${p.secondName}");
+    %endif
+    %endif
+    % if isinstance(p, NSIntegerProperty):
+    % if p.secondName is None:
+    SET_NIL_OBJECT([NSNumber numberWithInteger:self.${p.name}],@"${p.name}");
+    % else:
+    SET_NIL_OBJECT([NSNumber numberWithInteger:self.${p.name}],@"${p.secondName}");
+    %endif
+    %endif
+    % if isinstance(p, NSUIntegerProperty):
+    % if p.secondName is None:
+    SET_NIL_OBJECT([NSNumber numberWithInteger:self.${p.name}],@"${p.name}");
+    % else:
+    SET_NIL_OBJECT([NSNumber numberWithInteger:self.${p.name}],@"${p.secondName}");
+    %endif
+    %endif
+    % if isinstance(p, Int8Property):
+    % if p.secondName is None:
+    SET_NIL_OBJECT([NSNumber numberWithChar:self.${p.name}],@"${p.name}");
+    % else:
+    SET_NIL_OBJECT([NSNumber numberWithChar:self.${p.name}],@"${p.secondName}");
+    %endif
+    %endif
+    % if isinstance(p, UInt8Property):
+    % if p.secondName is None:
+    SET_NIL_OBJECT([NSNumber numberWithUnsignedChar:self.${p.name}],@"${p.name}");
+    % else:
+    SET_NIL_OBJECT([NSNumber numberWithUnsignedChar:self.${p.name}],@"${p.secondName}");
+    %endif
+    %endif
+    % if isinstance(p, Int16Property):
+    % if p.secondName is None:
+    SET_NIL_OBJECT([NSNumber numberWithShort:self.${p.name}],@"${p.name}");
+    % else:
+    SET_NIL_OBJECT([NSNumber numberWithShort:self.${p.name}],@"${p.secondName}");
+    %endif
+    %endif
+    % if isinstance(p, UInt16Property):
+    % if p.secondName is None:
+    SET_NIL_OBJECT([NSNumber numberWithUnsignedShort:self.${p.name}],@"${p.name}");
+    % else:
+    SET_NIL_OBJECT([NSNumber numberWithUnsignedShort:self.${p.name}],@"${p.secondName}");
+    %endif
+    %endif
+    % if isinstance(p, Int32Property):
+    % if p.secondName is None:
+    SET_NIL_OBJECT([NSNumber numberWithInt:self.${p.name}],@"${p.name}");
+    % else:
+    SET_NIL_OBJECT([NSNumber numberWithInt:self.${p.name}],@"${p.secondName}");
+    %endif
+    %endif
+    % if isinstance(p, UInt32Property):
+    % if p.secondName is None:
+    SET_NIL_OBJECT([NSNumber numberWithUnsignedInt:self.${p.name}],@"${p.name}");
+    % else:
+    SET_NIL_OBJECT([NSNumber numberWithUnsignedInt:self.${p.name}],@"${p.secondName}");
+    %endif
+    %endif
+    % if isinstance(p, Int64Property):
+    % if p.secondName is None:
+    SET_NIL_OBJECT([NSNumber numberWithLongLong:self.${p.name}],@"${p.name}");
+    % else:
+    SET_NIL_OBJECT([NSNumber numberWithLongLong:self.${p.name}],@"${p.secondName}");
+    %endif
+    %endif
+    % if isinstance(p, UInt64Property):
+    % if p.secondName is None:
+    SET_NIL_OBJECT([NSNumber numberWithUnsignedLongLong:self.${p.name}],@"${p.name}");
+    % else:
+    SET_NIL_OBJECT([NSNumber numberWithUnsignedLongLong:self.${p.name}],@"${p.secondName}");
+    %endif
+    %endif
+    % if isinstance(p, BoolProperty):
+    % if p.secondName is None:
+    SET_NIL_OBJECT([NSNumber numberWithBool:self.${p.name}],@"${p.name}");
+    % else:
+    SET_NIL_OBJECT([NSNumber numberWithBool:self.${p.name}],@"${p.secondName}");
+    %endif
+    %endif
+    % if isinstance(p, ObjectProperty):
+    % if p.secondName is None:
+    SET_NIL_OBJECT([self.${p.name} toDictionaryValue],@"${p.name}");
+    % else:
+    SET_NIL_OBJECT([self.${p.name} toDictionaryValue],@"${p.secondName}");
+    %endif
+    %endif
+    %endfor
     return dic;
 }
 

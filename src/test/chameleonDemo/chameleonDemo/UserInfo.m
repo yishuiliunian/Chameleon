@@ -15,13 +15,16 @@
 - (id)toDictionaryValue
 {
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
-    [dic setObject:self.name forKey:@"name"];
+    #define SET_NIL_OBJECT(obj, key)     if (obj) {         [dic setObject:obj  forKey:key];    }
+    SET_NIL_OBJECT([self.name toDictionaryValue],@"name");
     return dic;
 }
 
 - (id)toServerDictionaryValue
 {
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    #define SET_NIL_OBJECT(obj, key)     if (obj) {         [dic setObject:obj  forKey:key];    }
+    SET_NIL_OBJECT([self.name toDictionaryValue],@"name");
     return dic;
 }
 

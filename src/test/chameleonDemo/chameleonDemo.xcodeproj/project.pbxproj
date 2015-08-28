@@ -7,9 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		449622F81B8C7510000DCE4F /* NSDictionary+TODictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 449622F71B8C7510000DCE4F /* NSDictionary+TODictionary.m */; };
-		449622FD1B8C75C4000DCE4F /* NSObject+TODictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 449622FC1B8C75C4000DCE4F /* NSObject+TODictionary.m */; };
-		449623001B8C767A000DCE4F /* NSArray+TODictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 449622FF1B8C767A000DCE4F /* NSArray+TODictionary.m */; };
+		4411B5011B9063D2005C8E49 /* NSObject+TODictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B14FE01B905CCC00467497 /* NSObject+TODictionary.m */; };
 		44965A2E1B81733100B8AD02 /* BWPay.m in Sources */ = {isa = PBXBuildFile; fileRef = 44965A291B81733100B8AD02 /* BWPay.m */; };
 		44965A2F1B81733100B8AD02 /* EnsureType.m in Sources */ = {isa = PBXBuildFile; fileRef = 44965A2B1B81733100B8AD02 /* EnsureType.m */; };
 		44965A351B81A5D700B8AD02 /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 44965A341B81A5D700B8AD02 /* UserInfo.m */; };
@@ -19,6 +17,7 @@
 		44965A521B85AD1300B8AD02 /* BWPay_Sname.m in Sources */ = {isa = PBXBuildFile; fileRef = 44965A511B85AD1300B8AD02 /* BWPay_Sname.m */; };
 		44965A531B85AE4B00B8AD02 /* BWPay_Sname.m in Sources */ = {isa = PBXBuildFile; fileRef = 44965A511B85AD1300B8AD02 /* BWPay_Sname.m */; };
 		44965A551B85AE9E00B8AD02 /* ChameleonSnameDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 44965A541B85AE9E00B8AD02 /* ChameleonSnameDemoTests.m */; };
+		44B14FE31B905CCC00467497 /* NSObject+TODictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B14FE01B905CCC00467497 /* NSObject+TODictionary.m */; };
 		44CB91FD1B6F42BA00A515DD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 44CB91FC1B6F42BA00A515DD /* main.m */; };
 		44CB93C81B7C41B500A515DD /* EnsureTypeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 44CB93C71B7C41B500A515DD /* EnsureTypeTests.m */; };
 		44CB93EA1B7CA3FC00A515DD /* ChameleonDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 44CB93E91B7CA3FC00A515DD /* ChameleonDemoTests.m */; };
@@ -37,13 +36,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		449622F61B8C7510000DCE4F /* NSDictionary+TODictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+TODictionary.h"; sourceTree = "<group>"; };
-		449622F71B8C7510000DCE4F /* NSDictionary+TODictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+TODictionary.m"; sourceTree = "<group>"; };
 		449622FA1B8C7551000DCE4F /* BWTODictionaryProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BWTODictionaryProtocol.h; sourceTree = "<group>"; };
-		449622FB1B8C75C4000DCE4F /* NSObject+TODictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+TODictionary.h"; sourceTree = "<group>"; };
-		449622FC1B8C75C4000DCE4F /* NSObject+TODictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+TODictionary.m"; sourceTree = "<group>"; };
-		449622FE1B8C767A000DCE4F /* NSArray+TODictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+TODictionary.h"; sourceTree = "<group>"; };
-		449622FF1B8C767A000DCE4F /* NSArray+TODictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+TODictionary.m"; sourceTree = "<group>"; };
 		44965A281B81733100B8AD02 /* BWPay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BWPay.h; sourceTree = "<group>"; };
 		44965A291B81733100B8AD02 /* BWPay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BWPay.m; sourceTree = "<group>"; };
 		44965A2A1B81733100B8AD02 /* EnsureType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnsureType.h; sourceTree = "<group>"; };
@@ -54,6 +47,8 @@
 		44965A501B85AD1300B8AD02 /* BWPay_Sname.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BWPay_Sname.h; sourceTree = "<group>"; };
 		44965A511B85AD1300B8AD02 /* BWPay_Sname.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BWPay_Sname.m; sourceTree = "<group>"; };
 		44965A541B85AE9E00B8AD02 /* ChameleonSnameDemoTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChameleonSnameDemoTests.m; sourceTree = "<group>"; };
+		44B14FDF1B905CCC00467497 /* NSObject+TODictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+TODictionary.h"; sourceTree = "<group>"; };
+		44B14FE01B905CCC00467497 /* NSObject+TODictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+TODictionary.m"; sourceTree = "<group>"; };
 		44CB91F91B6F42BA00A515DD /* chameleonDemo */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = chameleonDemo; sourceTree = BUILT_PRODUCTS_DIR; };
 		44CB91FC1B6F42BA00A515DD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		44CB93C31B7C41B500A515DD /* chameleonDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = chameleonDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -83,12 +78,8 @@
 		449622F51B8C7449000DCE4F /* category */ = {
 			isa = PBXGroup;
 			children = (
-				449622FB1B8C75C4000DCE4F /* NSObject+TODictionary.h */,
-				449622FC1B8C75C4000DCE4F /* NSObject+TODictionary.m */,
-				449622F61B8C7510000DCE4F /* NSDictionary+TODictionary.h */,
-				449622F71B8C7510000DCE4F /* NSDictionary+TODictionary.m */,
-				449622FE1B8C767A000DCE4F /* NSArray+TODictionary.h */,
-				449622FF1B8C767A000DCE4F /* NSArray+TODictionary.m */,
+				44B14FDF1B905CCC00467497 /* NSObject+TODictionary.h */,
+				44B14FE01B905CCC00467497 /* NSObject+TODictionary.m */,
 			);
 			name = category;
 			sourceTree = "<group>";
@@ -248,10 +239,8 @@
 				44CB91FD1B6F42BA00A515DD /* main.m in Sources */,
 				44965A2F1B81733100B8AD02 /* EnsureType.m in Sources */,
 				44965A521B85AD1300B8AD02 /* BWPay_Sname.m in Sources */,
-				449622FD1B8C75C4000DCE4F /* NSObject+TODictionary.m in Sources */,
-				449623001B8C767A000DCE4F /* NSArray+TODictionary.m in Sources */,
+				44B14FE31B905CCC00467497 /* NSObject+TODictionary.m in Sources */,
 				44965A2E1B81733100B8AD02 /* BWPay.m in Sources */,
-				449622F81B8C7510000DCE4F /* NSDictionary+TODictionary.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,6 +255,7 @@
 				44965A361B81AA0500B8AD02 /* EnsureType.m in Sources */,
 				44CB93C81B7C41B500A515DD /* EnsureTypeTests.m in Sources */,
 				44CB93EA1B7CA3FC00A515DD /* ChameleonDemoTests.m in Sources */,
+				4411B5011B9063D2005C8E49 /* NSObject+TODictionary.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -389,6 +379,7 @@
 				INFOPLIST_FILE = chameleonDemoTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx10.10;
 				VALID_ARCHS = "armv7 armv7s arm64 x86_64";
@@ -403,6 +394,7 @@
 				INFOPLIST_FILE = chameleonDemoTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				OTHER_LDFLAGS = "-all_load";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = macosx10.10;
 				VALIDATE_PRODUCT = YES;
