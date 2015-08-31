@@ -8,6 +8,7 @@
 
 #import "UserInfo.h"
 #import "NSObject+TODictionary.h"
+#import "NSObject+DeepCopy.h"
 #import "EnsureType.h"
 
 @implementation UserInfo

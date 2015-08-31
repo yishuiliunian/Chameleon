@@ -42,6 +42,9 @@
     [_jsonDic setObject:@"baidu" forKey:@"bwstring"];
     [_jsonDic setObject:@12 forKey:@"bwnumber"];
     [_jsonDic setObject:@"www.baidu.com" forKey:@"bwurl"];
+    // NSDictionary
+    NSDictionary *dic = @{@"name":@"liujin"};
+    [_jsonDic setObject:dic forKey:@"bwdic"];
     [pay setValuesForKeysWithDictionary:_jsonDic];
 
     BWPay *payCopy = [pay copy];

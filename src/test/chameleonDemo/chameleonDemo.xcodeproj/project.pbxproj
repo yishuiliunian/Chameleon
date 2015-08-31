@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		4411B5011B9063D2005C8E49 /* NSObject+TODictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B14FE01B905CCC00467497 /* NSObject+TODictionary.m */; };
+		447F2C681B90700C00ACCAB1 /* NSObject+DeepCopy.m in Sources */ = {isa = PBXBuildFile; fileRef = 447F2C671B90700C00ACCAB1 /* NSObject+DeepCopy.m */; };
+		447F2C691B90709C00ACCAB1 /* NSObject+DeepCopy.m in Sources */ = {isa = PBXBuildFile; fileRef = 447F2C671B90700C00ACCAB1 /* NSObject+DeepCopy.m */; };
 		44965A2E1B81733100B8AD02 /* BWPay.m in Sources */ = {isa = PBXBuildFile; fileRef = 44965A291B81733100B8AD02 /* BWPay.m */; };
 		44965A2F1B81733100B8AD02 /* EnsureType.m in Sources */ = {isa = PBXBuildFile; fileRef = 44965A2B1B81733100B8AD02 /* EnsureType.m */; };
 		44965A351B81A5D700B8AD02 /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 44965A341B81A5D700B8AD02 /* UserInfo.m */; };
@@ -36,6 +38,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		447F2C661B90700C00ACCAB1 /* NSObject+DeepCopy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+DeepCopy.h"; sourceTree = "<group>"; };
+		447F2C671B90700C00ACCAB1 /* NSObject+DeepCopy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+DeepCopy.m"; sourceTree = "<group>"; };
+		447F2C6B1B9070DC00ACCAB1 /* BWDeepCopyProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BWDeepCopyProtocol.h; sourceTree = "<group>"; };
 		449622FA1B8C7551000DCE4F /* BWTODictionaryProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BWTODictionaryProtocol.h; sourceTree = "<group>"; };
 		44965A281B81733100B8AD02 /* BWPay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BWPay.h; sourceTree = "<group>"; };
 		44965A291B81733100B8AD02 /* BWPay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BWPay.m; sourceTree = "<group>"; };
@@ -80,6 +85,8 @@
 			children = (
 				44B14FDF1B905CCC00467497 /* NSObject+TODictionary.h */,
 				44B14FE01B905CCC00467497 /* NSObject+TODictionary.m */,
+				447F2C661B90700C00ACCAB1 /* NSObject+DeepCopy.h */,
+				447F2C671B90700C00ACCAB1 /* NSObject+DeepCopy.m */,
 			);
 			name = category;
 			sourceTree = "<group>";
@@ -88,6 +95,7 @@
 			isa = PBXGroup;
 			children = (
 				449622FA1B8C7551000DCE4F /* BWTODictionaryProtocol.h */,
+				447F2C6B1B9070DC00ACCAB1 /* BWDeepCopyProtocol.h */,
 			);
 			name = procotol;
 			sourceTree = "<group>";
@@ -240,6 +248,7 @@
 				44965A2F1B81733100B8AD02 /* EnsureType.m in Sources */,
 				44965A521B85AD1300B8AD02 /* BWPay_Sname.m in Sources */,
 				44B14FE31B905CCC00467497 /* NSObject+TODictionary.m in Sources */,
+				447F2C681B90700C00ACCAB1 /* NSObject+DeepCopy.m in Sources */,
 				44965A2E1B81733100B8AD02 /* BWPay.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -255,6 +264,7 @@
 				44965A361B81AA0500B8AD02 /* EnsureType.m in Sources */,
 				44CB93C81B7C41B500A515DD /* EnsureTypeTests.m in Sources */,
 				44CB93EA1B7CA3FC00A515DD /* ChameleonDemoTests.m in Sources */,
+				447F2C691B90709C00ACCAB1 /* NSObject+DeepCopy.m in Sources */,
 				4411B5011B9063D2005C8E49 /* NSObject+TODictionary.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

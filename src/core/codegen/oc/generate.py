@@ -50,5 +50,8 @@ class OCGenerator:
             self.outputFileWithRender("BWTODictionaryProtocol.h", "BWTODictionaryProtocol.h")
             self.outputFileWithRender("NSObject+TODictionary.h", "NSObject+TODictionary.h")
             self.outputFileWithRender("NSObject+TODictionary.m", "NSObject+TODictionary.m")
+            self.outputFileWithRender("BWDeepCopyProtocol.h", "BWDeepCopyProtocol.h")
+            self.outputFileWithRender("NSObject+DeepCopy.h", "NSObject+DeepCopy.h")
+            self.outputFileWithRender("NSObject+DeepCopy.m", "NSObject+DeepCopy.m")
     
         

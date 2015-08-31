@@ -8,6 +8,7 @@
 
 #import "BWPay.h"
 #import "NSObject+TODictionary.h"
+#import "NSObject+DeepCopy.h"
 #import "EnsureType.h"
 #import "UserInfo.h"
 
@@ -105,11 +106,11 @@
     copyedModel.bwstring = self.bwstring.copy;
     copyedModel.bwdata = self.bwdata.copy;
     copyedModel.bwnumber = self.bwnumber.copy;
-    copyedModel.bwdic = [[NSDictionary alloc]initWithDictionary:self.bwdic copyItems:YES];
+    copyedModel.bwdic = self.bwdic.deepCopy;
     copyedModel.bwCustomObj = self.bwCustomObj.copy;
-    copyedModel.bwstringarray = [[NSArray alloc]initWithArray:self.bwstringarray copyItems:YES];
-    copyedModel.bwnumberarray = [[NSArray alloc]initWithArray:self.bwnumberarray copyItems:YES];
-    copyedModel.bwobjarray = [[NSArray alloc]initWithArray:self.bwobjarray copyItems:YES];
+    copyedModel.bwstringarray = self.bwstringarray.deepCopy;
+    copyedModel.bwnumberarray = self.bwnumberarray.deepCopy;
+    copyedModel.bwobjarray = self.bwobjarray.deepCopy;
     copyedModel.bwbool = self.bwbool;
     copyedModel.bwuchar = self.bwuchar;
     copyedModel.bwushort = self.bwushort;

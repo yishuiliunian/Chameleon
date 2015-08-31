@@ -45,6 +45,7 @@ from core.utilities.constant import ModelType
 %>
 #import "${model.name}.h"
 #import "NSObject+TODictionary.h"
+#import "NSObject+DeepCopy.h"
 #import "EnsureType.h"
 % for o in model.properties:
   % if isinstance(o, CustomObjectProperty):
@@ -323,14 +324,12 @@ from core.utilities.constant import ModelType
     ${model.name} *copyedModel = [[self.class allocWithZone:zone] init];
     % for p in model.properties:
     % if isinstance(p, ObjectProperty):
-    % if isinstance(p, NSArrayProperty):
-    copyedModel.${p.name} = [[NSArray alloc]initWithArray:self.${p.name} copyItems:YES];
-    % elif isinstance(p, NSDictionaryProperty):
-    copyedModel.${p.name} = [[NSDictionary alloc]initWithDictionary:self.${p.name} copyItems:YES];
+    % if (isinstance(p, NSDictionaryProperty) or isinstance(p, NSArrayProperty)):
+    copyedModel.${p.name} = self.${p.name}.deepCopy;
     % else:
     copyedModel.${p.name} = self.${p.name}.copy;
     % endif
-    % elif isinstance(p, FundamentalProperty):
+    % else:
     copyedModel.${p.name} = self.${p.name};
     % endif
     % endfor

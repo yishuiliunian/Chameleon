@@ -1,5 +1,5 @@
 //
-//  NSData+TODictionary.h
+//  NSObject+DeepCopy.h
 //  chameleonDemo
 //
 //  Created by liujin on 15/8/28.
@@ -7,8 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "BWTODictionaryProtocol.h"
+#import "BWDeepCopyProtocol.h"
 
-@interface NSData (TODictionary) <BWTODictionaryProtocol>
+@interface NSObject (DeepCopy) <BWDeepCopyProtocol>
 
 @end
