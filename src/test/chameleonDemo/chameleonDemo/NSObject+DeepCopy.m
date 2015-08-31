@@ -17,12 +17,14 @@
         NSArray *allKeys = ((NSDictionary *)self).allKeys;
         for (NSString *key in allKeys) {
             NSObject<NSCopying> *value = [self valueForKey:key];
-            if ([value conformsToProtocol:@protocol(NSCopying)]) {
-                [dic setObject:value.copy forKey:key];
-            }
-            else
-            {
-                [dic setObject:value.deepCopy forKey:key];
+            if (value) {
+                if ([value isKindOfClass:[NSDictionary class]] || [value isKindOfClass:[NSArray class]]) {
+                    [dic setObject:value.deepCopy forKey:key];
+                }
+                else
+                {
+                    [dic setObject:value.copy forKey:key];
+                }
             }
         }
         return dic;
@@ -32,12 +34,12 @@
         NSMutableArray *array = [NSMutableArray array];
         for (NSObject<NSCopying> *value in (NSArray *)self) {
             if (value) {
-                if ([value conformsToProtocol:@protocol(NSCopying)]) {
-                    [array addObject:value.copy];
+                if ([value isKindOfClass:[NSDictionary class]] || [value isKindOfClass:[NSArray class]]) {
+                    [array addObject:value.deepCopy];
                 }
                 else
                 {
-                    [array addObject:value.deepCopy];
+                    [array addObject:value.copy];
                 }
             }
         }

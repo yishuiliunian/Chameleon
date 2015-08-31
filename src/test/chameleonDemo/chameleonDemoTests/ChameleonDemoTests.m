@@ -42,9 +42,18 @@
     [_jsonDic setObject:@"baidu" forKey:@"bwstring"];
     [_jsonDic setObject:@12 forKey:@"bwnumber"];
     [_jsonDic setObject:@"www.baidu.com" forKey:@"bwurl"];
+    // custom
+    NSDictionary *customObj = @{@"name":@"lj"};
     // NSDictionary
-    NSDictionary *dic = @{@"name":@"liujin"};
+    NSDictionary *dic = @{@"obj":customObj};
     [_jsonDic setObject:dic forKey:@"bwdic"];
+    // NSArray
+    NSArray *stringArr = @[@"zhangsan",@"lisi"];
+    NSArray *numberArr = @[@1,@2];
+    NSArray *objArr = @[customObj];
+    [_jsonDic setValue:stringArr forKey:@"bwstringarray"];
+    [_jsonDic setValue:numberArr forKey:@"bwnumberarray"];
+    [_jsonDic setValue:objArr forKey:@"bwobjarray"];
     [pay setValuesForKeysWithDictionary:_jsonDic];
 
     BWPay *payCopy = [pay copy];
@@ -69,6 +78,9 @@
     XCTAssert([pay.bwstring isEqualToString:payCopy.bwstring]);
     XCTAssert([pay.bwnumber isEqualToNumber:payCopy.bwnumber]);
     XCTAssert([pay.bwurl isEqualTo:payCopy.bwurl]);
+    XCTAssert([pay.bwstringarray isEqualToArray:payCopy.bwstringarray]);
+    XCTAssert([pay.bwnumberarray isEqualToArray:payCopy.bwnumberarray]);
+    XCTAssert([pay.bwdic isEqualToDictionary:payCopy.bwdic]);
 }
 - (void)testTODictionary
 {

@@ -116,10 +116,9 @@
     // NSNumber NSString
     NSArray *numberInputArr = @[@1234,@"1234",];
     for (int i = 0; i < foundationInputArr.count; i++) {
-        [_jsonDic setValue:foundationInputArr[i] forKey:@"bwnumber"];
-        [_jsonDic setValue:foundationInputArr[i] forKey:@"bwnumber"];
+        [_jsonDic setValue:numberInputArr[i] forKey:@"bwnumber"];
+        [_jsonDic setValue:numberInputArr[i] forKey:@"bwnumber"];
     }
-    
 }
 // char
 - (void)testCharOutput
