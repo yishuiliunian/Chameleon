@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "BWTODictionaryProtocol.h"
+#import "BWModelProtocol.h"
 
 @interface UserInfo : NSObject<NSCopying,BWTODictionaryProtocol>
 

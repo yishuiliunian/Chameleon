@@ -21,9 +21,6 @@
 @implementation EnsureTypeTests
 
 - (void)setUp {
-    
-    
-    
     [super setUp];
     _foundationUnsupportArr = @[@"",@" ",@"1a",@"hello world",[NSNull null]];
     _foundationInputArr = @[@1,@"1",@"1.2",@"1.2a",@"123"];
@@ -36,8 +33,6 @@
     // Put teardown code here. This method is called after the invocation of each test method in the class.
     [super tearDown];
 }
-
-// 判断两个数是否想等，若不想等，输出
 
 // char
 - (void)testEnsureCharType

@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "BWTODictionaryProtocol.h"
+#import "BWModelProtocol.h"
 @class UserInfo;
 
 @interface BWPay_Sname : NSObject<NSCopying,BWTODictionaryProtocol>

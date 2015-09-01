@@ -7,8 +7,8 @@
 //
 
 #import "UserInfo.h"
-#import "NSObject+TODictionary.h"
-#import "NSObject+DeepCopy.h"
+#import "BWTODictionary.h"
+#import "BWDeepCopy.h"
 #import "EnsureType.h"
 
 @implementation UserInfo
@@ -39,7 +39,6 @@
 - (void)setValue:(id)value forKey:(NSString *)key
 {
     if (NO){}
-    // NSString
     else if ([key isEqualToString:@"name"])
     {
         _name = ensureStringType(value);

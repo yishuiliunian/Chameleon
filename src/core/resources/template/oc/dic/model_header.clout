@@ -12,7 +12,7 @@ from core.codegen.property import FundamentalProperty
 from core.codegen.property import CustomObjectProperty
 %>
 #import <Foundation/Foundation.h>
-#import "BWTODictionaryProtocol.h"
+#import "BWModelProtocol.h"
 % for o in model.properties:
   % if isinstance(o, CustomObjectProperty):
 @class ${o.type};

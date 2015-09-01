@@ -47,11 +47,10 @@ class OCGenerator:
         if self.type == OCOutType.Dic:
             self.outputFileWithRender("EnsureType.h", "EnsureType.h")
             self.outputFileWithRender("EnsureType.m", "EnsureType.m")
-            self.outputFileWithRender("BWTODictionaryProtocol.h", "BWTODictionaryProtocol.h")
-            self.outputFileWithRender("NSObject+TODictionary.h", "NSObject+TODictionary.h")
-            self.outputFileWithRender("NSObject+TODictionary.m", "NSObject+TODictionary.m")
-            self.outputFileWithRender("BWDeepCopyProtocol.h", "BWDeepCopyProtocol.h")
-            self.outputFileWithRender("NSObject+DeepCopy.h", "NSObject+DeepCopy.h")
-            self.outputFileWithRender("NSObject+DeepCopy.m", "NSObject+DeepCopy.m")
+            self.outputFileWithRender("BWModelProtocol.h", "BWModelProtocol.h")
+            self.outputFileWithRender("BWTODictionary.h", "BWTODictionary.h")
+            self.outputFileWithRender("BWTODictionary.m", "BWTODictionary.m")
+            self.outputFileWithRender("BWDeepCopy.h", "BWDeepCopy.h")
+            self.outputFileWithRender("BWDeepCopy.m", "BWDeepCopy.m")
     
         

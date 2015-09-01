@@ -7,9 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4411B5011B9063D2005C8E49 /* NSObject+TODictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B14FE01B905CCC00467497 /* NSObject+TODictionary.m */; };
-		447F2C681B90700C00ACCAB1 /* NSObject+DeepCopy.m in Sources */ = {isa = PBXBuildFile; fileRef = 447F2C671B90700C00ACCAB1 /* NSObject+DeepCopy.m */; };
-		447F2C691B90709C00ACCAB1 /* NSObject+DeepCopy.m in Sources */ = {isa = PBXBuildFile; fileRef = 447F2C671B90700C00ACCAB1 /* NSObject+DeepCopy.m */; };
 		44965A2E1B81733100B8AD02 /* BWPay.m in Sources */ = {isa = PBXBuildFile; fileRef = 44965A291B81733100B8AD02 /* BWPay.m */; };
 		44965A2F1B81733100B8AD02 /* EnsureType.m in Sources */ = {isa = PBXBuildFile; fileRef = 44965A2B1B81733100B8AD02 /* EnsureType.m */; };
 		44965A351B81A5D700B8AD02 /* UserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 44965A341B81A5D700B8AD02 /* UserInfo.m */; };
@@ -19,10 +16,16 @@
 		44965A521B85AD1300B8AD02 /* BWPay_Sname.m in Sources */ = {isa = PBXBuildFile; fileRef = 44965A511B85AD1300B8AD02 /* BWPay_Sname.m */; };
 		44965A531B85AE4B00B8AD02 /* BWPay_Sname.m in Sources */ = {isa = PBXBuildFile; fileRef = 44965A511B85AD1300B8AD02 /* BWPay_Sname.m */; };
 		44965A551B85AE9E00B8AD02 /* ChameleonSnameDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 44965A541B85AE9E00B8AD02 /* ChameleonSnameDemoTests.m */; };
-		44B14FE31B905CCC00467497 /* NSObject+TODictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 44B14FE01B905CCC00467497 /* NSObject+TODictionary.m */; };
 		44CB91FD1B6F42BA00A515DD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 44CB91FC1B6F42BA00A515DD /* main.m */; };
 		44CB93C81B7C41B500A515DD /* EnsureTypeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 44CB93C71B7C41B500A515DD /* EnsureTypeTests.m */; };
 		44CB93EA1B7CA3FC00A515DD /* ChameleonDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 44CB93E91B7CA3FC00A515DD /* ChameleonDemoTests.m */; };
+		44CC7A8D1B9557E000FA39CA /* EnsureTypeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 44CB93C71B7C41B500A515DD /* EnsureTypeTests.m */; };
+		44CC7A8E1B9557E400FA39CA /* ChameleonDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 44CB93E91B7CA3FC00A515DD /* ChameleonDemoTests.m */; };
+		44CC7A8F1B9557E700FA39CA /* ChameleonSnameDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 44965A541B85AE9E00B8AD02 /* ChameleonSnameDemoTests.m */; };
+		44CC7A921B957DC500FA39CA /* BWDeepCopy.m in Sources */ = {isa = PBXBuildFile; fileRef = 44CC7A911B957DC500FA39CA /* BWDeepCopy.m */; };
+		44CC7A931B957DC500FA39CA /* BWDeepCopy.m in Sources */ = {isa = PBXBuildFile; fileRef = 44CC7A911B957DC500FA39CA /* BWDeepCopy.m */; };
+		44CC7A961B95837900FA39CA /* BWTODictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 44CC7A951B95837900FA39CA /* BWTODictionary.m */; };
+		44CC7A971B95837900FA39CA /* BWTODictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 44CC7A951B95837900FA39CA /* BWTODictionary.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -38,10 +41,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		447F2C661B90700C00ACCAB1 /* NSObject+DeepCopy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+DeepCopy.h"; sourceTree = "<group>"; };
-		447F2C671B90700C00ACCAB1 /* NSObject+DeepCopy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+DeepCopy.m"; sourceTree = "<group>"; };
-		447F2C6B1B9070DC00ACCAB1 /* BWDeepCopyProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BWDeepCopyProtocol.h; sourceTree = "<group>"; };
-		449622FA1B8C7551000DCE4F /* BWTODictionaryProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BWTODictionaryProtocol.h; sourceTree = "<group>"; };
 		44965A281B81733100B8AD02 /* BWPay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BWPay.h; sourceTree = "<group>"; };
 		44965A291B81733100B8AD02 /* BWPay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BWPay.m; sourceTree = "<group>"; };
 		44965A2A1B81733100B8AD02 /* EnsureType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EnsureType.h; sourceTree = "<group>"; };
@@ -52,14 +51,17 @@
 		44965A501B85AD1300B8AD02 /* BWPay_Sname.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BWPay_Sname.h; sourceTree = "<group>"; };
 		44965A511B85AD1300B8AD02 /* BWPay_Sname.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BWPay_Sname.m; sourceTree = "<group>"; };
 		44965A541B85AE9E00B8AD02 /* ChameleonSnameDemoTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChameleonSnameDemoTests.m; sourceTree = "<group>"; };
-		44B14FDF1B905CCC00467497 /* NSObject+TODictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+TODictionary.h"; sourceTree = "<group>"; };
-		44B14FE01B905CCC00467497 /* NSObject+TODictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+TODictionary.m"; sourceTree = "<group>"; };
 		44CB91F91B6F42BA00A515DD /* chameleonDemo */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = chameleonDemo; sourceTree = BUILT_PRODUCTS_DIR; };
 		44CB91FC1B6F42BA00A515DD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		44CB93C31B7C41B500A515DD /* chameleonDemoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = chameleonDemoTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		44CB93C61B7C41B500A515DD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		44CB93C71B7C41B500A515DD /* EnsureTypeTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EnsureTypeTests.m; sourceTree = "<group>"; };
 		44CB93E91B7CA3FC00A515DD /* ChameleonDemoTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChameleonDemoTests.m; sourceTree = "<group>"; };
+		44CC7A901B957DC500FA39CA /* BWDeepCopy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BWDeepCopy.h; sourceTree = "<group>"; };
+		44CC7A911B957DC500FA39CA /* BWDeepCopy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BWDeepCopy.m; sourceTree = "<group>"; };
+		44CC7A941B95837900FA39CA /* BWTODictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BWTODictionary.h; sourceTree = "<group>"; };
+		44CC7A951B95837900FA39CA /* BWTODictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BWTODictionary.m; sourceTree = "<group>"; };
+		44CC7A981B95889500FA39CA /* BWModelProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BWModelProtocol.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,10 +85,10 @@
 		449622F51B8C7449000DCE4F /* category */ = {
 			isa = PBXGroup;
 			children = (
-				44B14FDF1B905CCC00467497 /* NSObject+TODictionary.h */,
-				44B14FE01B905CCC00467497 /* NSObject+TODictionary.m */,
-				447F2C661B90700C00ACCAB1 /* NSObject+DeepCopy.h */,
-				447F2C671B90700C00ACCAB1 /* NSObject+DeepCopy.m */,
+				44CC7A901B957DC500FA39CA /* BWDeepCopy.h */,
+				44CC7A911B957DC500FA39CA /* BWDeepCopy.m */,
+				44CC7A941B95837900FA39CA /* BWTODictionary.h */,
+				44CC7A951B95837900FA39CA /* BWTODictionary.m */,
 			);
 			name = category;
 			sourceTree = "<group>";
@@ -94,8 +96,7 @@
 		449622F91B8C7517000DCE4F /* procotol */ = {
 			isa = PBXGroup;
 			children = (
-				449622FA1B8C7551000DCE4F /* BWTODictionaryProtocol.h */,
-				447F2C6B1B9070DC00ACCAB1 /* BWDeepCopyProtocol.h */,
+				44CC7A981B95889500FA39CA /* BWModelProtocol.h */,
 			);
 			name = procotol;
 			sourceTree = "<group>";
@@ -199,7 +200,7 @@
 		44CB91F11B6F42BA00A515DD /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0640;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = LiuJin;
 				TargetAttributes = {
 					44CB91F81B6F42BA00A515DD = {
@@ -245,10 +246,13 @@
 			files = (
 				44965A351B81A5D700B8AD02 /* UserInfo.m in Sources */,
 				44CB91FD1B6F42BA00A515DD /* main.m in Sources */,
+				44CC7A961B95837900FA39CA /* BWTODictionary.m in Sources */,
+				44CC7A921B957DC500FA39CA /* BWDeepCopy.m in Sources */,
+				44CC7A8F1B9557E700FA39CA /* ChameleonSnameDemoTests.m in Sources */,
 				44965A2F1B81733100B8AD02 /* EnsureType.m in Sources */,
+				44CC7A8D1B9557E000FA39CA /* EnsureTypeTests.m in Sources */,
 				44965A521B85AD1300B8AD02 /* BWPay_Sname.m in Sources */,
-				44B14FE31B905CCC00467497 /* NSObject+TODictionary.m in Sources */,
-				447F2C681B90700C00ACCAB1 /* NSObject+DeepCopy.m in Sources */,
+				44CC7A8E1B9557E400FA39CA /* ChameleonDemoTests.m in Sources */,
 				44965A2E1B81733100B8AD02 /* BWPay.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -264,8 +268,8 @@
 				44965A361B81AA0500B8AD02 /* EnsureType.m in Sources */,
 				44CB93C81B7C41B500A515DD /* EnsureTypeTests.m in Sources */,
 				44CB93EA1B7CA3FC00A515DD /* ChameleonDemoTests.m in Sources */,
-				447F2C691B90709C00ACCAB1 /* NSObject+DeepCopy.m in Sources */,
-				4411B5011B9063D2005C8E49 /* NSObject+TODictionary.m in Sources */,
+				44CC7A971B95837900FA39CA /* BWTODictionary.m in Sources */,
+				44CC7A931B957DC500FA39CA /* BWDeepCopy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,6 +296,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -310,7 +315,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = macosx10.10;
+				SDKROOT = macosx;
 				VALID_ARCHS = "armv7 armv7s arm64";
 			};
 			name = Debug;
@@ -346,7 +351,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				SDKROOT = macosx10.10;
+				SDKROOT = macosx;
 				VALID_ARCHS = "armv7 armv7s arm64";
 			};
 			name = Release;
@@ -354,7 +359,6 @@
 		44CB92011B6F42BA00A515DD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -369,7 +373,6 @@
 		44CB92021B6F42BA00A515DD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD)";
 				GCC_PREPROCESSOR_DEFINITIONS = NS_BLOCK_ASSERTIONS;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VALID_ARCHS = "armv7 armv7s arm64 x86_64";
@@ -379,6 +382,7 @@
 		44CB93C91B7C41B500A515DD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -390,8 +394,9 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = "-all_load";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.liujin.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx10.10;
+				SDKROOT = macosx;
 				VALID_ARCHS = "armv7 armv7s arm64 x86_64";
 			};
 			name = Debug;
@@ -399,14 +404,16 @@
 		44CB93CA1B7C41B500A515DD /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				GCC_PREPROCESSOR_DEFINITIONS = NS_BLOCK_ASSERTIONS;
 				INFOPLIST_FILE = chameleonDemoTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				OTHER_LDFLAGS = "-all_load";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.liujin.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx10.10;
+				SDKROOT = macosx;
 				VALIDATE_PRODUCT = YES;
 				VALID_ARCHS = "armv7 armv7s arm64 x86_64";
 			};

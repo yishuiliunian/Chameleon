@@ -44,13 +44,13 @@ from core.codegen.property import is_oc_object_propery
 from core.utilities.constant import ModelType
 %>
 #import "${model.name}.h"
-#import "NSObject+TODictionary.h"
-#import "NSObject+DeepCopy.h"
+#import "BWTODictionary.h"
+#import "BWDeepCopy.h"
 #import "EnsureType.h"
 % for o in model.properties:
   % if isinstance(o, CustomObjectProperty):
 #import "${o.type}.h"
-  % endif
+  % endifs
 % endfor
 
 @implementation ${model.name}
@@ -341,7 +341,6 @@ from core.utilities.constant import ModelType
     if (NO){}
 % for p in model.properties:
 % if isinstance(p, CharProperty):
-    // char
     %if p.secondName is None:
     else if ([key isEqualToString:@"${p.name}"])
     %else: 
@@ -352,7 +351,6 @@ from core.utilities.constant import ModelType
     }
 % endif
 % if isinstance(p, UnsignedCharProperty):
-    // unsigned char
     %if p.secondName is None:
     else if ([key isEqualToString:@"${p.name}"])
     %else:
@@ -363,7 +361,6 @@ from core.utilities.constant import ModelType
     }
 % endif
 % if isinstance(p, ShortProperty):
-    // short
     %if p.secondName is None:
     else if ([key isEqualToString:@"${p.name}"])
     %else:
@@ -374,7 +371,6 @@ from core.utilities.constant import ModelType
     }
 % endif
 % if isinstance(p, UnsignedShortProperty):
-    // unsigned short
     %if p.secondName is None:
     else if ([key isEqualToString:@"${p.name}"])
     %else:
@@ -385,7 +381,6 @@ from core.utilities.constant import ModelType
     }
 % endif
 % if isinstance(p, IntProperty):
-    // int
     %if p.secondName is None:
     else if ([key isEqualToString:@"${p.name}"])
     %else:
@@ -396,7 +391,6 @@ from core.utilities.constant import ModelType
     }
 % endif
 % if isinstance(p, UnsignedIntProperty):
-    // unsigned int
     %if p.secondName is None:
     else if ([key isEqualToString:@"${p.name}"])
     %else:
@@ -407,7 +401,6 @@ from core.utilities.constant import ModelType
     }
 % endif
 % if isinstance(p, LongProperty):
-    // long
     %if p.secondName is None:
     else if ([key isEqualToString:@"${p.name}"])
     %else:
@@ -418,7 +411,6 @@ from core.utilities.constant import ModelType
     }
 % endif
 % if isinstance(p, UnsignedLongProperty):
-    // unsigned long
     %if p.secondName is None:
     else if ([key isEqualToString:@"${p.name}"])
     %else:
@@ -429,7 +421,6 @@ from core.utilities.constant import ModelType
     }
 % endif
 % if isinstance(p, LongLongProperty):
-    // longlong
     %if p.secondName is None:
     else if ([key isEqualToString:@"${p.name}"])
     %else:
@@ -440,7 +431,6 @@ from core.utilities.constant import ModelType
     }
 % endif
 % if isinstance(p, UnsignedLongLongProperty):
-    // unsigned long long
     %if p.secondName is None:
     else if ([key isEqualToString:@"${p.name}"])
     %else:
@@ -451,7 +441,6 @@ from core.utilities.constant import ModelType
     }
 % endif
 % if isinstance(p, Int8Property):
-    // int8_t
     %if p.secondName is None:
     else if ([key isEqualToString:@"${p.name}"])
     %else:
@@ -462,7 +451,6 @@ from core.utilities.constant import ModelType
     }
 % endif
 % if isinstance(p, UInt8Property):
-    // uint8_t
     %if p.secondName is None:
     else if ([key isEqualToString:@"${p.name}"])
     %else:
@@ -473,7 +461,6 @@ from core.utilities.constant import ModelType
     }
 % endif
 % if isinstance(p, Int16Property):
-    // int16_t
     %if p.secondName is None:
     else if ([key isEqualToString:@"${p.name}"])
     %else:
@@ -484,7 +471,6 @@ from core.utilities.constant import ModelType
     }
 % endif
 % if isinstance(p, UInt16Property):
-    // uint16_t
     %if p.secondName is None:
     else if ([key isEqualToString:@"${p.name}"])
     %else:
@@ -495,7 +481,6 @@ from core.utilities.constant import ModelType
     }
 % endif
 % if isinstance(p, Int32Property):
-    // int32_t
     %if p.secondName is None:
     else if ([key isEqualToString:@"${p.name}"])
     %else:
@@ -506,7 +491,6 @@ from core.utilities.constant import ModelType
     }
 % endif
 % if isinstance(p, UInt32Property):
-    // uint32_t
     %if p.secondName is None:
     else if ([key isEqualToString:@"${p.name}"])
     %else:
@@ -517,7 +501,6 @@ from core.utilities.constant import ModelType
     }
 % endif
 % if isinstance(p, Int64Property):
-    // int64
     %if p.secondName is None:
     else if ([key isEqualToString:@"${p.name}"])
     %else:
@@ -528,7 +511,6 @@ from core.utilities.constant import ModelType
     }
 % endif
 % if isinstance(p, UInt64Property):
-    // uint64_t
     %if p.secondName is None:
     else if ([key isEqualToString:@"${p.name}"])
     %else:
@@ -539,7 +521,6 @@ from core.utilities.constant import ModelType
     }
 % endif
 % if isinstance(p, FloatProperty):
-    // float
     %if p.secondName is None:
     else if ([key isEqualToString:@"${p.name}"])
     %else:
@@ -550,7 +531,6 @@ from core.utilities.constant import ModelType
     }
 % endif
 % if isinstance(p, DoubleProperty):
-    // double
     %if p.secondName is None:
     else if ([key isEqualToString:@"${p.name}"])
     %else:
@@ -561,7 +541,6 @@ from core.utilities.constant import ModelType
     }
 % endif
 % if isinstance(p, BoolProperty):
-    // BOOL
     %if p.secondName is None:
     else if ([key isEqualToString:@"${p.name}"])
     %else:
@@ -572,7 +551,6 @@ from core.utilities.constant import ModelType
     }
 % endif
 % if isinstance(p, NSIntegerProperty):
-    // NSInteger
     %if p.secondName is None:
     else if ([key isEqualToString:@"${p.name}"])
     %else:
@@ -583,7 +561,6 @@ from core.utilities.constant import ModelType
     }
 % endif
 % if isinstance(p, NSUIntegerProperty):
-    // NSUInteger
     %if p.secondName is None:
     else if ([key isEqualToString:@"${p.name}"])
     %else:
@@ -594,7 +571,6 @@ from core.utilities.constant import ModelType
     }
 % endif
 % if isinstance(p, NSStringProperty):
-    // NSString
     %if p.secondName is None:
     else if ([key isEqualToString:@"${p.name}"])
     %else:
@@ -605,7 +581,6 @@ from core.utilities.constant import ModelType
      }
 % endif
 % if isinstance(p, NSNumberProperty):
-    // NSNumber
     %if p.secondName is None:
     else if ([key isEqualToString:@"${p.name}"])
     %else:
@@ -616,7 +591,6 @@ from core.utilities.constant import ModelType
     }
 % endif
 % if isinstance(p, NSURLProperty):
-    // NSURL
     %if p.secondName is None:
     else if ([key isEqualToString:@"${p.name}"])
     %else:
@@ -627,7 +601,6 @@ from core.utilities.constant import ModelType
     }
 % endif
 % if isinstance(p, NSDictionaryProperty):
-    // NSDictionary
     %if p.secondName is None:
     else if ([key isEqualToString:@"${p.name}"])
     %else:
@@ -638,7 +611,6 @@ from core.utilities.constant import ModelType
     }
 %endif
 % if isinstance(p, NSDataProperty):
-    // NSData
     %if p.secondName is None:
     else if ([key isEqualToString:@"${p.name}"])
     %else:
@@ -649,7 +621,6 @@ from core.utilities.constant import ModelType
     }
 %endif
 % if isinstance(p, CustomObjectProperty):
-    // 自定义类型
     %if p.secondName is None:
     else if ([key isEqualToString:@"${p.name}"])
     %else:
@@ -667,7 +638,6 @@ from core.utilities.constant import ModelType
     }
 % endif
 % if isinstance(p, NSArrayProperty):
-    // NSArray
     %if p.secondName is None:
     else if ([key isEqualToString:@"${p.name}"])
     %else:
@@ -684,21 +654,18 @@ from core.utilities.constant import ModelType
         for (id obj in array) { 
             %if is_foundation_object_propery(p.containerType):
             %if p.containerType == ModelType.Number:
-            // NSNumber类型
             if (ensureNumberType(obj))
             {
                 [objects addObject:ensureNumberType(obj)];
             }
             %endif
             % if p.containerType == ModelType.String:
-            // NSString类型
             if (ensureStringType(obj))
             {
                 [objects addObject:ensureStringType(obj)];
             }
             %endif
             %else:
-            // 自定义类型
             NSAssert([obj isKindOfClass:[NSDictionary class]], @"数据不是dictionary类型，无法向自定义类型转化");
             ${p.containerType }* transObj = [[${p.containerType } alloc] init];
             [transObj setValuesForKeysWithDictionary:obj];
