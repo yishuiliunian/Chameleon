@@ -19,13 +19,11 @@
 		44CB91FD1B6F42BA00A515DD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 44CB91FC1B6F42BA00A515DD /* main.m */; };
 		44CB93C81B7C41B500A515DD /* EnsureTypeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 44CB93C71B7C41B500A515DD /* EnsureTypeTests.m */; };
 		44CB93EA1B7CA3FC00A515DD /* ChameleonDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 44CB93E91B7CA3FC00A515DD /* ChameleonDemoTests.m */; };
-		44CC7A8D1B9557E000FA39CA /* EnsureTypeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 44CB93C71B7C41B500A515DD /* EnsureTypeTests.m */; };
-		44CC7A8E1B9557E400FA39CA /* ChameleonDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 44CB93E91B7CA3FC00A515DD /* ChameleonDemoTests.m */; };
-		44CC7A8F1B9557E700FA39CA /* ChameleonSnameDemoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 44965A541B85AE9E00B8AD02 /* ChameleonSnameDemoTests.m */; };
 		44CC7A921B957DC500FA39CA /* BWDeepCopy.m in Sources */ = {isa = PBXBuildFile; fileRef = 44CC7A911B957DC500FA39CA /* BWDeepCopy.m */; };
 		44CC7A931B957DC500FA39CA /* BWDeepCopy.m in Sources */ = {isa = PBXBuildFile; fileRef = 44CC7A911B957DC500FA39CA /* BWDeepCopy.m */; };
 		44CC7A961B95837900FA39CA /* BWTODictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 44CC7A951B95837900FA39CA /* BWTODictionary.m */; };
 		44CC7A971B95837900FA39CA /* BWTODictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 44CC7A951B95837900FA39CA /* BWTODictionary.m */; };
+		44CC7AA51B96D05A00FA39CA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 44CB91FC1B6F42BA00A515DD /* main.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -248,11 +246,8 @@
 				44CB91FD1B6F42BA00A515DD /* main.m in Sources */,
 				44CC7A961B95837900FA39CA /* BWTODictionary.m in Sources */,
 				44CC7A921B957DC500FA39CA /* BWDeepCopy.m in Sources */,
-				44CC7A8F1B9557E700FA39CA /* ChameleonSnameDemoTests.m in Sources */,
 				44965A2F1B81733100B8AD02 /* EnsureType.m in Sources */,
-				44CC7A8D1B9557E000FA39CA /* EnsureTypeTests.m in Sources */,
 				44965A521B85AD1300B8AD02 /* BWPay_Sname.m in Sources */,
-				44CC7A8E1B9557E400FA39CA /* ChameleonDemoTests.m in Sources */,
 				44965A2E1B81733100B8AD02 /* BWPay.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -261,6 +256,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44CC7AA51B96D05A00FA39CA /* main.m in Sources */,
 				44965A551B85AE9E00B8AD02 /* ChameleonSnameDemoTests.m in Sources */,
 				44965A531B85AE4B00B8AD02 /* BWPay_Sname.m in Sources */,
 				44965A381B81AA1A00B8AD02 /* UserInfo.m in Sources */,

@@ -44,21 +44,23 @@
     [_jsonDic setObject:@"www.baidu.com" forKey:@"bwurl"];
     // custom
     NSDictionary *customObj = @{@"name":@"lj"};
+    [_jsonDic setObject:customObj forKey:@"bwCustomObj"];
     // NSDictionary
-    NSDictionary *dic = @{@"obj":customObj};
+    NSString *name = @"custom";
+    NSDictionary *dic = @{@"obj":name};
     [_jsonDic setObject:dic forKey:@"bwdic"];
     // NSArray
     NSArray *stringArr = @[@"zhangsan",@"lisi"];
     NSArray *numberArr = @[@1,@2];
     NSArray *objArr = @[customObj];
-    [_jsonDic setValue:stringArr forKey:@"bwstringarray"];
-    [_jsonDic setValue:numberArr forKey:@"bwnumberarray"];
-    [_jsonDic setValue:objArr forKey:@"bwobjarray"];
+    [_jsonDic setObject:stringArr forKey:@"bwstringarray"];
+    [_jsonDic setObject:numberArr forKey:@"bwnumberarray"];
+    [_jsonDic setObject:objArr forKey:@"bwobjarray"];
     [pay setValuesForKeysWithDictionary:_jsonDic];
 
-    BWPay *payCopy = [pay copy];
+    BWPay *payCopy = pay.copy;
     
-    // 比较
+    // 基本数据类型
     XCTAssert(pay.bwint == payCopy.bwint);
     XCTAssert(pay.bwuint == payCopy.bwuint);
     XCTAssert(pay.bwlong == payCopy.bwlong);
@@ -75,12 +77,25 @@
     XCTAssert(pay.bwushort == payCopy.bwushort);
     XCTAssert(pay.bwintb == payCopy.bwintb);
     XCTAssert(pay.bwuintb == payCopy.bwuintb);
-    XCTAssert([pay.bwstring isEqualToString:payCopy.bwstring]);
-    XCTAssert([pay.bwnumber isEqualToNumber:payCopy.bwnumber]);
-    XCTAssert([pay.bwurl isEqualTo:payCopy.bwurl]);
+    
+    // 地址比较 number string url -> 浅拷贝
+    XCTAssert(pay.bwnumber == payCopy.bwnumber);
+    XCTAssert(pay.bwurl == payCopy.bwurl);
+    XCTAssert(pay.bwstring == payCopy.bwstring);
+    
+    // 自定义类型
+    XCTAssert(pay.bwCustomObj != payCopy.bwCustomObj);
+    XCTAssert(pay.bwCustomObj.name == payCopy.bwCustomObj.name);
+    // 容器类型
     XCTAssert([pay.bwstringarray isEqualToArray:payCopy.bwstringarray]);
     XCTAssert([pay.bwnumberarray isEqualToArray:payCopy.bwnumberarray]);
     XCTAssert([pay.bwdic isEqualToDictionary:payCopy.bwdic]);
+    XCTAssert(pay.bwstringarray != payCopy.bwstringarray);
+    XCTAssert(pay.bwnumberarray != payCopy.bwnumberarray);
+    XCTAssert(pay.bwdic != payCopy.bwdic);
+    XCTAssert(pay.bwstringarray[0] == payCopy.bwstringarray[0]);
+    XCTAssert(pay.bwnumberarray[0] == payCopy.bwnumberarray[0]);
+    XCTAssert([pay.bwdic objectForKey:@"obj"] == [payCopy.bwdic objectForKey:@"obj"]);
 }
 - (void)testTODictionary
 {
@@ -258,7 +273,6 @@
     char charArr[] = {97,98,0,0};
     for (int i = 0; i < charinputArr.count; i++) {
         [pay setValue:charinputArr[i] forKey:@"bwchar"];
-        NSLog(@"char=%c",pay.bwchar);
         XCTAssert((pay.bwchar ==  charArr[i]));
     }
     // test others

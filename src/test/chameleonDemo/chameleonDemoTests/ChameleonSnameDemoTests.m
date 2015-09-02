@@ -111,14 +111,6 @@
     XCTAssert(pay.bwushort ==  0);
     XCTAssert(pay.bwintb ==  0);
     XCTAssert(pay.bwuintb ==  0);
-    
-    //----------------基本对象类型----------------
-    // NSNumber NSString
-    NSArray *numberInputArr = @[@1234,@"1234",];
-    for (int i = 0; i < foundationInputArr.count; i++) {
-        [_jsonDic setValue:numberInputArr[i] forKey:@"bwnumber"];
-        [_jsonDic setValue:numberInputArr[i] forKey:@"bwnumber"];
-    }
 }
 // char
 - (void)testCharOutput
@@ -127,7 +119,6 @@
     char charArr[] = {97,98,0,0};
     for (int i = 0; i < charinputArr.count; i++) {
         [pay setValue:charinputArr[i] forKey:@"bwchar"];
-        NSLog(@"char=%c",pay.bwchar);
         XCTAssert((pay.bwchar ==  charArr[i]));
     }
     // test others
@@ -202,7 +193,6 @@
     unsigned short ushortArr[] = {1234,57920,0,0,1234,0};
     for (int i = 0; i < foundationInputArr.count; i++) {
         [pay setValue:foundationInputArr[i] forKey:@"bwushort"];
-        NSLog(@"unsigned short=%u",pay.bwushort);
         XCTAssert((pay.bwushort ==  ushortArr[i]));
     }
     NSData *testData = [@"hello" dataUsingEncoding:NSUTF8StringEncoding];
