@@ -1,0 +1,86 @@
+# coding: UTF-8
+//
+//  ${model.name}.m
+//  ${model.name}
+//
+//  Created by baidu
+//  Copyright (c) 2015年 Baidu. All rights reserved.
+//
+<%
+from core.codegen.property import ObjectProperty
+from core.codegen.property import FundamentalProperty
+from core.codegen.property import CharProperty
+from core.codegen.property import UnsignedCharProperty
+from core.codegen.property import ShortProperty
+from core.codegen.property import UnsignedShortProperty
+from core.codegen.property import IntProperty
+from core.codegen.property import UnsignedIntProperty
+from core.codegen.property import LongProperty
+from core.codegen.property import UnsignedLongProperty
+from core.codegen.property import LongLongProperty
+from core.codegen.property import UnsignedLongLongProperty
+from core.codegen.property import FloatProperty
+from core.codegen.property import DoubleProperty
+from core.codegen.property import NSIntegerProperty
+from core.codegen.property import NSUIntegerProperty
+from core.codegen.property import Int8Property
+from core.codegen.property import Int16Property
+from core.codegen.property import Int32Property
+from core.codegen.property import Int64Property
+from core.codegen.property import UInt8Property
+from core.codegen.property import UInt16Property
+from core.codegen.property import UInt32Property
+from core.codegen.property import UInt64Property
+from core.codegen.property import BoolProperty
+from core.codegen.property import NSArrayProperty
+from core.codegen.property import NSStringProperty
+from core.codegen.property import NSDictionaryProperty
+from core.codegen.property import NSNumberProperty
+from core.codegen.property import NSURLProperty
+from core.codegen.property import NSDataProperty
+from core.codegen.property import CustomObjectProperty
+from core.codegen.property import is_foundation_object_propery
+from core.codegen.property import is_oc_object_propery
+from core.utilities.constant import ModelType
+%>
+#import "${model.name}.h"
+% for o in model.properties:
+  % if isinstance(o, CustomObjectProperty):
+#import "${o.type}.h"
+  % endif
+% endfor
+
+% if model.hasContainerClass():
+   % for p in model.properties:
+     % if isinstance(p, NSArrayProperty):
+@class ${o.containerType};
+     % endif
+  % endfor
+% endif
+
+
+@implementation ${model.name}
+
+% if model.hasContainerClass():
++ (NSDictionary *)modelContainerPropertyGenericClass
+{
+   return @ {
+   % for p in model.properties:
+     % if isinstance(p, NSArrayProperty):
+      @"${p.mapKey()}":[${o.containerType} class],
+     % endif
+   % endfor
+  };
+}
+% endif
++ (NSDictionary *)modelCustomPropertyMapper
+{
+  return @{
+  % for p in model.properties:
+    % if p.secondName != None:
+      @"${p.name}" :@"${p.secondName}"",
+    % endif
+  % endfor
+  };
+}
+@end

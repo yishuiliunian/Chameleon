@@ -2,10 +2,16 @@
 # coding: UTF-8
 from ..utilities.constant import ModelType
 class Property:
+    comment = None
     def __init__(self, name, type, secondName=None):
         self.name = name
         self.type = type
         self.secondName = secondName
+    def mapKey(self):
+        if self.secondName != None:
+            return self.secondName
+        return self.name
+        pass
 
 #Object类型
 class ObjectProperty(Property):

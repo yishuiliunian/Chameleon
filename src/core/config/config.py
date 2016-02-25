@@ -21,9 +21,13 @@ class Config(object) :
         #oc output type
         type = args.outType
         if type == None:
-            type = OCOutType.Dic
+            type = OCOutType.BWModel
         elif type == OCOutType.Mantle:
             type = OCOutType.Mantle
+        elif type == OCOutType.BWModel:
+            type = OCOutType.BWModel
+        elif type == OCOutType.Dic:
+            type = OCOutType.Dic
         else:
             print("不支持该类型的输出")
         cls.OC_TYPE = type

@@ -5,11 +5,12 @@ prog : (model | NEWLINE | words)+
 
 
 model : 'model' ID '{'
-  property_line+
+    property_line+
   '}'
 ;
 
-property_line: property_line_words | NEWLINE
+
+property_line: comment |property_line_words | NEWLINE
 ;
 
 words :'/*' NameStartChar+ '*/'
@@ -22,7 +23,8 @@ property_line_words: (c_property | array_property) NEWLINE
 c_property: c_property_name | c_property_second_name
 ;
 
-c_property_name: p_type ID 
+
+c_property_name: p_type ID
 ;
 
 c_property_second_name: p_type ID '['ID']'
@@ -71,14 +73,11 @@ T_UInt32: 'uint32'
 T_UInt64: 'uint64'
 ;
 
-COMMENT: '/*' [WORDS|ID|WS]+ '*/'
-;
 
 ID : ('a'..'z' |'A'..'Z' |'_' | '0'..'9')+ ;
 INT : '0'..'9' + ;
 NEWLINE:'\r' ? '\n' ;
 WS : (' ' |'\t' |'\n' |'\r' ) ->skip;
-
 
 NameStartChar  :   'A'..'Z'
     |   'a'..'z'
@@ -96,3 +95,12 @@ NameStartChar  :   'A'..'Z'
     |   '\uF900'..'\uFDCF'
     |   '\uFDF0'..'\uFFFD'
     ;
+
+comment : COMMENT
+;
+
+COMMENT
+  :   ( '//' ~[\r\n]* '\r'? '\n'
+      | '/*' .*? '*/'
+      )
+  ;

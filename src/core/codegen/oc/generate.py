@@ -7,7 +7,7 @@ from ...utilities.constant import OCOutType
 import codecs
 import os
 class OCGenerator:
-    def __init__(self, model, outPath, type=OCOutType.Dic):
+    def __init__(self, model, outPath, type=OCOutType.BWModel):
 
         self.model = model
         self.outPath = outPath
@@ -16,6 +16,8 @@ class OCGenerator:
             templatePath = appPath+"/../../resources/template/oc/dic"
         elif type == OCOutType.Mantle:
             templatePath = appPath+"/../../resources/template/oc/mantle"
+        elif type == OCOutType.BWModel:
+            templatePath = appPath+"/../../resources/template/oc/bwmodel"
         else:
             sys.exit("OC不支持该输出选项");
 
@@ -52,5 +54,3 @@ class OCGenerator:
             self.outputFileWithRender("BWTODictionary.m", "BWTODictionary.m")
             self.outputFileWithRender("BWDeepCopy.h", "BWDeepCopy.h")
             self.outputFileWithRender("BWDeepCopy.m", "BWDeepCopy.m")
-    
-        

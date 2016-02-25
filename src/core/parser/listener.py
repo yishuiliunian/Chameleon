@@ -1,6 +1,8 @@
 # coding: UTF-8
 from ..engine.ChameleonListener import *
 from ..codegen.model import OCModel
+from ..codegen.request import CHRequest
+
 from ..codegen.property import  PropertyFactory
 from ..codegen.property import NSArrayProperty
 from ..codegen.oc.generate import OCGenerator
@@ -29,6 +31,8 @@ class CLBuildListener(ChameleonListener):
         p = PropertyFactory(name, type)
         assert(p)
         model = self.topModel()
+        print(model)
+
         model.addProperty(p)
         pass
 
@@ -61,10 +65,8 @@ class CLBuildListener(ChameleonListener):
         model.addProperty(p)
         pass
 
-
     def enterModel(self, ctx):
         name =  ctx.ID().getText()
-        print name
         model = OCModel(name)
         self.models.append(model)
         pass
@@ -73,12 +75,13 @@ class CLBuildListener(ChameleonListener):
         model = self.topModel()
         generator = OCGenerator(model, Config.OUTPUT_DIR, Config.OC_TYPE)
         generator.output()
-
         pass
 
-    def exitWords(self, ctx):
+    def enterComment(self, ctx):
+        model = self.topModel().cacheComment(ctx.getText())
         print "*******"
         print "发现注释"
         print ctx.getText()
         print "******"
+        pass
         pass

@@ -50,7 +50,7 @@ from core.utilities.constant import ModelType
 % for o in model.properties:
   % if isinstance(o, CustomObjectProperty):
 #import "${o.type}.h"
-  % endifs
+  % endif
 % endfor
 
 @implementation ${model.name}
@@ -153,7 +153,7 @@ from core.utilities.constant import ModelType
     % else:
     SET_NIL_OBJECT([NSNumber numberWithChar:self.${p.name}],@"${p.secondName}");
     %endif
-    %endif  
+    %endif
     % if isinstance(p, UnsignedCharProperty):
     % if p.secondName is None:
     SET_NIL_OBJECT([NSNumber numberWithUnsignedChar:self.${p.name}],@"${p.name}");
@@ -343,7 +343,7 @@ from core.utilities.constant import ModelType
 % if isinstance(p, CharProperty):
     %if p.secondName is None:
     else if ([key isEqualToString:@"${p.name}"])
-    %else: 
+    %else:
     else if ([key isEqualToString:@"${p.name}"] || [key isEqualToString:@"${p.secondName}"])
     %endif
     {
@@ -651,7 +651,7 @@ from core.utilities.constant import ModelType
         }
         NSArray* array = (NSArray*)value;
         NSMutableArray* objects = [NSMutableArray new];
-        for (id obj in array) { 
+        for (id obj in array) {
             %if is_foundation_object_propery(p.containerType):
             %if p.containerType == ModelType.Number:
             if (ensureNumberType(obj))
@@ -670,7 +670,7 @@ from core.utilities.constant import ModelType
             ${p.containerType }* transObj = [[${p.containerType } alloc] init];
             [transObj setValuesForKeysWithDictionary:obj];
             [objects addObject:transObj];
-            %endif 
+            %endif
         }
         _${p.name} = objects;
     }

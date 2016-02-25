@@ -1,8 +1,12 @@
-/*支付协议*/
 model BWPay {
-  char                bwchar        [bw_char_sname]
-  short               bwshort       [bw_short_sname]
-  long                bwlong        [bw_long_sname]
+  /*服务器名称
+   *sdfasdfasdfasdfaa
+   */
+  char                xxxx
+  /*
+  * 苹果文档的格式
+  */
+  long                bw_long_sname
   longlong            bwlonglong    [bw_longlong_sname]
   int                 bwint         [bw_int_sname]
   float               bwfloat       [bw_float_sname]
@@ -30,5 +34,5 @@ model BWPay {
   ulong               bwulong       [bw_ulong_sname]
   ulonglong           bwulonglong   [bw_ulonglong_sname]
   uint                bwuint        [bw_uint_sname]
+  array    UserInfo   bwarray2      [asdfasdfasd]
 }
-

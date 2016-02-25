@@ -36,4 +36,5 @@ class ModelType:
 class OCOutType:
     Mantle = "mantle"
     Dic = "dic"
+    BWModel = "bdmodel"
     pass
