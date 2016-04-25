@@ -1,11 +1,11 @@
 model BWPay {
-  /*服务器名称
-   *sdfasdfasdfasdfaa
-   */
+/*服务器名称
+ *sdfasdfasdfasdfaa
+ */
   char                xxxx
-  /*
-  * 苹果文档的格式
-  */
+/*
+ * 苹果文档的格式
+ */
   long                bw_long_sname
   longlong            bwlonglong    [bw_longlong_sname]
   int                 bwint         [bw_int_sname]

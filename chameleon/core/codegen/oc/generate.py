@@ -20,6 +20,7 @@ class OCGenerator:
             templatePath = appPath+"/../../resources/template/oc/bwmodel"
         else:
             sys.exit("OC不支持该输出选项");
+        print(templatePath)
 
         self.type = type
         self.tlLookup = TemplateLookup(directories=templatePath)

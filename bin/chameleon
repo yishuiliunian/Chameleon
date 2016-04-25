@@ -1,13 +1,16 @@
-# coding: UTF-8
+#!/usr/bin/env python
+#-*- coding:utf-8 -*-
 import sys
 import subprocess
 import os
 import argparse
+sys.path.append(".")
+sys.path.append("..")
 from antlr4 import *
-from core.engine.ChameleonLexer import ChameleonLexer
-from core.engine.ChameleonParser import ChameleonParser
-from core.parser.listener import CLBuildListener
-from core.config.config import *
+from chameleon.core.engine.ChameleonLexer import ChameleonLexer
+from chameleon.core.engine.ChameleonParser import ChameleonParser
+from chameleon.core.parser.listener import CLBuildListener
+from chameleon.core.config.config import *
 
 def main(argv):
     argsParser = argparse.ArgumentParser()
@@ -37,18 +40,6 @@ def main(argv):
     walker = ParseTreeWalker()
     loader = CLBuildListener()
     walker.walk(loader, tree)
-
-#如果需要输出到xcode的工程当中
-    if args.xcode:
-        appPath = os.path.split(os.path.realpath(__file__))[0];
-        shellPath = appPath + "/" + "project/project.rb " + "/Users/baidu/Works/Baidu/temp"
-        s = subprocess.Popen("ruby " + shellPath, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, shell=True)
-        while True:
-            line = s.stdout.readline()
-            if not line:
-                break
-            print line
-        print loader
 
 if __name__ == '__main__':
     main(sys.argv)

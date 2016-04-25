@@ -12,13 +12,13 @@
 @interface BWPay : NSObject
 
 /*服务器名称
-   *sdfasdfasdfasdfaa
-   */
+ *sdfasdfasdfasdfaa
+ */
 @property (assign, nonatomic) char xxxx;
 
 /*
-  * 苹果文档的格式
-  */
+ * 苹果文档的格式
+ */
 @property (assign, nonatomic) long bw_long_sname;
 
 @property (assign, nonatomic) long long bwlonglong;

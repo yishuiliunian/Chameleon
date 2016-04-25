@@ -4,3 +4,5 @@ outputFile
 test.sh
 .idea
 .DS_Store
+Chameleon.egg-info/
+dist/

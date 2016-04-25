@@ -1,3 +1,6 @@
 install:
 			sudo pip install mako
-			sudo gem install xcodeproj
+build:
+	python setup.py sdist
+	pip uninstall Chameleon -y
+	pip install  dist/Chameleon*.*
