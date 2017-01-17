@@ -1,6 +1,6 @@
-/*支付协议*/
-model BWPay {
-  char                bwchar             
+/*测试协议*/
+model Test{
+  char                bwchar
   short               bwshort
   long                bwlong
   longlong            bwlonglong
@@ -70,6 +70,6 @@ model BWPay_Sname
   ulonglong           bwulonglong   [bw_ulonglong_sname]
   uint                bwuint        [bw_uint_sname]
   array      string   bwstringarray [bw_stringarray_sname]
-  array      number   bwnumberarray [bw_numberarray_sname]  
+  array      number   bwnumberarray [bw_numberarray_sname]
   array      UserInfo bwobjarray    [bw_objarray_sname]
 }
