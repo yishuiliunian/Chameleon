@@ -20,5 +20,5 @@ setup(
     url = "http://www.github.com/yishuiliunian",
     scripts=['bin/chameleon'],
     #dependency
-    install_requires=['mako'],
+    install_requires=['mako', 'antlr4-python2-runtime'],
 )
