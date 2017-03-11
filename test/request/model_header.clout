@@ -18,9 +18,8 @@ from chameleon.core.codegen.property import CustomObjectProperty
   % endif
 % endfor
 
-@interface ${model.name} : NSObject
+@interface ${model.name} : QCloudHTTPRequest
 % for i in model.properties:
-
 % if i.comment != None:
 ${i.comment}
 %endif

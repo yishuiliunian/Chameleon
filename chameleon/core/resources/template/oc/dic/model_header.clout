@@ -3,8 +3,8 @@
 //  ${model.name}.h
 //  ${model.name}
 //
-//  Created by baidu
-//  Copyright (c) 2015年 Baidu. All rights reserved.
+//  Created by tencent
+//  Copyright (c) 2015年 tencent. All rights reserved.
 //
 <%
 from core.codegen.property import ObjectProperty

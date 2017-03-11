@@ -73,7 +73,7 @@ class CLBuildListener(ChameleonListener):
 
     def exitModel(self, ctx):
         model = self.topModel()
-        generator = OCGenerator(model, Config.OUTPUT_DIR, Config.OC_TYPE)
+        generator = OCGenerator(model, Config.OUTPUT_DIR, Config.OC_TYPE, Config.TEMPLATE)
         generator.output()
         pass
 

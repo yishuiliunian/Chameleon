@@ -3,8 +3,8 @@
 //  NSObject+TODictionary.m
 //  chameleonDemo
 //
-//  Created by baidu
-//  Copyright (c) 2015年 Baidu. All rights reserved.
+//  Created by tencent
+//  Copyright (c) 2015年 tencent. All rights reserved.
 //
 
 #import "NSObject+TODictionary.h"

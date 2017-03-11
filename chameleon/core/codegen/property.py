@@ -44,7 +44,7 @@ class NSDictionaryProperty(ObjectProperty):
 class NSArrayProperty(ObjectProperty):
     def __init__(self, name, containerType, secondName=None):
         ObjectProperty.__init__(self, name, "NSArray", secondName)
-        self.containerType = containerType
+        self.containerType = PropertyFactory("default", containerType)
 
 #基本类型
 class FundamentalProperty(Property):
@@ -214,6 +214,7 @@ def is_foundation_object_propery(type):
         return True
     else:
         return False
+
 
 def is_oc_object_propery(type):
     if type == ModelType.String:

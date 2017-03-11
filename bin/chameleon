@@ -23,6 +23,8 @@ def main(argv):
     argsParser.add_argument("-ot", "--outType", type=str, choices=["mantle", "dic", "bwmodel"], help="指定OC代码的输出格式，目前支持的有mantle、直接字典映射、使用bwmodel方式")
 #输出目录
     argsParser.add_argument("-d",  "--outDir", type=str, help="制定输出目录")
+#模板目录
+    argsParser.add_argument("-t", "--template", type=str, help="不使用默认的输出格式，而是使用制定的模板")
 #参数解析
     args = argsParser.parse_args()
 #将解析出来的参数拷贝到全局的参数配置当中

@@ -1,12 +1,19 @@
 
 desc "构建model输出"
-task :buildmodel do
-  sh 'python ../chameleon.py test.model -d chameleonDemo/chameleonDemo'
+task :install do
+  sh 'cd .. && sudo make build'
 end
 
-task :test do
-  Rake::Task['buildmodel'].invoke
+task :buildmodel do
+  sh 'python ../bin/chameleon test.model -d chameleonDemo/chameleonDemo'
+end
+
+task :test => [:install, :buildmodel]  do
   sh 'cd ./chameleonDemo && xctool -project chameleonDemo.xcodeproj -scheme chameleonDemoTests test'
+end
+
+task :request => [:install] do
+  sh 'python ../bin/chameleon test.model -t request -d requestOutput'
 end
 
 task :default => :test

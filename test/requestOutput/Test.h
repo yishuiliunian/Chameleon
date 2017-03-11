@@ -1,17 +1,15 @@
 //
-//  BWPay.h
-//  BWPay
+//  Test.h
+//  Test
 //
 //  Created by tencent
 //  Copyright (c) 2015年 tencent. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
-#import "BWModelProtocol.h"
 @class UserInfo;
 
-@interface BWPay : NSObject<NSCopying,BWTODictionaryProtocol>
-
+@interface Test : QCloudHTTPRequest
 @property (assign, nonatomic) char bwchar;
 @property (assign, nonatomic) short bwshort;
 @property (assign, nonatomic) long bwlong;
@@ -44,5 +42,4 @@
 @property (assign, nonatomic) uint64_t bwuintd;
 @property (assign, nonatomic) unsigned long bwulong;
 @property (assign, nonatomic) unsigned long long bwulonglong;
-
 @end

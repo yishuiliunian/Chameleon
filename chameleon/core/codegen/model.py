@@ -8,6 +8,7 @@ class OCModel:
         self.name = name
         self.secondName = secondName
         self.properties = []
+        self.comment = None
 
     def checkPropertyExist(self, p):
         for pItor in self.properties:

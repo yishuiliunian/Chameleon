@@ -7,21 +7,23 @@ from ...utilities.constant import OCOutType
 import codecs
 import os
 class OCGenerator:
-    def __init__(self, model, outPath, type=OCOutType.BWModel):
+    def __init__(self, model, outPath, type=OCOutType.BWModel, template=None):
 
         self.model = model
         self.outPath = outPath
         appPath = os.path.split(os.path.realpath(__file__))[0];
-        if type == OCOutType.Dic:
-            templatePath = appPath+"/../../resources/template/oc/dic"
-        elif type == OCOutType.Mantle:
-            templatePath = appPath+"/../../resources/template/oc/mantle"
-        elif type == OCOutType.BWModel:
-            templatePath = appPath+"/../../resources/template/oc/bwmodel"
+        if template == None:
+            if type == OCOutType.Dic:
+                templatePath = appPath+"/../../resources/template/oc/dic"
+            elif type == OCOutType.Mantle:
+                templatePath = appPath+"/../../resources/template/oc/mantle"
+            elif type == OCOutType.BWModel:
+                templatePath = appPath+"/../../resources/template/oc/bwmodel"
+            else:
+                sys.exit("OC不支持该输出选项");
         else:
-            sys.exit("OC不支持该输出选项");
+            templatePath = template
         print(templatePath)
-
         self.type = type
         self.tlLookup = TemplateLookup(directories=templatePath)
 

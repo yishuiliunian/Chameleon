@@ -85,7 +85,7 @@
     // output 0
     
     NSDictionary *testDic = @{@"name":@"lj"};
-    NSURL *testUrl = [NSURL URLWithString:@"www.baidu.com"];
+    NSURL *testUrl = [NSURL URLWithString:@"www.tencent.com"];
     NSData *testData = [@"hello" dataUsingEncoding:NSUTF8StringEncoding];
     NSArray *testArray = @[testDic,testUrl,testData,foundationInputArr];
     for (int i = 0; i < testArray.count; i++) {
@@ -125,7 +125,7 @@
     NSArray *testArr;
     [pay setValue:testArr forKey:@"bwchar"];
     XCTAssert(pay.bwchar == 0);
-    NSURL *testUrl = [NSURL URLWithString:@"www.baidu.com"];
+    NSURL *testUrl = [NSURL URLWithString:@"www.tencent.com"];
     [pay setValue:testUrl forKey:@"bwchar"];
     XCTAssert(pay.bwchar == 0);
 }
@@ -237,7 +237,7 @@
         [pay setValue:foundationInputArr[i] forKey:@"bwlonglong"];
         XCTAssert((pay.bwlonglong ==  longlongArr[i]));
     }
-    NSURL *testUrl = [NSURL URLWithString:@"www.baidu.com"];
+    NSURL *testUrl = [NSURL URLWithString:@"www.tencent.com"];
     [pay setValue:testUrl forKey:@"bwlonglong"];
     XCTAssert(pay.bwlonglong == 0);
 }
@@ -447,7 +447,7 @@
     NSString *nilStr;
     [pay setValue:nilStr forKey:@"bwurl"];
     XCTAssertNil(pay.bwurl,@"NSURL赋值不正确");
-    NSString *urlStr = @"baidu";
+    NSString *urlStr = @"tencent";
     [pay setValue:urlStr forKey:@"bwurl"];
     XCTAssert([pay.bwurl isKindOfClass:[NSURL class]]);
     XCTAssert([pay.bwurl isEqualTo:[NSURL URLWithString:urlStr]]);

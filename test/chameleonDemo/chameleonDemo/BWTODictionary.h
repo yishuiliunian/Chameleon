@@ -2,8 +2,8 @@
 //  BWTODictionary.h
 //  chameleonDemo
 //
-//  Created by baidu on 15/9/1.
-//  Copyright © 2015年 Baidu. All rights reserved.
+//  Created by tencent on 15/9/1.
+//  Copyright © 2015年 tencent. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
