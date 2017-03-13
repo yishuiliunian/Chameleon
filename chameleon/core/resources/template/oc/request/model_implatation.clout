@@ -1,0 +1,150 @@
+# coding: UTF-8
+//
+//  ${model.name}.m
+//  ${model.name}
+//
+//  Created by tencent
+//  Copyright (c) 2015年 tencent. All rights reserved.
+//
+<%
+from chameleon.core.codegen.property import ObjectProperty
+from chameleon.core.codegen.property import FundamentalProperty
+from chameleon.core.codegen.property import CharProperty
+from chameleon.core.codegen.property import UnsignedCharProperty
+from chameleon.core.codegen.property import ShortProperty
+from chameleon.core.codegen.property import UnsignedShortProperty
+from chameleon.core.codegen.property import IntProperty
+from chameleon.core.codegen.property import UnsignedIntProperty
+from chameleon.core.codegen.property import LongProperty
+from chameleon.core.codegen.property import UnsignedLongProperty
+from chameleon.core.codegen.property import LongLongProperty
+from chameleon.core.codegen.property import UnsignedLongLongProperty
+from chameleon.core.codegen.property import FloatProperty
+from chameleon.core.codegen.property import DoubleProperty
+from chameleon.core.codegen.property import NSIntegerProperty
+from chameleon.core.codegen.property import NSUIntegerProperty
+from chameleon.core.codegen.property import Int8Property
+from chameleon.core.codegen.property import Int16Property
+from chameleon.core.codegen.property import Int32Property
+from chameleon.core.codegen.property import Int64Property
+from chameleon.core.codegen.property import UInt8Property
+from chameleon.core.codegen.property import UInt16Property
+from chameleon.core.codegen.property import UInt32Property
+from chameleon.core.codegen.property import UInt64Property
+from chameleon.core.codegen.property import BoolProperty
+from chameleon.core.codegen.property import NSArrayProperty
+from chameleon.core.codegen.property import NSStringProperty
+from chameleon.core.codegen.property import NSDictionaryProperty
+from chameleon.core.codegen.property import NSNumberProperty
+from chameleon.core.codegen.property import NSURLProperty
+from chameleon.core.codegen.property import NSDataProperty
+from chameleon.core.codegen.property import CustomObjectProperty
+from chameleon.core.codegen.property import DZFileProperty
+from chameleon.core.codegen.property import DZServerProperty
+from chameleon.core.codegen.property import DZMethodProperty
+from chameleon.core.codegen.property import DZHeaderProperty
+from chameleon.core.codegen.property import DZResponseProperty
+from chameleon.core.codegen.property import is_foundation_object_propery
+from chameleon.core.codegen.property import is_oc_object_propery
+from chameleon.core.utilities.constant import ModelType
+%>
+<%
+  responses = []
+  for p in model.properties:
+      if isinstance(p, DZResponseProperty):
+          responses.append(p)
+          pass
+      pass
+
+  if len(responses) > 1:
+      raise NameError("multi response")
+  response = None
+  if (len(responses) == 1):
+      response = responses[0]
+%>
+
+#import "QCloud${model.name}Request.h"
+% if response != None:
+#import "${response.name}.h"
+% endif
+% for o in model.properties:
+  % if isinstance(o, CustomObjectProperty):
+#import "${o.type}.h"
+  % endif
+% endfor
+
+% if model.hasContainerClass():
+   % for p in model.properties:
+     % if isinstance(p, NSArrayProperty):
+      % if isinstance(p.containerType, CustomObjectProperty):
+@class ${p.containerType.type}
+      % endif
+     % endif
+  % endfor
+% endif
+
+
+@implementation QCloud${model.name}Request
+
+
+% if response != None:
+- (NSArray*) customResponseSerializer
+{
+    NSMutableArray* array = [[super customResponseSerializer] mutableCopy];
+    [array addObjectsFromArray:@[
+                                 QCloudResponseCOSNormalRSPSerilizerBlock,
+                                 QCloudResponseObjectSerilizerBlock([${p.name} class])
+                                 ]];
+    return array;
+}
+% endif
+
+- (BOOL) buildRequestData:(NSError *__autoreleasing *)error
+{
+    if (![super buildRequestData:error]) {
+        return NO;
+    }
+    % for p in model.properties:
+      % if isinstance(p, DZFileProperty):
+          % if p.secondName != None:
+    if (self.${p.name}) {
+        if(![self.requestData appendPartWithFileURL:[NSURL fileURLWithPath:self.${p.name}] name:@"${p.name}" fileName:[NSUUID UUID].UUIDString mimeType:@"${p.secondName}" headerParamters:@{} error:error])
+          % else:
+    if (self.${p.name}) {
+        if(![self.requestData appendPartWithFileURL:[NSURL fileURLWithPath:self.${p.name}] name:@"${p.name}" fileName:[NSUUID UUID].UUIDString mimeType:@"${p.secondName}" headerParamters:@{} error:error])
+          % endif
+        {
+          return NO;
+        }
+    }
+      % elif isinstance(p, DZResponseProperty):
+
+      % elif isinstance(p , DZHeaderProperty):
+    [self.requestData setValue:@"${p.secondName}" forHTTPHeaderField:@"${p.name}"];
+      % elif isinstance(p, DZServerProperty):
+    self.requestData.serverURL = @"${p.name}";
+      % elif isinstance(p, DZMethodProperty):
+    self.requestData.URIMethod = @"${p.name}";
+      % elif isinstance(p, FundamentalProperty):
+        % if isinstance(p, BoolProperty) and model.paramters.count("bool_to_true")>0:
+          % if  p.secondName != None:
+    [self.requestData setParameter:self.${p.name}?@"true":@"false" withKey:@"${p.secondName}"];
+          % else:
+    [self.requestData setParameter:self.${p.name}?@"true":@"false" withKey:@"${p.name}"];
+          % endif
+        % elif p.secondName != None:
+    [self.requestData setNumberParamter:@(self.${p.name}) withKey:@"${p.secondName}"];
+        % else:
+    [self.requestData setNumberParamter:@(self.${p.name}) withKey:@"${p.name}"];
+        % endif
+      % elif isinstance(p, NSStringProperty):
+        % if p.secondName != None:
+    [self.requestData setParameter:self.${p.name} withKey:@"${p.secondName}"];
+        % else:
+    [self.requestData setParameter:self.${p.name} withKey:@"${p.name}"];
+        % endif
+      % endif
+    % endfor
+    return YES;
+}
+@end

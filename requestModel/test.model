@@ -1,0 +1,104 @@
+/*测试协议*/
+model Test{
+  char                bwchar
+  short               bwshort
+  long                bwlong
+  longlong            bwlonglong
+  int                 bwint
+  float               bwfloat
+  double              bwdouble
+  url                 bwurl
+  string              bwstring
+  data                bwdata
+  number              bwnumber
+  dictionary          bwdic
+  UserInfo            bwCustomObj
+  array      string   bwstringarray
+  array      number   bwnumberarray
+  array      UserInfo bwobjarray
+  bool                bwbool
+  uchar               bwuchar
+  ushort              bwushort
+  uint                bwuint
+  integer             bwinteger
+  uinteger            bwuinteger
+  int8                bwinta
+  int16               bwintb
+  int32               bwintc
+  int64               bwintd
+  uint8               bwuinta
+  uint16              bwuintb
+  uint32              bwuintc
+  uint64              bwuintd
+  ulong               bwulong
+  ulonglong           bwulonglong
+}
+
+model UserInfo {
+  string              name
+}
+
+model BWPay_Sname
+{
+  char                bwchar        [bw_char_sname]
+  short               bwshort       [bw_short_sname]
+  long                bwlong        [bw_long_sname]
+  longlong            bwlonglong    [bw_longlong_sname]
+  int                 bwint         [bw_int_sname]
+  float               bwfloat       [bw_float_sname]
+  double              bwdouble      [bw_double_sname]
+  url                 bwurl         [bw_url_sname]
+  string              bwstring      [bw_string_sname]
+  data                bwdata        [bw_data_sname]
+  number              bwnumber      [bw_number_sname]
+  dictionary          bwdic         [bw_dic_sname]
+  UserInfo            bwCustomObj   [bw_CustomObj_sname]
+  bool                bwbool        [bw_bool_sname]
+  uchar               bwuchar       [bw_uchar_sname]
+  integer             bwinteger     [bw_integer_sname]
+  uinteger            bwuinteger    [bw_uinteger_sname]
+  int8                bwinta        [bw_int8_sname]
+  int16               bwintb        [bw_int16_sname]
+  int32               bwintc        [bw_int32_sname]
+  int64               bwintd        [bw_int64_sname]
+  ushort              bwushort      [bw_ushort_sname]
+  uint8               bwuinta       [bw_uint8_sname]
+  uint16              bwuintb       [bw_uint16_sname]
+  uint32              bwuintc       [bw_int32_sname]
+  uint64              bwuintd       [bw_uint64_sname]
+  ulong               bwulong       [bw_ulong_sname]
+  ulonglong           bwulonglong   [bw_ulonglong_sname]
+  uint                bwuint        [bw_uint_sname]
+  array      string   bwstringarray [bw_stringarray_sname]
+  array      number   bwnumberarray [bw_numberarray_sname]
+  array      UserInfo bwobjarray    [bw_objarray_sname]
+}
+
+request IDCardCheck {
+  string            path
+  file imagePath
+}
+
+request LipIdentification {
+  string appid
+  string bucket
+  server http://xxxxxx.xx.xx
+  method five/four
+}
+
+request LiveDetectFour (form bool_to_true){
+/*
+* 存储的位置
+*/
+  string    bucket
+  string    validateData     [validate_data]
+  file      video            [video]
+  bool      compareFlag       [compare_flag]
+  file      card              [image]
+  string    seq
+  server    http://182.140.177.151
+  method    face/livedetectfour
+  header    Host              [service.image.myqcloud.com]
+
+  response xello
+}

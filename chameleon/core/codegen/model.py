@@ -20,7 +20,8 @@ class OCModel:
 
     def addProperty(self, p):
         assert(isinstance(p , Property))
-        assert(self.checkPropertyExist(p) == False)
+        if self.checkPropertyExist(p):
+            raise NameError("property has exist before, you input another [%s]" % (p.name))
         if (self.comment != None):
             p.comment = self.comment
             print("property comment ", p.comment)

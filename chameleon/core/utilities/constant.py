@@ -31,10 +31,16 @@ class ModelType:
 
     Array = "array"
     Dictionary = "dictionary"
+# request properties
+    File = "file"
+    Server = 'server'
+    Method = 'method'
+    Header = 'header'
+    Response = 'response'
     pass
 
 class OCOutType:
     Mantle = "mantle"
     Dic = "dic"
-    BWModel = "bdmodel"
+    BWModel = "bwmodel"
     pass

@@ -4,6 +4,7 @@ from ..property import *
 from mako.template import Template
 from mako.lookup import TemplateLookup
 from ...utilities.constant import OCOutType
+from ...config.config import *
 import codecs
 import os
 class OCGenerator:
@@ -11,7 +12,7 @@ class OCGenerator:
 
         self.model = model
         self.outPath = outPath
-        appPath = os.path.split(os.path.realpath(__file__))[0];
+        appPath = os.path.split(os.path.realpath(__file__))[0]
         if template == None:
             if type == OCOutType.Dic:
                 templatePath = appPath+"/../../resources/template/oc/dic"
@@ -40,13 +41,14 @@ class OCGenerator:
         f.write(content)
         f.close()
 
-
+    def outputFilename(self):
+        return self.model.name
 
     def output(self):
         if os.path.exists(self.outPath) == False:
             os.mkdir(self.outPath)
-        headerFile = self.model.name+ ".h"
-        implatationFile = self.model.name + ".m"
+        headerFile = self.outputFilename() + ".h"
+        implatationFile = self.outputFilename() + ".m"
         self.outputFileWithRender(headerFile, "model_header.clout")
         self.outputFileWithRender(implatationFile, "model_implatation.clout")
         if self.type == OCOutType.Dic:
@@ -57,3 +59,9 @@ class OCGenerator:
             self.outputFileWithRender("BWTODictionary.m", "BWTODictionary.m")
             self.outputFileWithRender("BWDeepCopy.h", "BWDeepCopy.h")
             self.outputFileWithRender("BWDeepCopy.m", "BWDeepCopy.m")
+
+class OCRequestGenerator(OCGenerator):
+    """docstring for OCRequestGenerator."""
+    def outputFilename(self):
+        return "QCloud" + self.model.name + "Request"
+        pass

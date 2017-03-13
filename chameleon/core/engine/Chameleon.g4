@@ -1,12 +1,20 @@
 grammar Chameleon;
 
-prog : (model | NEWLINE | words)+
+prog : (model |request| NEWLINE | words)+
 ;
 
 
 model : 'model' ID '{'
     property_line+
   '}'
+;
+
+request : 'request' ID (request_paramters) '{'
+  property_line+
+'}'
+;
+
+request_paramters: WS | '('(ID|WS)+')'
 ;
 
 
@@ -40,7 +48,7 @@ array_property_second_name: 'array' p_type ID '['ID']'
 ;
 
 
-p_type: T_INT | T_String | T_Int64 | T_Int32 | T_Int8 | T_Int16 | T_UInt8 |T_UInt16 | T_UInt32 | T_UInt64 |ID
+p_type: T_INT | T_String | T_Int64 | T_Int32 | T_Int8 | T_Int16 | T_UInt8 |T_UInt16 | T_UInt32 | T_UInt64 |ID | T_File | T_Server | T_Method | T_Header | T_Response
 ;
 
 T_INT: 'int'
@@ -73,8 +81,21 @@ T_UInt32: 'uint32'
 T_UInt64: 'uint64'
 ;
 
+T_File: 'file'
+;
 
-ID : ('a'..'z' |'A'..'Z' |'_' | '0'..'9')+ ;
+T_Server: 'server'
+;
+
+T_Method: 'method'
+;
+
+T_Header: 'header'
+;
+
+T_Response: 'response'
+;
+ID : ('a'..'z' |'A'..'Z' |'_' | '0'..'9'|'/'|':'|'.')+ ;
 INT : '0'..'9' + ;
 NEWLINE:'\r' ? '\n' ;
 WS : (' ' |'\t' |'\n' |'\r' ) ->skip;
@@ -94,13 +115,15 @@ NameStartChar  :   'A'..'Z'
     |   '\u3001'..'\uD7FF'
     |   '\uF900'..'\uFDCF'
     |   '\uFDF0'..'\uFFFD'
+    |   '.'
+    |   '/'
+    |   ':'
     ;
 
 comment : COMMENT
 ;
 
 COMMENT
-  :   ( '//' ~[\r\n]* '\r'? '\n'
-      | '/*' .*? '*/'
+  :   ( '/*' .*? '*/'
       )
   ;

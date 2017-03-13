@@ -1,0 +1,66 @@
+# coding: UTF-8
+//
+//  ${model.name}.h
+//  ${model.name}
+//
+//  Created by tencent
+//  Copyright (c) 2015年 tencent. All rights reserved.
+//
+<%
+from chameleon.core.codegen.property import ObjectProperty
+from chameleon.core.codegen.property import FundamentalProperty
+from chameleon.core.codegen.property import CustomObjectProperty
+from chameleon.core.codegen.property import DZNullHeaderProperty
+from chameleon.core.codegen.property import DZResponseProperty
+%>
+<%
+  responses = []
+  for p in model.properties:
+      if isinstance(p, DZResponseProperty):
+          responses.append(p)
+          pass
+      pass
+
+  if len(responses) > 1:
+      raise NameError("multi response")
+  response = None
+  if (len(responses) == 1):
+      response = responses[0]
+%>
+#import <Foundation/Foundation.h>
+#import "QCloudRestNet.h"
+% if response != None:
+#import "${response.name}.h"
+% endif
+
+% for o in model.properties:
+  % if isinstance(o, CustomObjectProperty):
+@class ${o.type};
+  % endif
+% endfor
+
+% if model.paramters.count('json') > 0:
+@interface QCloud${model.name}Request : QCloudJSONHttpRequest
+% elif model.paramters.count('form') > 0:
+@interface QCloud${model.name}Request : QCloudFormDataHTTPRequest
+% else:
+@interface QCloud${model.name}Request : QCloudHTTPRequest
+% endif
+% for i in model.properties:
+% if i.comment != None:
+${i.comment}
+%endif
+  % if isinstance(i, DZNullHeaderProperty):
+
+  % elif isinstance(i, ObjectProperty):
+@property (strong, nonatomic) ${i.type} *${i.name};
+  % elif isinstance(i, FundamentalProperty):
+@property (assign, nonatomic) ${i.type} ${i.name};
+  %endif
+% endfor
+
+
+% if response != None:
+- (void) setFinishBlock:(void (^)(${response.name}* result, NSError * error))QCloudRequestFinishBlock;
+% endif
+@end

@@ -1,0 +1,32 @@
+# coding: UTF-8
+//
+//  ${model.name}.h
+//  ${model.name}
+//
+//  Created by tencent
+//  Copyright (c) 2015年 tencent. All rights reserved.
+//
+<%
+from chameleon.core.codegen.property import ObjectProperty
+from chameleon.core.codegen.property import FundamentalProperty
+from chameleon.core.codegen.property import CustomObjectProperty
+%>
+#import <Foundation/Foundation.h>
+% for o in model.properties:
+  % if isinstance(o, CustomObjectProperty):
+@class ${o.type};
+  % endif
+% endfor
+
+@interface ${model.name} : QCloudHTTPRequest
+% for i in model.properties:
+% if i.comment != None:
+${i.comment}
+%endif
+  % if isinstance(i, ObjectProperty):
+@property (strong, nonatomic) ${i.type} *${i.name};
+  % elif isinstance(i, FundamentalProperty):
+@property (assign, nonatomic) ${i.type} ${i.name};
+  %endif
+% endfor
+@end

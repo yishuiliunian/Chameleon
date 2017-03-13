@@ -1,4 +1,4 @@
-# Generated from java-escape by ANTLR 4.5
+# Generated from ../chameleon/core/engine/Chameleon.g4 by ANTLR 4.6
 from antlr4 import *
 
 # This class defines a complete listener for a parse tree produced by ChameleonParser.
@@ -19,6 +19,24 @@ class ChameleonListener(ParseTreeListener):
 
     # Exit a parse tree produced by ChameleonParser#model.
     def exitModel(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by ChameleonParser#request.
+    def enterRequest(self, ctx):
+        pass
+
+    # Exit a parse tree produced by ChameleonParser#request.
+    def exitRequest(self, ctx):
+        pass
+
+
+    # Enter a parse tree produced by ChameleonParser#request_paramters.
+    def enterRequest_paramters(self, ctx):
+        pass
+
+    # Exit a parse tree produced by ChameleonParser#request_paramters.
+    def exitRequest_paramters(self, ctx):
         pass
 
 

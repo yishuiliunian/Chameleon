@@ -7,6 +7,7 @@ class Config(object) :
     OUTPUT_DIR = os.getcwd()
     OC_TYPE = 'mantle'
     TEMPLATE = None
+    APP_BIN_PATH = os.path.split(os.path.realpath(__file__))[0];
     def __new__(cls,*args,**kwargs):
         if not hasattr(cls,'_inst'):
             cls._inst=super(Singleton,cls).__new__(cls,*args,**kwargs)

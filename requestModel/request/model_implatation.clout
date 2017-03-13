@@ -82,9 +82,21 @@ from chameleon.core.utilities.constant import ModelType
   return @{
   % for p in model.properties:
     % if p.secondName != None:
-      @"${p.name}" :@"${p.secondName}",
+      @"${p.name}" :@"${p.secondName}"",
     % endif
   % endfor
   };
+}
+
+- (void) buildRequest
+{
+    [super buildRequest];
+    % for p in model.properties:
+      % if isinstance(p, FundamentalProperty):
+      [self.requestData setNumberParamter:@(self.${p.name}) forKey:@"${p.name}"];
+      % elif isinstance(p, NSStringProperty):
+      [self.requestData setParamter:self.${p.name} forKey:@"${p.name}"];
+      % endif
+    % endfor
 }
 @end

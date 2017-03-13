@@ -25,6 +25,20 @@ class NSStringProperty(ObjectProperty):
     def __init__(self, name, secondName):
         ObjectProperty.__init__(self, name, "NSString", secondName)
 
+class DZFileProperty(NSStringProperty):
+    """docstring for DZFileProperty."""
+    pass
+class DZNullHeaderProperty(NSStringProperty):
+    pass
+class DZServerProperty(DZNullHeaderProperty):
+    pass
+class DZMethodProperty(DZNullHeaderProperty):
+    pass
+class DZHeaderProperty(DZNullHeaderProperty):
+    pass
+class DZResponseProperty(DZNullHeaderProperty):
+    pass
+
 class NSNumberProperty(ObjectProperty):
     def __init__(self, name, secondName):
         ObjectProperty.__init__(self, name,  "NSNumber", secondName)
@@ -203,6 +217,16 @@ def PropertyFactory(name, type, secondName=None):
         return NSDictionaryProperty(name, secondName)
     elif type == ModelType.Array:
         return NSArrayProperty(name, type, secondName)
+    elif type == ModelType.File:
+        return DZFileProperty(name, secondName)
+    elif type == ModelType.Server:
+        return DZServerProperty(name, secondName)
+    elif type == ModelType.Method:
+        return DZMethodProperty(name, secondName)
+    elif type == ModelType.Header:
+        return DZHeaderProperty(name, secondName)
+    elif type == ModelType.Response:
+        return DZResponseProperty(name, secondName)
     else:
         return CustomObjectProperty(name, type, secondName)
     return None
