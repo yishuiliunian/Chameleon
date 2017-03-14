@@ -48,7 +48,7 @@ array_property_second_name: 'array' p_type ID '['ID']'
 ;
 
 
-p_type: T_INT | T_String | T_Int64 | T_Int32 | T_Int8 | T_Int16 | T_UInt8 |T_UInt16 | T_UInt32 | T_UInt64 |ID | T_File | T_Server | T_Method | T_Header | T_Response
+p_type: T_INT | T_String | T_Int64 | T_Int32 | T_Int8 | T_Int16 | T_UInt8 |T_UInt16 | T_UInt32 | T_UInt64 |ID | T_File | T_Server | T_Method | T_Header | T_Response | T_Path
 ;
 
 T_INT: 'int'
@@ -95,6 +95,11 @@ T_Header: 'header'
 
 T_Response: 'response'
 ;
+
+T_Path: 'path'
+;
+
+
 ID : ('a'..'z' |'A'..'Z' |'_' | '0'..'9'|'/'|':'|'.')+ ;
 INT : '0'..'9' + ;
 NEWLINE:'\r' ? '\n' ;

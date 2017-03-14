@@ -76,7 +76,10 @@ model BWPay_Sname
 
 request IDCardCheck {
   string            path
-  file imagePath
+  file imagePath  [image]
+  UserInfo userInfo [user_info]
+  url imageURL
+  array path image [image]
 }
 
 request LipIdentification {

@@ -8,8 +8,11 @@
 
 #import <Foundation/Foundation.h>
 @class UserInfo;
+@class NSString;
+@class NSNumber;
+@class UserInfo;
 
-@interface BWPay_Sname : QCloudHTTPRequest
+@interface BWPay_Sname : NSObject
 @property (assign, nonatomic) char bwchar;
 @property (assign, nonatomic) short bwshort;
 @property (assign, nonatomic) long bwlong;
@@ -39,7 +42,7 @@
 @property (assign, nonatomic) unsigned long bwulong;
 @property (assign, nonatomic) unsigned long long bwulonglong;
 @property (assign, nonatomic) unsigned int bwuint;
-@property (strong, nonatomic) NSArray *bwstringarray;
-@property (strong, nonatomic) NSArray *bwnumberarray;
-@property (strong, nonatomic) NSArray *bwobjarray;
+@property (strong, nonatomic) NSArray<NSString*> *bwstringarray;
+@property (strong, nonatomic) NSArray<NSNumber*> *bwnumberarray;
+@property (strong, nonatomic) NSArray<UserInfo*> *bwobjarray;
 @end

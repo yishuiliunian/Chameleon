@@ -37,6 +37,7 @@ class ModelType:
     Method = 'method'
     Header = 'header'
     Response = 'response'
+    Path    = 'path'
     pass
 
 class OCOutType:

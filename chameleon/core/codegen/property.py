@@ -8,8 +8,6 @@ class Property:
         self.type = type
         self.secondName = secondName
     def mapKey(self):
-        if self.secondName != None:
-            return self.secondName
         return self.name
         pass
 
@@ -37,6 +35,9 @@ class DZMethodProperty(DZNullHeaderProperty):
 class DZHeaderProperty(DZNullHeaderProperty):
     pass
 class DZResponseProperty(DZNullHeaderProperty):
+    pass
+
+class DZPathProperty(NSStringProperty):
     pass
 
 class NSNumberProperty(ObjectProperty):
@@ -227,6 +228,8 @@ def PropertyFactory(name, type, secondName=None):
         return DZHeaderProperty(name, secondName)
     elif type == ModelType.Response:
         return DZResponseProperty(name, secondName)
+    elif type == ModelType.Path:
+        return DZPathProperty(name, secondName)
     else:
         return CustomObjectProperty(name, type, secondName)
     return None

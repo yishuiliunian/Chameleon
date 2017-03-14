@@ -46,6 +46,7 @@ from chameleon.core.codegen.property import DZHeaderProperty
 from chameleon.core.codegen.property import DZResponseProperty
 from chameleon.core.codegen.property import is_foundation_object_propery
 from chameleon.core.codegen.property import is_oc_object_propery
+from chameleon.core.codegen.property import DZPathProperty
 from chameleon.core.utilities.constant import ModelType
 %>
 <%
@@ -64,12 +65,15 @@ from chameleon.core.utilities.constant import ModelType
 %>
 
 #import "QCloud${model.name}Request.h"
+#import "QCloudObjectModel.h"
 % if response != None:
 #import "${response.name}.h"
 % endif
 % for o in model.properties:
   % if isinstance(o, CustomObjectProperty):
 #import "${o.type}.h"
+% elif isinstance(o, NSArrayProperty) and isinstance(o.containerType, CustomObjectProperty):
+#import "${o.containerType.type}.h"
   % endif
 % endfor
 
@@ -92,7 +96,9 @@ from chameleon.core.utilities.constant import ModelType
 {
     NSMutableArray* array = [[super customResponseSerializer] mutableCopy];
     [array addObjectsFromArray:@[
+% if model.paramters.count('cos_response') > 0:
                                  QCloudResponseCOSNormalRSPSerilizerBlock,
+% endif
                                  QCloudResponseObjectSerilizerBlock([${p.name} class])
                                  ]];
     return array;
@@ -104,14 +110,17 @@ from chameleon.core.utilities.constant import ModelType
     if (![super buildRequestData:error]) {
         return NO;
     }
+
     % for p in model.properties:
       % if isinstance(p, DZFileProperty):
+          <%
+          if p.secondName == None:
+              raise NameError("The MiniType is None ,please input one [%s]:[%s]" % (model.name,p.name))
+          %>
           % if p.secondName != None:
     if (self.${p.name}) {
         if(![self.requestData appendPartWithFileURL:[NSURL fileURLWithPath:self.${p.name}] name:@"${p.name}" fileName:[NSUUID UUID].UUIDString mimeType:@"${p.secondName}" headerParamters:@{} error:error])
           % else:
-    if (self.${p.name}) {
-        if(![self.requestData appendPartWithFileURL:[NSURL fileURLWithPath:self.${p.name}] name:@"${p.name}" fileName:[NSUUID UUID].UUIDString mimeType:@"${p.secondName}" headerParamters:@{} error:error])
           % endif
         {
           return NO;
@@ -125,6 +134,13 @@ from chameleon.core.utilities.constant import ModelType
     self.requestData.serverURL = @"${p.name}";
       % elif isinstance(p, DZMethodProperty):
     self.requestData.URIMethod = @"${p.name}";
+      % elif isinstance(p, NSArrayProperty):
+    for (int i=0; i < self.${p.name}.count ; i++) {
+        NSString* path = self.${p.name}[i];
+        if (![self.requestData appendPartWithFileURL:[NSURL fileURLWithPath:path] name:@"${p.name}[i]" fileName:[NSUUID UUID] mimeType:@"${p.secondName}" headerParamters:@{} error:error]) {
+            return NO;
+        }
+    }
       % elif isinstance(p, FundamentalProperty):
         % if isinstance(p, BoolProperty) and model.paramters.count("bool_to_true")>0:
           % if  p.secondName != None:
@@ -142,6 +158,24 @@ from chameleon.core.utilities.constant import ModelType
     [self.requestData setParameter:self.${p.name} withKey:@"${p.secondName}"];
         % else:
     [self.requestData setParameter:self.${p.name} withKey:@"${p.name}"];
+        % endif
+      % elif isinstance(p, NSNumberProperty):
+        % if p.secondName != None:
+    [self.requestData setNumberParamter:self.${p.name} withKey:@"${p.secondName}"];
+        % else:
+    [self.requestData setNumberParamter:self.${p.name} withKey:@"${p.name}"];
+        % endif
+      % elif isinstance(p, NSURLProperty):
+        % if p.secondName != None:
+    [self.requestData setParameter:[self.${p.name} isFileURL]?self.${p.name}.path:self.${p.name}.absoluteString withKey:@"${p.secondName}"];
+        % else:
+    [self.requestData setParameter:[self.${p.name} isFileURL]?self.${p.name}.path:self.${p.name}.absoluteString withKey:@"${p.name}"];
+        % endif
+      % else:
+        % if p.secondName != None:
+    [self.requestData setParameter:[self.${p.name} qcloud_modelToJSONString] withKey:@"${p.secondName}"];
+        % else:
+    [self.requestData setParameter:[self.${p.name} qcloud_modelToJSONString] withKey:@"${p.name}"];
         % endif
       % endif
     % endfor

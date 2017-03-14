@@ -3,6 +3,7 @@
 from property import *
 import os
 
+
 class OCModel:
     def __init__(self, name, secondName=None):
         self.name = name

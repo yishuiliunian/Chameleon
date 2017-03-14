@@ -9,6 +9,7 @@
 
 
 #import "QCloudLipIdentificationRequest.h"
+#import "QCloudObjectModel.h"
 
 
 
@@ -21,6 +22,7 @@
     if (![super buildRequestData:error]) {
         return NO;
     }
+
     [self.requestData setParameter:self.appid withKey:@"appid"];
     [self.requestData setParameter:self.bucket withKey:@"bucket"];
     self.requestData.serverURL = @"http://xxxxxx.xx.xx";

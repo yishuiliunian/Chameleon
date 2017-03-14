@@ -47,6 +47,8 @@ from chameleon.core.utilities.constant import ModelType
 % for o in model.properties:
   % if isinstance(o, CustomObjectProperty):
 #import "${o.type}.h"
+  % elif isinstance(o, NSArrayProperty) and isinstance(o.containerType, CustomObjectProperty):
+#import "${o.containerType.type}.h"
   % endif
 % endfor
 
@@ -54,7 +56,7 @@ from chameleon.core.utilities.constant import ModelType
    % for p in model.properties:
      % if isinstance(p, NSArrayProperty):
       % if isinstance(p.containerType, CustomObjectProperty):
-@class ${p.containerType.type}
+@class ${p.containerType.type};
       % endif
      % endif
   % endfor

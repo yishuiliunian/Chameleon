@@ -13,7 +13,7 @@ task :test => [:install, :buildmodel]  do
 end
 
 task :request => [:install] do
-  sh 'python ../bin/chameleon test.model -t request -d requestOutput'
+  sh 'python ../bin/chameleon test.model --outType=bwmodel -d requestOutput'
 end
 
 task :default => :test

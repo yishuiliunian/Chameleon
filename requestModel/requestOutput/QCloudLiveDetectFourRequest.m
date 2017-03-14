@@ -9,6 +9,7 @@
 
 
 #import "QCloudLiveDetectFourRequest.h"
+#import "QCloudObjectModel.h"
 #import "xello.h"
 
 
@@ -20,7 +21,6 @@
 {
     NSMutableArray* array = [[super customResponseSerializer] mutableCopy];
     [array addObjectsFromArray:@[
-                                 QCloudResponseCOSNormalRSPSerilizerBlock,
                                  QCloudResponseObjectSerilizerBlock([xello class])
                                  ]];
     return array;
@@ -31,8 +31,10 @@
     if (![super buildRequestData:error]) {
         return NO;
     }
+
     [self.requestData setParameter:self.bucket withKey:@"bucket"];
     [self.requestData setParameter:self.validateData withKey:@"validate_data"];
+          
     if (self.video) {
         if(![self.requestData appendPartWithFileURL:[NSURL fileURLWithPath:self.video] name:@"video" fileName:[NSUUID UUID].UUIDString mimeType:@"video" headerParamters:@{} error:error])
         {
@@ -40,6 +42,7 @@
         }
     }
     [self.requestData setParameter:self.compareFlag?@"true":@"false" withKey:@"compare_flag"];
+          
     if (self.card) {
         if(![self.requestData appendPartWithFileURL:[NSURL fileURLWithPath:self.card] name:@"card" fileName:[NSUUID UUID].UUIDString mimeType:@"image" headerParamters:@{} error:error])
         {

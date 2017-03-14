@@ -17,10 +17,4 @@
   return @{
   };
 }
-
-- (void) buildRequest
-{
-    [super buildRequest];
-      [self.requestData setParamter:self.name forKey:@"name"];
-}
 @end

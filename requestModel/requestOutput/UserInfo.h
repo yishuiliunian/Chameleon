@@ -8,6 +8,6 @@
 
 #import <Foundation/Foundation.h>
 
-@interface UserInfo : QCloudHTTPRequest
+@interface UserInfo : NSObject
 @property (strong, nonatomic) NSString *name;
 @end
